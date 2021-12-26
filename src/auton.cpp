@@ -136,6 +136,7 @@ void auton_selector(){
       delay(100);
     }
   }
+  printf("leaving selector");
 }
 
 /*

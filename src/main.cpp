@@ -12,6 +12,7 @@ void initialize() {
 }
 
 void autonomous() {
+  printf("in autonomous");
   joystick.clear();
   delay(100);
   joystick.setText(0, 0, "LOL");
