@@ -118,6 +118,7 @@ void auton_selector(){
     delay(100);
   }
   else{
+    printf("going into else\n");
     i = -1;
     joystick.setText(0, 0, "none selected");
     delay(100);

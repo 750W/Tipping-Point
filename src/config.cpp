@@ -30,10 +30,11 @@ okapi::MotorGroup lift({liftL, liftR});
 okapi::Controller joystick;
 okapi::ControllerButton backTakeIn(ControllerDigital::L1);
 okapi::ControllerButton backTakeOut(ControllerDigital::R1);
-okapi::ControllerButton liftUp(ControllerDigital::up);
-okapi::ControllerButton liftDown(ControllerDigital::down);
 okapi::ControllerButton frontTakeIn(ControllerDigital::L2);
 okapi::ControllerButton frontTakeOut(ControllerDigital::R2);
+okapi::ControllerButton liftUp(ControllerDigital::up);
+okapi::ControllerButton liftDown(ControllerDigital::down);
+
 okapi::ControllerButton x(ControllerDigital::X);
 okapi::ControllerButton a(ControllerDigital::A);
 okapi::ControllerButton y(ControllerDigital::Y);
@@ -41,4 +42,4 @@ okapi::ControllerButton b(ControllerDigital::B);
 
 okapi::ADIButton back_bumperswitch('H');
 pros::Imu imu(4);
-int i = 0;
+int i = -1;

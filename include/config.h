@@ -6,8 +6,8 @@ const int FRONT_RIGHT_MOTOR = 7;
 const int BACK_LEFT_MOTOR = 13;
 const int BACK_RIGHT_MOTOR = 20;
 const int FRONT_INTAKE_MOTOR = 5;
-const int LEFT_LIFT_MOTOR = 6;
-const int RIGHT_LIFT_MOTOR = 19;
+const int LEFT_LIFT_MOTOR = 10;
+const int RIGHT_LIFT_MOTOR = 6;
 const int BACK_INTAKE_MOTOR = 15;
 
 const float kP = 0;
