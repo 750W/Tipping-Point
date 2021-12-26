@@ -9,7 +9,7 @@ void move_dist(float spd, int time){
 }
 void front_clamp(){
   front_intake.moveVoltage(8000);
-  delay(75); //experiment with this value
+  delay(75); //experiment with this value TEST
 }
 void front_unclamp(){
   front_intake.moveVoltage(-8000);
