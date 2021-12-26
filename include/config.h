@@ -6,7 +6,8 @@ const int FRONT_RIGHT_MOTOR = 7;
 const int BACK_LEFT_MOTOR = 13;
 const int BACK_RIGHT_MOTOR = 20;
 const int FRONT_INTAKE_MOTOR = 5;
-const int LIFT_MOTOR = 1;
+const int LEFT_LIFT_MOTOR = 1;
+const int RIGHT_LIFT_MOTOR = 19;
 const int BACK_INTAKE_MOTOR = 15;
 
 const float kP = 0;
@@ -19,7 +20,8 @@ extern okapi::Motor drive_bL;
 extern okapi::Motor drive_bR;
 extern okapi::Motor front_intake;
 extern okapi::Motor back_intake;
-extern okapi::Motor lift;
+extern okapi::Motor liftL;
+extern okapi::Motor liftR;
 extern std::shared_ptr<okapi::ChassisController> chassis;
 extern int i;
 
@@ -30,11 +32,17 @@ extern okapi::ControllerButton frontTakeIn;
 extern okapi::ControllerButton frontTakeOut;
 extern okapi::ControllerButton liftUp;
 extern okapi::ControllerButton liftDown;
+extern okapi::ControllerButton x;
+extern okapi::ControllerButton a;
+extern okapi::ControllerButton y;
+extern okapi::ControllerButton b;
 
 extern okapi::ADIButton back_bumperswitch;
-extern okapi::ADIGyro gyro;
+extern pros::Imu imu;
 
-int auton_selector();
+extern okapi::MotorGroup lift;
+
+void auton_selector();
 void mbl_goal();
 void left_win_point();
 void right_win_point();

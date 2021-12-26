@@ -95,7 +95,7 @@ drive backward a lil;
 put back clamp down;
 move forward a lil to clear alliance mogol from win point line
 */
-auton_selector(){
+void auton_selector(){
   joystick.setText(0, 0, "X - mbl, A - LWP, Y - RWP, B - None");
   if(x.isPressed()){
     i = 0;

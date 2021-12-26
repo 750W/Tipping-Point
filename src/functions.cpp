@@ -24,11 +24,11 @@ void back_unclamp(){
   delay(50);
 }
 void lift_up(){
-  lift.moveVelocity(100);
+  lift.moveVelocity(200);
   delay(30); //experiment with this value
 }
 void lift_down(){
-  lift.moveVelocity(-100);
+  lift.moveVelocity(-200);
   delay(30); //experiment with this value
 }
 void stop(){

@@ -1,7 +1,6 @@
 #include "main.h"
 #include "config.h"
 using namespace okapi;
-
 void initialize() {
   front_intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
   back_intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
@@ -10,7 +9,6 @@ void initialize() {
   back_intake.tarePosition();
   lift.tarePosition();
   auton_selector();
-  gyro.reset();
 }
 
 void autonomous() {
@@ -42,7 +40,7 @@ void opcontrol() {
       front_intake.moveVoltage(0);
       delay(10);
     }
-    
+
     if(backTakeIn.isPressed()){
       back_clamp();
     }
