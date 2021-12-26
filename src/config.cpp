@@ -43,4 +43,3 @@ okapi::ControllerButton b(ControllerDigital::B);
 okapi::ADIButton back_bumperswitch('H');
 pros::Imu imu(4);
 int i = -1;
-boolean b = false;

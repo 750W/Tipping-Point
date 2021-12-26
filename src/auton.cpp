@@ -112,7 +112,6 @@ void auton_selector(){
 
   while (!pressed){
     if(x.isPressed()){
-      b = true;
       i = 0;
       joystick.setText(0, 0, "mbl selected");
       pressed = 1;
