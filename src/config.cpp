@@ -22,7 +22,7 @@ std::shared_ptr<okapi::ChassisController> chassis = ChassisControllerBuilder()
             {4.0_in, 12.0_in},
             static_cast<int32_t>(imev5GreenTPR)
         }
-    ).withMaxVelocity(180
+    ).withMaxVelocity(150
     ).build();
 
 okapi::MotorGroup lift({liftL, liftR});
