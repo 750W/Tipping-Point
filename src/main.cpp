@@ -12,6 +12,10 @@ void initialize() {
 }
 
 void autonomous() {
+  joystick.clear();
+  delay(100);
+  joystick.setText(0, 0, "LOL");
+  delay(100);
   switch(i){
     case 0: mbl_goal();
     break;
