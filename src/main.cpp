@@ -16,6 +16,7 @@ void autonomous() {
   delay(100);
   joystick.setText(0, 0, "LOL");
   delay(100);
+  printf("%d\n", i);
   switch(i){
     case 0: mbl_goal();
     break;
