@@ -98,7 +98,10 @@ move forward a lil to clear alliance mogol from win point line
 void auton_selector(){
   joystick.clear();
   delay(100);
-  joystick.setText(0, 0, "X - mbl, A - LWP, Y - RWP, B - None");
+  joystick.setText(0, 0, "X - mbl");
+  joystick.setText(1, 0, "A - LWP");
+  joystick.setText(2, 0, "Y - RWP");
+  joystick.setText(3, 0, "B - None");
   if(x.isPressed()){
     i = 0;
   }
