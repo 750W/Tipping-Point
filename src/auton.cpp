@@ -98,33 +98,44 @@ move forward a lil to clear alliance mogol from win point line
 void auton_selector(){
   joystick.clear();
   delay(100);
-  while(!x.isPressed() && !a.isPressed() && !b.isPressed() && !y.isPressed()){
+  int j = 0;
+  int pressed = 0;
+  while(!j){
     joystick.setText(0, 0, "X - mbl");
     joystick.setText(1, 0, "A - LWP");
     joystick.setText(2, 0, "Y - RWP");
     joystick.setText(3, 0, "B - None");
+    j = 1;
   }
+  joystick.clear();
+  delay(100);
 
-  if(x.isPressed()){
-    i = 0;
-    joystick.setText(0, 0, "mbl selected");
-    delay(100);
-  }
-  else if(a.isPressed()){
-    i = 1;
-    joystick.setText(0, 0, "lwp selected");
-    delay(100);
-  }
-  else if(y.isPressed()){
-    i = 2;
-    joystick.setText(0, 0, "rwp selected");
-    delay(100);
-  }
-  else{
-    printf("going into else\n");
-    i = -1;
-    joystick.setText(0, 0, "none selected");
-    delay(100);
+  while (!pressed){
+    if(x.isPressed()){
+      b = true;
+      i = 0;
+      joystick.setText(0, 0, "mbl selected");
+      pressed = 1;
+      delay(100);
+    }
+    else if(a.isPressed()){
+      i = 1;
+      joystick.setText(0, 0, "lwp selected");
+      delay(100);
+      pressed = 1;
+    }
+    else if(y.isPressed()){
+      i = 2;
+      joystick.setText(0, 0, "rwp selected");
+      delay(100);
+      pressed = 1;
+    }
+    else{
+      printf("going into else\n");
+      i = -1;
+      joystick.setText(0, 0, "none selected");
+      delay(100);
+    }
   }
   joystick.clear();
 }
