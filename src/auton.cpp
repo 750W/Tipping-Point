@@ -136,7 +136,6 @@ void auton_selector(){
       delay(100);
     }
   }
-  joystick.clear();
 }
 
 /*
