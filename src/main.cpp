@@ -21,10 +21,6 @@ void autonomous() {
     break;
   }
   stop();
-  stop();
-  stop();
-  stop();
-  stop();
 }
 
 void opcontrol() {
