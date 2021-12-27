@@ -15,8 +15,6 @@ void competition_initialize(){
 }
 
 void autonomous() {
-  joystick.clear();
-  delay(100);
   joystick.setText(0, 0, i + "");
   switch(i){
     case 0: mbl_goal();
