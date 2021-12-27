@@ -67,6 +67,6 @@ void opcontrol() {
       lift.moveVelocity(0);
     }
 
-    delay(10);
+    delay(20);
   }
 }
