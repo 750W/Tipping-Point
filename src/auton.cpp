@@ -139,7 +139,6 @@ void auton_selector(){
       }
       else{
         i = -10;
-        printf("nothing pressed");
       }
     }
   }
