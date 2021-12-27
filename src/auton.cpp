@@ -102,16 +102,16 @@ void auton_selector(){
   int pressed = 0;
   while(!j){
     joystick.setText(0, 0, "X - mbl");
-    joystick.setText(1, 0, "A - LWP");
-    joystick.setText(2, 0, "Y - RWP");
-    joystick.setText(3, 0, "B - None");
+    joystick.setText(0, 1, "A - LWP");
+    joystick.setText(0, 2, "Y - RWP");
+    joystick.setText(0, 3, "B - None");
     j = 1;
   }
   joystick.clear();
   delay(100);
   i = 10;
   while (!pressed && i != -10){
-    if(!back_bumperswitch.isPressed()){
+    if(back_bumperswitch.isPressed()){
       if(x.isPressed()){
         i = 0;
         joystick.setText(0, 0, "mbl selected");
@@ -135,8 +135,10 @@ void auton_selector(){
         joystick.setText(0, 0, "none selected");
         delay(100);
       }
+      else{
+        i = -10;
+      }
     }
-    i = -10;
   }
   printf("leaving selector");
 }
