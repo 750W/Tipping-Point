@@ -15,12 +15,10 @@ void competition_initialize(){
 }
 
 void autonomous() {
-  printf("in autonomous");
   joystick.clear();
   delay(100);
-  joystick.setText(0, 0, "LOL");
+  joystick.setText("%d\n", i);
   delay(100);
-  printf("%d\n", i);
   switch(i){
     case 0: mbl_goal();
     break;
