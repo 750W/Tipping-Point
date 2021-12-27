@@ -110,13 +110,13 @@ void auton_selector(){
   joystick.clear();
   delay(100);
   i = 10;
-  while (!pressed && i != -10){
-    if(back_bumperswitch.isPressed()){
+  while (i != -10){
+    while(!pressed){
       if(x.isPressed()){
         i = 0;
         joystick.setText(0, 0, "mbl selected");
-        pressed = 1;
         delay(100);
+        pressed = 1;
       }
       else if(a.isPressed()){
         i = 1;
@@ -134,6 +134,7 @@ void auton_selector(){
         i = -1;
         joystick.setText(0, 0, "none selected");
         delay(100);
+        pressed = 1;
       }
       else{
         i = -10;
