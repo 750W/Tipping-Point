@@ -111,6 +111,9 @@ void auton_selector(){
   delay(100);
   i = 10;
   while (i != -10){
+    if(back_bumperswitch.isPressed()){
+      pressed = -1;
+    }
     while(!pressed){
       if(x.isPressed()){
         i = 0;
