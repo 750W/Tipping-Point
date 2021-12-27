@@ -103,9 +103,30 @@ void auton_selector(){
   joystick.setText(0, 0, "X - mbl");
   joystick.setText(0, 1, "A - LWP");
   joystick.setText(0, 2, "Y - RWP");
-  joystick.setText(0, 3, "B - None");  
+  joystick.setText(0, 3, "B - None");
   delay(100);
   i = 10;
+
+  while (!back_bumperswitch.isPressed()) {
+    continue;
+  }
+  i = -99;
+  while (i == -99) {
+    if (x.isPressed()) {
+      i = 0;
+      joystick.setText(0, 0, "mbl selected");
+    } else if (a.isPressed()) {
+      i = 1;
+      joystick.setText(0, 0, "lwp selected");
+    } else if (y.isPressed()) {
+      i = 2;
+      joystick.setText(0, 0, "rwp selected");
+    } else if (b.isPressed()) {
+      i = -1;
+      joystick.setText(0, 0, "no auton selected");
+    }
+  }
+  /*
   while (i != -10){
     if(back_bumperswitch.isPressed()){
       pressed = -1;
@@ -137,6 +158,7 @@ void auton_selector(){
       }
     }
   }
+  */
 }
 
 /*
