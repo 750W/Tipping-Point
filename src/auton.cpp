@@ -136,6 +136,9 @@ void auton_selector(){
         joystick.setText(0, 0, "no auton selected");
         pressed = 1;
       }
+      if(!pressed){
+        i = -10;
+      }
     }
   }
 }
