@@ -96,34 +96,49 @@ put back clamp down;
 move forward a lil to clear alliance mogol from win point line
 */
 void auton_selector(){
+  /*
   joystick.clear();
   delay(100);
   int j = 0;
   int pressed = 0;
   joystick.setText(0, 0, "X - mbl");
-  joystick.setText(0, 1, "A - LWP");
-  joystick.setText(0, 2, "Y - RWP");
-  joystick.setText(0, 3, "B - None");
+  joystick.setText(1, 0, "A - LWP");
+  joystick.setText(2, 0, "Y - RWP");
+  joystick.setText(3, 0, "B - None");
   delay(100);
   i = 10;
 
-  while (!back_bumperswitch.isPressed()) {
+  while(!back_bumperswitch.isPressed()){
     continue;
   }
   i = -99;
-  while (i == -99) {
-    if (x.isPressed()) {
+  while(i == -99){
+    if(x.isPressed()){
       i = 0;
       joystick.setText(0, 0, "mbl selected");
-    } else if (a.isPressed()) {
+    }
+    else if(a.isPressed()){
       i = 1;
       joystick.setText(0, 0, "lwp selected");
-    } else if (y.isPressed()) {
+    }
+    else if(y.isPressed()){
       i = 2;
       joystick.setText(0, 0, "rwp selected");
-    } else if (b.isPressed()) {
+    }
+    else if(b.isPressed()){
       i = -1;
       joystick.setText(0, 0, "no auton selected");
     }
   }
+  */
+  joystick.clear();
+  joystick.setText(0, 0, "POINT A");
+  while (!back_bumperswitch.isPressed()) {
+      continue;
+  }
+  joystick.setText(0, 0, "POINT B");
+  while (!x.isPressed()) {
+      continue;
+  }
+  joystick.setText(0, 0, "POINT C");
 }
