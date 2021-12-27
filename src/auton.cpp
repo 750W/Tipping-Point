@@ -96,7 +96,7 @@ put back clamp down;
 move forward a lil to clear alliance mogol from win point line
 */
 void auton_selector(){
-  /*
+  
   joystick.clear();
   delay(100);
   int j = 0;
@@ -130,14 +130,5 @@ void auton_selector(){
       joystick.setText(0, 0, "no auton selected");
     }
   }
-  */
-  printf("POINT A");
-  while (!back_bumperswitch.isPressed()) {
-      continue;
-  }
-  printf("POINT B");
-  while (!x.isPressed()) {
-      continue;
-  }
-  printf("POINT C");
+
 }
