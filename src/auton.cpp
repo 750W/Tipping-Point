@@ -110,11 +110,14 @@ void auton_selector(){
   joystick.clear();
   delay(100);
   i = 10;
+  int count = 0;
   while (i != -10){
     if(back_bumperswitch.isPressed()){
       pressed = -1;
     }
     while(!pressed){
+      count++;
+      if(count == 1)
       printf("bumperswitch pressed");
       if(x.isPressed()){
         i = 0;
