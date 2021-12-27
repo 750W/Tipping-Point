@@ -8,6 +8,9 @@ void initialize() {
   front_intake.tarePosition();
   back_intake.tarePosition();
   lift.tarePosition();
+}
+
+void competition_initialize(){
   auton_selector();
 }
 
