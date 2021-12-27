@@ -100,14 +100,10 @@ void auton_selector(){
   delay(100);
   int j = 0;
   int pressed = 0;
-  while(!j){
-    joystick.setText(0, 0, "X - mbl");
-    joystick.setText(0, 1, "A - LWP");
-    joystick.setText(0, 2, "Y - RWP");
-    joystick.setText(0, 3, "B - None");
-    j = 1;
-  }
-  joystick.clear();
+  joystick.setText(0, 0, "X - mbl");
+  joystick.setText(0, 1, "A - LWP");
+  joystick.setText(0, 2, "Y - RWP");
+  joystick.setText(0, 3, "B - None");  
   delay(100);
   i = 10;
   while (i != -10){
