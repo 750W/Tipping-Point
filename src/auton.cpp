@@ -110,15 +110,11 @@ void auton_selector(){
   joystick.clear();
   delay(100);
   i = 10;
-  int count = 0;
   while (i != -10){
     if(back_bumperswitch.isPressed()){
       pressed = -1;
     }
     while(!pressed){
-      count++;
-      if(count == 1)
-      printf("bumperswitch pressed");
       if(x.isPressed()){
         i = 0;
         joystick.setText(0, 0, "mbl selected");
@@ -140,12 +136,8 @@ void auton_selector(){
         joystick.setText(0, 0, "no auton selected");
         pressed = 1;
       }
-      else{
-        i = -10;
-      }
     }
   }
-  printf("leaving selector");
 }
 
 /*
