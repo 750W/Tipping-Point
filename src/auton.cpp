@@ -131,14 +131,13 @@ void auton_selector(){
     }
   }
   */
-  joystick.clear();
-  joystick.setText(0, 0, "POINT A");
+  printf("POINT A");
   while (!back_bumperswitch.isPressed()) {
       continue;
   }
-  joystick.setText(0, 0, "POINT B");
+  printf("POINT B");
   while (!x.isPressed()) {
       continue;
   }
-  joystick.setText(0, 0, "POINT C");
+  printf("POINT C");
 }
