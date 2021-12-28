@@ -40,6 +40,30 @@ void stop(){
   front_intake.moveVoltage(0);
   back_intake.moveVoltage(0);
 }
+void turn_degrees_cw(float spd, int degrees, int delayBetween, int time){
+  imu.reset();
+  while(imu.get_rotation()>=degrees){
+    drive_fL.moveVelocity(spd);
+    drive_fR.moveVelocity(0);
+    drive_bL.moveVelocity(spd);
+    drive_bR.moveVelocity(0);
+    delay(delayBetween);
+  }
+  delay(time);
+  stop();
+}
+void turn_degrees_ccw(float spd, int degrees, int delayBetween, int time){
+  imu.reset();
+  while(-imu.get_rotation()<=degrees){
+    drive_fL.moveVelocity(0);
+    drive_fR.moveVelocity(spd);
+    drive_bL.moveVelocity(0);
+    drive_bR.moveVelocity(spd);
+    delay(delayBetween);
+  }
+  delay(time);
+  stop();
+}
 
 void turn_cw(float spd, int time){
   drive_fL.moveVelocity(spd);

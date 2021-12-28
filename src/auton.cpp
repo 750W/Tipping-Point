@@ -86,6 +86,13 @@ void new_auton_trial(){
   }
   move_dist(-180, count/2);
 }
+
+// void winPointAutonRIGHT(){
+//   turn_degrees_ccw(10,50,1,25);
+//   while(!back_bumperswitch.isPressed()){
+//     move_dist(40, 25);
+//   }
+// }
 /*
 go straight;
 grab neutral mogol(yellow one) with front intake (front is now the side with the lift );
@@ -96,39 +103,95 @@ put back clamp down;
 move forward a lil to clear alliance mogol from win point line
 */
 void auton_selector(){
-  
   joystick.clear();
   delay(100);
-  int j = 0;
-  int pressed = 0;
   joystick.setText(0, 0, "X - mbl");
-  joystick.setText(1, 0, "A - LWP");
-  joystick.setText(2, 0, "Y - RWP");
-  joystick.setText(3, 0, "B - None");
-  delay(100);
-  i = 10;
-
-  while(!back_bumperswitch.isPressed()){
-    continue;
+  joystick.setText(0, 1, "A - LWP");
+  joystick.setText(0, 2, "Y - RWP");
+  joystick.setText(0, 3, "B - None");
+  if(x.isPressed()){
+    i = 0;
+    joystick.setText(0, 0, "mbl selected");
+    delay(100);
   }
-  i = -99;
-  while(i == -99){
-    if(x.isPressed()){
-      i = 0;
-      joystick.setText(0, 0, "mbl selected");
-    }
-    else if(a.isPressed()){
-      i = 1;
-      joystick.setText(0, 0, "lwp selected");
-    }
-    else if(y.isPressed()){
-      i = 2;
-      joystick.setText(0, 0, "rwp selected");
-    }
-    else if(b.isPressed()){
-      i = -1;
-      joystick.setText(0, 0, "no auton selected");
-    }
+  else if(a.isPressed()){
+    i = 1;
+    joystick.setText(0, 0, "lwp selected");
+    delay(100);
   }
-
+  else if(y.isPressed()){
+    i = 2;
+    joystick.setText(0, 0, "rwp selected");
+    delay(100);
+  }
+  else{
+    i = -1;
+    joystick.setText(0, 0, "none selected");
+    delay(100);
+  }
+  joystick.clear();
 }
+
+/*
+void auton(){
+  while((int)ultraLeft.controllerGet() != (int)ultraRight.controllerGet()){
+    if((int)ultraLeft.controllerGet() > (int)ultraRight.controllerGet()){
+      fR.moveVelocity(5);
+      bR.moveVelocity(5);
+      delay(25);
+    }
+    else if((int)ultraLeft.controllerGet() < (int)ultraRight.controllerGet()){
+      fL.moveVelocity(5);
+      bL.moveVelocity(5);
+      delay(25);
+    }
+  }
+
+  while((int)ultraLeft.controllerGet() != (int)ultraRight.controllerGet()){
+    if((int)ultraLeft.controllerGet() > (int)ultraRight.controllerGet()){
+      fR.moveVelocity(5);
+      bR.moveVelocity(5);
+      delay(25);
+    }
+    else if((int)ultraLeft.controllerGet() < (int)ultraRight.controllerGet()){
+      fL.moveVelocity(5);
+      bL.moveVelocity(5);
+      delay(25);
+    }
+  }
+
+    chassis->setMaxVelocity(60);
+    float count = 0;
+    while(!intakeLimitSwitch.isPressed()){
+      moveDistance(60, 25);
+      count += 25;
+    }
+    stop();
+    for(int i = 0; i < 10; i++)
+    frontIntakeClampDown();
+    stop();
+    chassis->setMaxVelocity(-60);
+    moveDistance(-60, count*(float)3/4);
+    stop();
+    frontIntakeUp();
+    stop();
+    chassis->setMaxVelocity(60);
+    turn_ccw(75);
+    moveDistance(60, count*(float)1/2);
+    turn_cw(count*(float)1/4);
+    count = 0;
+    while(!intakeLimitSwitch.isPressed()){
+      moveDistance(60, 25);
+      count += 25;
+    }
+    chassis->setMaxVelocity(-60);
+    moveDistance(-60, count*(float)3/4);
+    stop();
+    frontIntakeUp();
+    stop();
+    moveDistance(-60, count*(float)1/4);
+    stop();
+
+    chassis->setMaxVelocity(150);
+}
+*/
