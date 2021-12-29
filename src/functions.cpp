@@ -26,17 +26,18 @@ void back_unclamp(){
 }
 
 void lift_up(){
-  lift_PID(-1852);
+  lift.moveVelocity(100);
+  //lift_PID(-1852);
   delay(30); //experiment with this value
 }
 
 void lift_down(){
-  lift_PID(1852);
+  lift.moveVelocity(100);
+  //lift_PID(1852);
   delay(30); //experiment with this value
 }
 
 void lift_PID(int deg){
-  lift.moveVoltage(100);
   delay(25);
 
   /*
