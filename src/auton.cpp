@@ -157,7 +157,7 @@ void winPointAutonRIGHT(){
   move_dist(40,50);
   stop();
   //turn to face mobile goal
-  turn_ccw_degrees(10,90,1,25)
+  turn_ccw_degrees(10,90,1,25);
   //move to reach mobile goal
   move_dist(40,50);
 
