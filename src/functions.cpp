@@ -20,7 +20,7 @@ void back_clamp(){
   back_intake.moveVoltage(8000);
   delay(75);
 }
-void back_unclamp(){kn
+void back_unclamp(){
   back_intake.moveVoltage(-8000);
   delay(50);
 }
