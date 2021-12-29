@@ -46,7 +46,7 @@ void lift_PID(int deg){
   prev_error = 0.0;
 
   lift.tarePosition();
-  while (desired_val != pos) {
+  while ((int)desired_val != (int)pos) {
     printf("%d\n", liftR.getPosition());
     printf("%d\n", liftL.getPosition());
     pos = (liftR.getPosition() + liftL.getPosition()) / 2.0;
