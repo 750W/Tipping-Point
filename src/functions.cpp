@@ -25,13 +25,13 @@ void back_unclamp(){
   delay(50);
 }
 
-void lift_up(){
-  lift_PID(1852);
-  delay(30); //experiment with this value
-}
-
 void lift_down(){
   lift_PID(-1852);
+  delay(20); //experiment with this value
+}
+
+void lift_up(){
+  lift_PID(1852);
   delay(30); //experiment with this value
 }
 
