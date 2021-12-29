@@ -26,21 +26,17 @@ void back_unclamp(){
 }
 
 void lift_up(){
-  lift.moveVelocity(100);
-  //lift_PID(-1852);
+  lift_PID(-1852);
   delay(30); //experiment with this value
 }
 
 void lift_down(){
-  lift.moveVelocity(100);
-  //lift_PID(1852);
+  lift_PID(1852);
   delay(30); //experiment with this value
 }
 
 void lift_PID(int deg){
-  delay(25);
-
-  /*
+  
   float error, kP, desired_val, power, pos;
   float total_error, kI;
   float prev_error, kD, derivative;
@@ -68,7 +64,7 @@ void lift_PID(int deg){
     //prev_error = error;
     delay(20);
   }
-  */
+
 
 }
 
