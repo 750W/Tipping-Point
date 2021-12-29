@@ -49,7 +49,7 @@ void lift_PID(int deg){
     rpos = liftR.getPosition();
     lpos = liftL.getPosition();
     pos = (liftR.getPosition() + liftL.getPosition()) / 2.0;
-    error = desired_val - pos;
+    error = pos - desired_val;
     total_error += error;
     if(error == 0 || pos > desired_val){
       total_error = 0;

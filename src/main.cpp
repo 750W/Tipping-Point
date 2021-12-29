@@ -12,8 +12,6 @@ void initialize() {
 }
 
 void autonomous() {
-  lift_up();
-  lift_down();
   /*
   joystick.clear();
   delay(100);
