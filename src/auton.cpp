@@ -1,10 +1,10 @@
 #include "main.h"
 #include "config.h"
 using namespace okapi;
-// comment test
+
 void mbl_goal(){
   chassis->setMaxVelocity(150);
-  int count = 3;
+  int count = 0;
   while(!back_bumperswitch.isPressed() && count < 80){
     move_dist(150, 25);
     count += 25;
