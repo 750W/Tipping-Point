@@ -36,7 +36,7 @@ void lift_down(){
 }
 
 void lift_PID(int deg){
-  lift.moveVelocity(100);
+  lift.moveVoltage(100);
   delay(25);
 
   /*

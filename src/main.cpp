@@ -64,7 +64,7 @@ void opcontrol() {
       lift_down();
     }
     else{
-      lift.moveVelocity(0);
+      lift.moveVoltage(0);
     }
 
     delay(20);
