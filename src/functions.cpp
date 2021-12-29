@@ -58,8 +58,9 @@ void lift_PID(int deg){
       total_error = 0;
     }
     derivative = prev_error - error;
-    power =(error * kP + total_error * kI + derivative * kD);
+    power = (error * kP + total_error * kI + derivative * kD);
     power = round(1000 * (power / (4 * 2.54 * 3.14)) / 1000);
+    printf("%d\n", power);
     lift.moveVelocity(power);
     prev_error = error;
     delay(20);
