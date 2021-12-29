@@ -60,10 +60,12 @@ void opcontrol() {
     }
 
     if(liftUp.isPressed()){
-      lift_up();
+      lift.moveVelocity(100);
+      //lift_up();
     }
     else if(liftDown.isPressed()){
-      lift_down();
+      lift.moveVelocity(-100);
+      //lift_down();
     }
     else{
       lift.moveVelocity(0);
