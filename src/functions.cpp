@@ -50,7 +50,7 @@ void lift_PID(int deg){
   while ((int)desired_val != (int)pos) {
     printf("%d\n", liftR.getPosition());
     printf("%d\n", liftL.getPosition());
-    pos = (liftR.getPosition() + liftL.getPosition()) / 2.0;
+    pos = lift.getPosition();
     error = desired_val - pos;
     printf("%d\n", error);
     total_error += error;
@@ -58,7 +58,8 @@ void lift_PID(int deg){
       total_error = 0;
     }
     derivative = prev_error - error;
-    power = error * kP + total_error * kI + derivative * kD;
+    power =(error * kP + total_error * kI + derivative * kD);
+    power = round(1000 * (power / (4 * 2.54 * 3.14)) / 1000);
     lift.moveVelocity(power);
     prev_error = error;
     delay(20);
