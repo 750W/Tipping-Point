@@ -1,4 +1,4 @@
-//ishaan should get the programmer role
+
 #include "main.h"
 #include "config.h"
 using namespace okapi;
