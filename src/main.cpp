@@ -7,7 +7,8 @@ void initialize() {
   lift.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
   front_intake.tarePosition();
   back_intake.tarePosition();
-  //lift.tarePosition();
+  liftR.tarePosition();
+  liftL.tarePosition();
   //auton_selector();
 }
 

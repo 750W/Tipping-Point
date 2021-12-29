@@ -26,12 +26,12 @@ void back_unclamp(){
 }
 
 void lift_up(){
-  lift_PID(-1852);
+  lift_PID(2146435072);
   delay(20); //experiment with this value
 }
 
 void lift_down(){
-  lift_PID(1852);
+  lift_PID(-2146435072);
   delay(30); //experiment with this value
 }
 
