@@ -53,15 +53,14 @@ void lift_PID(int deg){
     pos = (liftR.getPosition() + liftL.getPosition()) / 2.0;
     error = desired_val - pos;
     printf("%d\n", error);
-    //total_error += error;
-    //if(error == 0 || pos > desired_val){
-    //  total_error = 0;
-    //}
-    //derivative = prev_error - error;
-    power = error * kP;
-    //+ total_error * kI + derivative * kD;
+    total_error += error;
+    if(error == 0 || pos > desired_val){
+      total_error = 0;
+    }
+    derivative = prev_error - error;
+    power = error * kP + total_error * kI + derivative * kD;
     lift.moveVelocity(power);
-    //prev_error = error;
+    prev_error = error;
     delay(20);
   }
 
