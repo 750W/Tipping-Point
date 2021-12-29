@@ -38,7 +38,7 @@ void lift_down(){
 void lift_PID(int deg){
   lift.moveVelocity(100);
   delay(25);
-  /*
+
   float error, kP, desired_val, power, pos;
   float total_error, kI;
   float prev_error, kD, derivative;
@@ -66,7 +66,7 @@ void lift_PID(int deg){
     //prev_error = error;
     delay(20);
   }
-  */
+  
 }
 
 void stop(){
