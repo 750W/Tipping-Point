@@ -58,5 +58,7 @@ void lift_up();
 void lift_down();
 void turn_ccw(float spd, int time);
 void turn_cw(float spd, int time);
+void turn_cw_degrees(float spd,int degrees,int delayBetween,int time);
+void turn_ccw_degrees(float spd,int degrees,int delayBetween,int time);
 void move_dist_pid(float dist);
 void stop();

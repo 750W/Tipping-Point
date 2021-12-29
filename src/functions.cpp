@@ -40,21 +40,29 @@ void stop(){
   front_intake.moveVoltage(0);
   back_intake.moveVoltage(0);
 }
-void turn_degrees_cw(float spd, int degrees, int delayBetween, int time){
+
+void turn_cw_degrees(float spd, int degrees, int delayBetween, int time){
+  //should set whatever current angle is to be 0 degrees
   imu.reset();
+  //keeps rotating until rotation reaches inputed value
   while(imu.get_rotation()>=degrees){
     drive_fL.moveVelocity(spd);
     drive_fR.moveVelocity(0);
     drive_bL.moveVelocity(spd);
     drive_bR.moveVelocity(0);
+    //small delay between each loop, to be safe
     delay(delayBetween);
   }
+  //delay bc other turn fuctions had one
   delay(time);
   stop();
 }
-void turn_degrees_ccw(float spd, int degrees, int delayBetween, int time){
+void turn_ccw_degrees(float spd, int degrees, int delayBetween, int time){
+//same as turn_degrees_cw
   imu.reset();
-  while(-imu.get_rotation()<=degrees){
+  //as far as i know, calling get_rotation after turning ccw return negative
+  //so, abs val is taken so that same logic as before applies
+  while(abs(imu.get_rotation())>=degrees){
     drive_fL.moveVelocity(0);
     drive_fR.moveVelocity(spd);
     drive_bL.moveVelocity(0);
