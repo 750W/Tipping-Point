@@ -39,7 +39,7 @@ void lift_PID(int deg){
   float error, kP, desired_val, rpos, lpos, power, pos;
   float total_error, kI;
   float prev_error, kD, derivative;
-  kP = 0.1;
+  kP = 0.2;
   kI = 0.1;
   kD = 0.1;
   desired_val = deg;
@@ -49,15 +49,16 @@ void lift_PID(int deg){
     rpos = liftR.getPosition();
     lpos = liftL.getPosition();
     pos = (liftR.getPosition() + liftL.getPosition()) / 2.0;
-    error = pos - desired_val;
-    total_error += error;
-    if(error == 0 || pos > desired_val){
-      total_error = 0;
-    }
-    derivative = prev_error - error;
-    power = error * kP + total_error * kI + derivative * kD;
+    error = desired_val - pos;
+    //total_error += error;
+    //if(error == 0 || pos > desired_val){
+    //  total_error = 0;
+    //}
+    //derivative = prev_error - error;
+    power = error * kP
+    //+ total_error * kI + derivative * kD;
     lift.moveVelocity(power);
-    prev_error = error;
+    //prev_error = error;
     delay(20);
   }
 }
