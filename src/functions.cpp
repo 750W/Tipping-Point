@@ -1,5 +1,6 @@
 #include "main.h"
 #include "config.h"
+#include "math.h"
 void move_dist(float spd, int time){
   drive_fL.moveVelocity(spd);
   drive_fR.moveVelocity(spd);
@@ -23,14 +24,47 @@ void back_unclamp(){
   back_intake.moveVoltage(-8000);
   delay(50);
 }
+
 void lift_up(){
-  lift.moveVelocity(75);
+  lift_PID(-1852);
   delay(30); //experiment with this value
 }
+
 void lift_down(){
-  lift.moveVelocity(-100);
+  lift_PID(1852);
   delay(30); //experiment with this value
 }
+
+void lift_PID(int deg){
+  float error, kP, desired_val, power, pos;
+  float total_error, kI;
+  float prev_error, kD, derivative;
+  kP = 0.2;
+  kI = 0.1;
+  kD = 0.1;
+  desired_val = deg;
+  prev_error = 0.0;
+
+  lift.tarePosition();
+  while ((int)desired_val != (int)pos) {
+    printf("%d\n", liftR.getPosition());
+    printf("%d\n", liftL.getPosition());
+    pos = (liftR.getPosition() + liftL.getPosition()) / 2.0;
+    error = desired_val - pos;
+    printf("%d\n", error);
+    //total_error += error;
+    //if(error == 0 || pos > desired_val){
+    //  total_error = 0;
+    //}
+    //derivative = prev_error - error;
+    power = error * kP;
+    //+ total_error * kI + derivative * kD;
+    lift.moveVelocity(power);
+    //prev_error = error;
+    delay(20);
+  }
+}
+
 void stop(){
   drive_fL.moveVelocity(0);
   drive_fR.moveVelocity(0);
@@ -41,39 +75,7 @@ void stop(){
   back_intake.moveVoltage(0);
 }
 
-void turn_cw_degrees(float spd, int degrees, int delayBetween, int time){
-  //should set whatever current angle is to be 0 degrees
-  imu.reset();
-  //keeps rotating until rotation reaches inputed value
-  while(imu.get_rotation()>=degrees){
-    drive_fL.moveVelocity(spd);
-    drive_fR.moveVelocity(0);
-    drive_bL.moveVelocity(spd);
-    drive_bR.moveVelocity(0);
-    //small delay between each loop, to be safe
-    delay(delayBetween);
-  }
-  //delay bc other turn fuctions had one
-  delay(time);
-  stop();
-}
-void turn_ccw_degrees(float spd, int degrees, int delayBetween, int time){
-//same as turn_degrees_cw
-  imu.reset();
-  //as far as i know, calling get_rotation after turning ccw return negative
-  //so, abs val is taken so that same logic as before applies
-  while(abs(imu.get_rotation())>=degrees){
-    drive_fL.moveVelocity(0);
-    drive_fR.moveVelocity(spd);
-    drive_bL.moveVelocity(0);
-    drive_bR.moveVelocity(spd);
-    delay(delayBetween);
-  }
-  delay(time);
-  stop();
-}
-
-void turn_cw(float spd, int time){
+void turn_cw (float spd, int time){
   drive_fL.moveVelocity(spd);
   drive_fR.moveVelocity(0);
   drive_bL.moveVelocity(spd);
@@ -81,7 +83,7 @@ void turn_cw(float spd, int time){
   delay(time);
   stop();
 }
-void turn_ccw(float spd, int time){
+void turn_ccw (float spd, int time){
   drive_fL.moveVelocity(0);
   drive_fR.moveVelocity(spd);
   drive_bL.moveVelocity(0);
@@ -90,27 +92,31 @@ void turn_ccw(float spd, int time){
   stop();
 }
 
-void motionPID(float dist){
+void drive_PID (float dist){
+  float error, velocity, drive_fL_position, drive_fR_position, desired_value, avg_position, kP;
+  float prev_error, kD, derivate;
 
-}
-/*
-void motionPID(float dist){
-  float error, integral, prevError, derivative = 0;
-  float power = 100;
-  while((int)pot.controllerGet() != (int)dist){
-    error = dist - pot.controllerGet();
-    integral += error;
-    if(error == 0 || (int)pot.controllerGet() == (int)dist){
-      integral = 0;
-    }
-    if(pot.controllerGet() > 10){ //if error is outside of useful range
-      integral = 0;
-    }
-    derivative = integral - prevError;
-    prevError = error;
-    power = error*kP + integral*kI + derivative*kD;
-    delay(15);
-    moveDistance(power, 15);
+  kP = 0.1;
+  kD = 0.1;
+  prev_error = 0.0;
+  desired_value = round(1000 * (dist / (4 * 2.54 * 3.14)) / 1000);
+  drive_fL_position = drive_fL.getPosition();
+  drive_fR_position = drive_fR.getPosition();
+  avg_position = (drive_fR_position + drive_fL_position) / 2.0;
+
+  while (avg_position != desired_value){
+    //dist = sensor.getValue();
+    desired_value = round(1000 * (dist / (4 * 2.54 * 3.14)) / 1000);
+    drive_fL_position = drive_fL.getPosition();
+    drive_fR_position = drive_fR.getPosition();
+    avg_position = (drive_fL_position + drive_fR_position) / 2.0;
+    error = desired_value - avg_position;
+    derivate = prev_error - error;
+    velocity = error * kP + derivate * kD;
+    move_dist(velocity, 50);
+    prev_error = error;
+    delay(20);
   }
+
+  delay(20);
 }
-*/

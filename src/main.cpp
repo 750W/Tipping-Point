@@ -8,11 +8,15 @@ void initialize() {
   front_intake.tarePosition();
   back_intake.tarePosition();
   lift.tarePosition();
-  auton_selector();
+  //auton_selector();
 }
 
 void autonomous() {
+  /*
+  joystick.clear();
+  delay(100);
   joystick.setText(0, 0, i + "");
+  delay(100);
   switch(i){
     case 0: mbl_goal();
     break;
@@ -22,6 +26,7 @@ void autonomous() {
     break;
   }
   stop();
+  */
 }
 
 void opcontrol() {

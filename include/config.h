@@ -9,11 +9,6 @@ const int FRONT_INTAKE_MOTOR = 5;
 const int LEFT_LIFT_MOTOR = 1;
 const int RIGHT_LIFT_MOTOR = 19;
 const int BACK_INTAKE_MOTOR = 15;
-const int IMU_PORT = 2;
-
-const float kP = 0;
-const float kI = 0;
-const float kD = 0;
 
 extern okapi::Motor drive_fL;
 extern okapi::Motor drive_fR;
@@ -25,7 +20,6 @@ extern okapi::Motor liftL;
 extern okapi::Motor liftR;
 extern std::shared_ptr<okapi::ChassisController> chassis;
 extern int i;
-extern int angle;
 
 extern okapi::Controller joystick;
 extern okapi::ControllerButton backTakeIn;
@@ -40,7 +34,7 @@ extern okapi::ControllerButton y;
 extern okapi::ControllerButton b;
 
 extern okapi::ADIButton back_bumperswitch;
-extern pros::IMU imu;
+extern pros::Imu imu;
 
 extern okapi::MotorGroup lift;
 
@@ -58,7 +52,6 @@ void lift_up();
 void lift_down();
 void turn_ccw(float spd, int time);
 void turn_cw(float spd, int time);
-void turn_cw_degrees(float spd,int degrees,int delayBetween,int time);
-void turn_ccw_degrees(float spd,int degrees,int delayBetween,int time);
-void move_dist_pid(float dist);
 void stop();
+void drive_PID(float dist);
+void lift_PID(int deg);
