@@ -7,11 +7,12 @@ void initialize() {
   lift.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
   front_intake.tarePosition();
   back_intake.tarePosition();
-  lift.tarePosition();
+  //lift.tarePosition();
   //auton_selector();
 }
 
 void autonomous() {
+  printf("%d\n", lift.getPosition());
   /*
   joystick.clear();
   delay(100);
