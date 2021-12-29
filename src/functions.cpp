@@ -26,17 +26,17 @@ void back_unclamp(){
 }
 
 void lift_up(){
-  lift_PID(-1852);
-  delay(30); //experiment with this value
-}
-
-void lift_down(){
   lift_PID(1852);
   delay(30); //experiment with this value
 }
 
+void lift_down(){
+  lift_PID(-1852);
+  delay(30); //experiment with this value
+}
+
 void lift_PID(int deg){
-  
+
   float error, kP, desired_val, power, pos;
   float total_error, kI;
   float prev_error, kD, derivative;
