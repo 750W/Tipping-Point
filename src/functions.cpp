@@ -20,7 +20,7 @@ void back_clamp(){
   back_intake.moveVoltage(8000);
   delay(75);
 }
-void back_unclamp(){
+void back_unclamp(){kn
   back_intake.moveVoltage(-8000);
   delay(50);
 }
@@ -55,7 +55,7 @@ void lift_PID(int deg){
     //  total_error = 0;
     //}
     //derivative = prev_error - error;
-    power = error * kP;
+    power = error * kP
     //+ total_error * kI + derivative * kD;
     lift.moveVelocity(power);
     //prev_error = error;
