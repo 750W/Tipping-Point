@@ -96,7 +96,7 @@ put back clamp down;
 move forward a lil to clear alliance mogol from win point line
 */
 void auton_selector(){
-  
+
   joystick.clear();
   delay(100);
   int j = 0;
@@ -131,4 +131,8 @@ void auton_selector(){
     }
   }
 
+}
+
+void(){
+  
 }
