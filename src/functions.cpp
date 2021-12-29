@@ -51,7 +51,7 @@ void lift_PID(int deg){
     pos = (liftR.getPosition() + liftL.getPosition()) / 2.0;
     error = desired_val - pos;
     total_error += error;
-    if(error == 0 || pos > desired_value){
+    if(error == 0 || pos > desired_val){
       total_error = 0;
     }
     derivative = prev_error - error;
@@ -96,14 +96,14 @@ void drive_PID (float dist){
   kP = 0.1;
   kD = 0.1;
   prev_error = 0.0;
-  desired_value = round(1000 * (dist / (4 * 2.54 * 3.14)) / 1000;
+  desired_value = round(1000 * (dist / (4 * 2.54 * 3.14)) / 1000);
   drive_fL_position = drive_fL.getPosition();
   drive_fR_position = drive_fR.getPosition();
   avg_position = (drive_fR_position + drive_fL_position) / 2.0;
 
   while (avg_position != desired_value){
-    dist = sensor.getValue();
-    desired_value = round(1000 * (dist / (4 * 2.54 * 3.14)) / 1000;
+    //dist = sensor.getValue();
+    desired_value = round(1000 * (dist / (4 * 2.54 * 3.14)) / 1000);
     drive_fL_position = drive_fL.getPosition();
     drive_fR_position = drive_fR.getPosition();
     avg_position = (drive_fL_position + drive_fR_position) / 2.0;
