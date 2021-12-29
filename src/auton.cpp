@@ -97,7 +97,7 @@ void new_auton_trial(){
 //drive forward (a distance determined by ishaan calc) past other side of balance thing
 //U-turn to face right side, so bot is in front of the other mobile goal
 //use front clamp to score
-
+/*
 void winPointAutonRIGHT(){
   //this should turn to face mobile goal
   int degreesToMobileGoal = 50;
@@ -171,8 +171,7 @@ void winPointAutonRIGHT(){
 
 }
 
-
-
+*/
 /*
 go straight;
 grab neutral mogol(yellow one) with front intake (front is now the side with the lift );
