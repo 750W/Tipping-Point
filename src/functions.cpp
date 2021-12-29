@@ -45,6 +45,7 @@ void lift_PID(int deg){
   desired_val = deg;
   prev_error = 0.0;
 
+  lift.tarePosition();
   while (desired_val != pos) {
     pos = (liftR.getPosition() + liftL.getPosition()) / 2.0;
     error = desired_val - pos;
