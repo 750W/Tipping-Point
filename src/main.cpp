@@ -38,24 +38,24 @@ void opcontrol() {
       joystick.getAnalog(ControllerAnalog::rightX)
     );
 
-    if(frontTakeIn.isPressed()){
-      front_clamp();
-    }
-    else if(frontTakeOut.isPressed()){
-      front_unclamp();
-    }
-    else{
+    if ( frontTakeIn.isPressed() ) {
+      front_clamp ();
+    } else if ( frontTakeOut.isPressed() ) {
+      front_unclamp ();
+    } else {
       front_intake.moveVoltage(0);
       delay(10);
     }
 
-    if(backTakeIn.isPressed()){
-      back_clamp();
-    }
-    else if(backTakeOut.isPressed()){
-      back_unclamp();
-    }
-    else{
+    if ( backTakeIn.isPressed() ) {
+
+      back_clamp ();
+
+    } else if (backTakeOut.isPressed()) {
+
+      back_unclamp ();
+
+    } else {
       back_intake.moveVoltage(0);
     }
 

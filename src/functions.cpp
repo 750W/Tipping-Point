@@ -62,6 +62,9 @@ void lift_PID(int deg){
     derivative = prev_error - error;
     power = (error * kP + total_error * kI + derivative * kD);
     power = round(1000 * (power / (4 * 2.54 * 3.14)) / 1000);
+    if(power > 80){
+      power = 80;
+    }
     printf("%d\n", power);
     lift.moveVelocity(power);
     prev_error = error;
