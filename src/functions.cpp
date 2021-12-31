@@ -37,7 +37,7 @@ void lift_down(){
 
 void lift_PID(int deg){
 
-  float error, kP, desired_val, power, pos;
+  float error, kP, desired_val, power, pos, lpos, rpos;
   float total_error, kI;
   float prev_error, kD, derivative;
   kP = 0.2;
