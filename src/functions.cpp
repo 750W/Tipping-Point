@@ -39,9 +39,9 @@ void lift_PID(int rev){
   double total_error, kI;
   double prev_error, kD, derivative;
   int l_begpos, r_begpos, pos, lpos, rpos, desired_val;
-  kP = 1.0;
+  kP = 0.3;
   kI = 0.1;
-  kD = 5.0;
+  kD = 3.0;
   prev_error = 0.0;
   r_begpos = (int)liftR.getPosition();
   l_begpos = (int)liftL.getPosition();
@@ -51,9 +51,9 @@ void lift_PID(int rev){
   while (desired_val != pos) {
     rpos = liftR.getPosition() + -1*r_begpos;
     lpos = liftL.getPosition() + -1*l_begpos;
-    printf("%f\n", rpos);
-    printf("%f\n", lpos);
-    pos = (rpos + lpos)/2.0;
+    printf("%d\n", rpos);
+    printf("%d\n", lpos);
+    pos = (rpos + lpos)/2;
     error = pos - desired_val;
     total_error += error;
     if(error == 0 || pos < desired_val){
