@@ -42,11 +42,15 @@ void lift_PID(int rev){
   float prev_error, kD, derivative;
   kP = 0.2;
   kI = 0.1;
-  kD = 0.1;
+  kD = 5.0;
   desired_val = rev;
   prev_error = 0.0;
+  rpos = liftR.getPosition();
+  lpos = liftL.getPosition();
+  pos = (rpos + lpos)/2.0;
 
-  lift.tarePosition();
+  liftR.tarePosition();
+  liftL.tarePosition();
   while ((int)desired_val != (int)pos) {
     printf("%d\n", liftR.getPosition());
     printf("%d\n", liftL.getPosition());
