@@ -35,7 +35,7 @@ void lift_down(){
 
 void lift_PID(int rev){
 
-  float error, kP, desired_val, power, pos, lpos, rpos;
+  float error, kP, desired_val, power, pos, lpos, rpos, l_begpos, r_begpos;
   float total_error, kI;
   float prev_error, kD, derivative;
   kP = 0.2;
@@ -43,14 +43,14 @@ void lift_PID(int rev){
   kD = 5.0;
   desired_val = rev;
   prev_error = 0.0;
-  rpos = liftR.getPosition();
-  lpos = liftL.getPosition();
-  pos = (rpos + lpos)/2.0;
+  r_begpos = liftR.getPosition();
+  l_begpos = liftL.getPosition();
+  pos = 0.0;
 
   lift.tarePosition();
   while ((int)desired_val != (int)pos) {
-    rpos = liftR.getPosition() + 2147483648;
-    lpos = liftL.getPosition() - 2147483648;
+    rpos = liftR.getPosition() + r_begpos;
+    lpos = liftL.getPosition() - l_begpos;
     pos = (rpos + lpos)/2.0;
     error = pos - desired_val;
     total_error += error;
