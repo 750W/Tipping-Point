@@ -71,7 +71,7 @@ void lift_PID(int rev){
     lift.moveVelocity(power);
     prev_error = error;
     delay(20);
-  //}
+  }
 
 
 }
