@@ -39,40 +39,53 @@ void lift_PID(int rev){
   double total_error, kI;
   double prev_error, kD, derivative;
   int l_begpos, r_begpos, pos, lpos, rpos, desired_val;
+
   kP = 0.3;
-  kI = 0.1;
-  kD = 3.0;
+  kI = 0.0;
+  kD = 0.0;
+
   prev_error = 0.0;
   desired_val = rev;
+
   lift.tarePosition();
   r_begpos = (int)liftR.getPosition();
   l_begpos = (int)liftL.getPosition();
-  pos = (r_begpos + l_begpos)/2;
+  pos = (r_begpos + l_begpos) / 2;
+
   while (desired_val != pos) {
-    rpos = liftR.getPosition() + -1*r_begpos;
-    lpos = liftL.getPosition() + -1*l_begpos;
+
+    rpos = liftR.getPosition() + -1 * r_begpos;
+    lpos = liftL.getPosition() + -1 * l_begpos;
+
     printf("%d\n", rpos);
     printf("%d\n", lpos);
+
     pos = (rpos + lpos)/2;
-    error = abs(pos - desired_val);
+    error = abs(desired_val - pos);
     total_error += error;
+
     if(error == 0 || pos < desired_val){
       total_error = 0;
     }
+
     derivative = error - prev_error;
+
     printf("%f\n", error);
     printf("%f\n", total_error);
     printf("%f\n", derivative);
+
     power = (error * kP + total_error * kI + derivative * kD);
+
     if(power > 80){
       power = 80;
     }
+
     printf("%f\n", power);
     lift.moveVelocity(power);
+
     prev_error = error;
     delay(20);
   }
-
 
 }
 
