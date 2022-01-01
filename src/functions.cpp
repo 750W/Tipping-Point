@@ -49,8 +49,8 @@ void lift_PID(int rev){
 
   lift.tarePosition();
   while ((int)desired_val != (int)pos) {
-    rpos = liftR.getPosition() + r_begpos;
-    lpos = liftL.getPosition() - l_begpos;
+    rpos = liftR.getPosition() + -1*r_begpos;
+    lpos = liftL.getPosition() + -1*l_begpos;
     pos = (rpos + lpos)/2.0;
     error = pos - desired_val;
     total_error += error;
