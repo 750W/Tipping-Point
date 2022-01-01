@@ -26,7 +26,7 @@ void back_unclamp(){
 }
 
 void lift_up(){
-  lift_PID(3);
+  lift_PID(5);
 }
 
 void lift_down(){
@@ -54,7 +54,7 @@ void lift_PID(int rev){
     printf("%d\n", rpos);
     printf("%d\n", lpos);
     pos = (rpos + lpos)/2;
-    error = pos - desired_val;
+    error = abs(pos - desired_val);
     total_error += error;
     if(error == 0 || pos < desired_val){
       total_error = 0;
