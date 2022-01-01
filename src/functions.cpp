@@ -35,20 +35,20 @@ void lift_down(){
 
 void lift_PID(int rev){
 
-  float error, kP, desired_val, power, pos, lpos, rpos, l_begpos, r_begpos;
-  float total_error, kI;
-  float prev_error, kD, derivative;
+  double error, kP, power;
+  double total_error, kI;
+  double prev_error, kD, derivative;
+  int l_begpos, r_begpos, pos, lpos, rpos, desired_val;
   kP = 1.0;
   kI = 0.1;
   kD = 5.0;
   prev_error = 0.0;
-  r_begpos = liftR.getPosition();
-  l_begpos = liftL.getPosition();
-  pos = (r_begpos + l_begpos)/2.0;
-  desired_val = rev*pos;
-  printf("Before loop: desired:%f, %d; pos:%f, %d", desired_val, (int)desired_val, pos, (int)pos);
+  r_begpos = (int)liftR.getPosition();
+  l_begpos = (int)liftL.getPosition();
+  pos = (r_begpos + l_begpos)/2;
+  desired_val = rev;
   lift.tarePosition();
-  while ((int)desired_val != (int)pos) {
+  while (desired_val != pos) {
     rpos = liftR.getPosition() + -1*r_begpos;
     lpos = liftL.getPosition() + -1*l_begpos;
     printf("%f\n", rpos);
