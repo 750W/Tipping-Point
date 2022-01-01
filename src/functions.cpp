@@ -27,12 +27,10 @@ void back_unclamp(){
 
 void lift_up(){
   lift_PID(3);
-  delay(20); //experiment with this value
 }
 
 void lift_down(){
   lift_PID(-3);
-  delay(30); //experiment with this value
 }
 
 void lift_PID(int rev){
@@ -55,7 +53,6 @@ void lift_PID(int rev){
   printf("%d\n", liftR.getPosition());
   printf("%d\n", liftL.getPosition());
   /*while ((int)desired_val != (int)pos) {
->>>>>>> f2ba98800ac817c2e46d0127ade0e2e780c22ae2
     printf("%d\n", liftR.getPosition());
     printf("%d\n", liftL.getPosition());
     rpos = liftR.getPosition();
