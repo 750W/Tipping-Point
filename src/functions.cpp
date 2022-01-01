@@ -51,7 +51,11 @@ void lift_PID(int rev){
 
   liftR.tarePosition();
   liftL.tarePosition();
-  while ((int)desired_val != (int)pos) {
+  //while ((int)desired_val != (int)pos) {
+  printf("%d\n", liftR.getPosition());
+  printf("%d\n", liftL.getPosition());
+  /*while ((int)desired_val != (int)pos) {
+>>>>>>> f2ba98800ac817c2e46d0127ade0e2e780c22ae2
     printf("%d\n", liftR.getPosition());
     printf("%d\n", liftL.getPosition());
     rpos = liftR.getPosition();
@@ -72,7 +76,7 @@ void lift_PID(int rev){
     lift.moveVelocity(power);
     prev_error = error;
     delay(20);
-  }
+  }*/
 
 
 }
