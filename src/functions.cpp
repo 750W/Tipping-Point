@@ -67,7 +67,7 @@ void lift_PID(int rev){
     if(power > 80){
       power = 80;
     }
-    printf("%d\n", power);
+    printf("%f\n", power);
     lift.moveVelocity(power);
     prev_error = error;
     delay(20);
