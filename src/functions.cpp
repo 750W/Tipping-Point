@@ -35,7 +35,7 @@ void lift_down(){
   delay(30); //experiment with this value
 }
 
-void lift_PID(int deg){
+void lift_PID(int rev){
 
   float error, kP, desired_val, power, pos, lpos, rpos;
   float total_error, kI;
@@ -43,7 +43,7 @@ void lift_PID(int deg){
   kP = 0.2;
   kI = 0.1;
   kD = 0.1;
-  desired_val = deg;
+  desired_val = rev;
   prev_error = 0.0;
 
   lift.tarePosition();
@@ -53,13 +53,13 @@ void lift_PID(int deg){
     rpos = liftR.getPosition();
     lpos = liftL.getPosition();
     pos = (rpos + lpos)/2.0;
-    error = desired_val - pos;
+    error = pos - desired_val;
     //printf("%d\n", error);
     total_error += error;
-    if(error == 0 || pos > desired_val){
+    if(error == 0 || pos < desired_val){
       total_error = 0;
     }
-    derivative = prev_error - error;
+    derivative = error - prev_error;
     power = (error * kP + total_error * kI + derivative * kD);
     if(power > 80){
       power = 80;
