@@ -26,12 +26,12 @@ void back_unclamp(){
 }
 
 void lift_up(){
-  lift_PID(2146435072/100000000.0);
+  lift_PID(3);
   delay(20); //experiment with this value
 }
 
 void lift_down(){
-  lift_PID(-2146435072/100000000.0);
+  lift_PID(-3);
   delay(30); //experiment with this value
 }
 
@@ -50,9 +50,9 @@ void lift_PID(int deg){
   while ((int)desired_val != (int)pos) {
     //printf("%d\n", liftR.getPosition());
     //printf("%d\n", liftL.getPosition());
-    rpos = liftR.getPosition()/100000000.0;
-    lpos = liftL.getPosition()/100000000.0;
-    pos = lift.getPosition();
+    rpos = liftR.getPosition();
+    lpos = liftL.getPosition();
+    pos = (rpos + lpos)/2.0;
     error = desired_val - pos;
     //printf("%d\n", error);
     total_error += error;
@@ -61,7 +61,6 @@ void lift_PID(int deg){
     }
     derivative = prev_error - error;
     power = (error * kP + total_error * kI + derivative * kD);
-    power = round(1000 * (power / (4 * 2.54 * 3.14)) / 1000);
     if(power > 80){
       power = 80;
     }
