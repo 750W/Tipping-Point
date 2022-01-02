@@ -1,39 +1,58 @@
 #include "main.h"
 #include "config.h"
 #include "math.h"
-void move_dist(float spd, int time){
+
+void move_dist (float spd, int time) {
+
   drive_fL.moveVelocity(spd);
   drive_fR.moveVelocity(spd);
   drive_bL.moveVelocity(spd);
   drive_bR.moveVelocity(spd);
-  delay(time);
+  delay (time) ;
+
 }
-void front_clamp(){
+
+void front_clamp () {
+
   front_intake.moveVoltage(8000);
-  delay(75); //experiment with this value TEST
+  delay (75) ;
+
 }
-void front_unclamp(){
+
+void front_unclamp () {
+
   front_intake.moveVoltage(-8000);
-  delay(50); //experiment with this value
+  delay (50) ;
+
 }
-void back_clamp(){
+
+void back_clamp () {
+
   back_intake.moveVoltage(8000);
-  delay(75);
+  delay (75) ;
+
 }
-void back_unclamp(){
+
+void back_unclamp () {
+
   back_intake.moveVoltage(-8000);
-  delay(50);
+  delay (50) ;
+
 }
 
-void lift_up(){
+void lift_up () {
+
   lift_PID(1000);
+
 }
 
-void lift_down(){
+void lift_down () {
+
   lift_PID(-1000);
+
 }
 
-void lift_PID(int rev){
+void lift_PID (int rev) {
 
   double errorL, errorR, kP, powerL, powerR;
   double total_errorL, total_errorR, kI;
@@ -42,10 +61,12 @@ void lift_PID(int rev){
 
   r_begpos = (int)liftR.getPosition();
   l_begpos = (int)liftL.getPosition();
-  if(l_begpos != rev && r_begpos != rev){
-    kP = 0.1;
-    kI = 0.1;
-    kD = 0.1;
+
+  if ( l_begpos != rev && r_begpos != rev ) {
+
+    kP = 0.0;
+    kI = 0.0;
+    kD = 0.0;
 
     prev_errorL = 0.0;
     prev_errorR = 0.0;
@@ -58,7 +79,7 @@ void lift_PID(int rev){
     lpos = 0;
     rpos = 0;
 
-    while (desired_val != lpos && desired_val != rpos) {
+    while ( desired_val != lpos && desired_val != rpos ) {
 
       rpos = (int)liftR.getPosition() + -1 * r_begpos;
       lpos = (int)liftL.getPosition() + -1 * l_begpos;
@@ -68,11 +89,11 @@ void lift_PID(int rev){
       total_errorL += errorL;
       total_errorR += errorR;
 
-      if(errorL == 0 || lpos < desired_val){
+      if ( errorL == 0 || lpos < desired_val ) {
         total_errorL = 0;
       }
 
-      if(errorR == 0 || rpos < desired_val){
+      if ( errorR == 0 || rpos < desired_val ) {
         total_errorR = 0;
       }
 
@@ -82,19 +103,19 @@ void lift_PID(int rev){
       powerL = (errorL * kP + total_errorL * kI + derivativeL * kD);
       powerR = (errorR * kP + total_errorR * kI + derivativeR * kD);
 
-      if(powerL > 80){
+      if ( powerL > 80 ) {
 
         powerL = 80;
 
-      } else if(powerR > 80){
+      } else if ( powerR > 80 ) {
 
         powerR = 80;
 
-      } else if(powerL < -80){
+      } else if ( powerL < -80 ) {
 
         powerL = -80;
 
-      } else if(powerR < -80){
+      } else if ( powerR < -80 ) {
 
         powerR = -80;
 
@@ -103,12 +124,13 @@ void lift_PID(int rev){
       liftL.moveVelocity(powerL);
       liftR.moveVelocity(powerR);
 
-      printf("Error: %f, %f", errorL, errorR);
-      printf("Power: %f, %f", powerL, powerR);
+      printf ("Error: %f, %f", errorL, errorR) ;
+      printf ("Power: %f, %f", powerL, powerR) ;
 
       prev_errorL = errorL;
       prev_errorR = errorR;
-      delay(20);
+      delay (20) ;
+
     }
 
   }
@@ -117,7 +139,7 @@ void lift_PID(int rev){
   delay(20);
 }
 
-void stop(){
+void stop () {
   drive_fL.moveVelocity(0);
   drive_fR.moveVelocity(0);
   drive_bL.moveVelocity(0);
@@ -127,24 +149,25 @@ void stop(){
   back_intake.moveVoltage(0);
 }
 
-void turn_cw (float spd, int time){
+void turn_cw (float spd, int time) {
   drive_fL.moveVelocity(spd);
   drive_fR.moveVelocity(0);
   drive_bL.moveVelocity(spd);
   drive_bR.moveVelocity(spd);
-  delay(time);
-  stop();
+  delay (time) ;
+  stop () ;
 }
-void turn_ccw (float spd, int time){
+
+void turn_ccw (float spd, int time) {
   drive_fL.moveVelocity(0);
   drive_fR.moveVelocity(spd);
   drive_bL.moveVelocity(0);
   drive_bR.moveVelocity(spd);
-  delay(time);
-  stop();
+  delay (time) ;
+  stop () ;
 }
 
-void drive_PID (float dist){
+void drive_PID (float dist) {
   float error, velocity, drive_fL_position, drive_fR_position, desired_value, avg_position, kP;
   float prev_error, kD, derivate;
 
