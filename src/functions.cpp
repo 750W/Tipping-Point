@@ -8,7 +8,7 @@ void move_dist (float spd, int time) {
   drive_fR.moveVelocity(spd);
   drive_bL.moveVelocity(spd);
   drive_bR.moveVelocity(spd);
-  delay (time) ;
+  delay(time);
 
 }
 
@@ -22,21 +22,21 @@ void front_clamp () {
 void front_unclamp () {
 
   front_intake.moveVoltage(-8000);
-  delay (50) ;
+  delay(50);
 
 }
 
 void back_clamp () {
 
   back_intake.moveVoltage(8000);
-  delay (75) ;
+  delay(75);
 
 }
 
 void back_unclamp () {
 
   back_intake.moveVoltage(-8000);
-  delay (50) ;
+  delay(50);
 
 }
 
@@ -124,12 +124,12 @@ void lift_PID (int rev) {
       liftL.moveVelocity(powerL);
       liftR.moveVelocity(powerR);
 
-      printf ("Error: %f, %f", errorL, errorR) ;
-      printf ("Power: %f, %f", powerL, powerR) ;
+      //printf ("Error: %f, %f", errorL, errorR) ;
+      //printf ("Power: %f, %f", powerL, powerR) ;
 
       prev_errorL = errorL;
       prev_errorR = errorR;
-      delay (20) ;
+      delay(20);
 
     }
 
@@ -140,58 +140,135 @@ void lift_PID (int rev) {
 }
 
 void stop () {
+
   drive_fL.moveVelocity(0);
   drive_fR.moveVelocity(0);
   drive_bL.moveVelocity(0);
   drive_bR.moveVelocity(0);
+
   lift.moveVelocity(0);
   front_intake.moveVoltage(0);
   back_intake.moveVoltage(0);
+
 }
 
 void turn_cw (float spd, int time) {
+
   drive_fL.moveVelocity(spd);
   drive_fR.moveVelocity(0);
   drive_bL.moveVelocity(spd);
   drive_bR.moveVelocity(spd);
-  delay (time) ;
-  stop () ;
+
+  delay(time);
+  stop();
+
 }
 
 void turn_ccw (float spd, int time) {
+
   drive_fL.moveVelocity(0);
   drive_fR.moveVelocity(spd);
   drive_bL.moveVelocity(0);
   drive_bR.moveVelocity(spd);
-  delay (time) ;
-  stop () ;
+
+  delay(time);
+  stop();
+
 }
 
-void drive_PID (float dist) {
-  float error, velocity, drive_fL_position, drive_fR_position, desired_value, avg_position, kP;
-  float prev_error, kD, derivate;
+void drive_PID (double dist) {
 
-  kP = 0.1;
-  kD = 0.1;
-  prev_error = 0.0;
-  desired_value = round(1000 * (dist / (4 * 2.54 * 3.14)) / 1000);
-  drive_fL_position = drive_fL.getPosition();
-  drive_fR_position = drive_fR.getPosition();
-  avg_position = (drive_fR_position + drive_fL_position) / 2.0;
+  double errorL, errorR, kP, powerL, powerR;
+  double total_errorL, total_errorR, kI;
+  double prev_errorL, prev_errorR, kD, derivativeL, derivativeR;
+  int l_begpos, r_begpos, lpos, rpos, desired_val;
 
-  while (avg_position != desired_value){
-    //dist = sensor.getValue();
-    desired_value = round(1000 * (dist / (4 * 2.54 * 3.14)) / 1000);
-    drive_fL_position = drive_fL.getPosition();
-    drive_fR_position = drive_fR.getPosition();
-    avg_position = (drive_fL_position + drive_fR_position) / 2.0;
-    error = desired_value - avg_position;
-    derivate = prev_error - error;
-    velocity = error * kP + derivate * kD;
-    move_dist(velocity, 50);
-    prev_error = error;
-    delay(20);
+  r_begpos = (int)drive_fR.getPosition();
+  l_begpos = (int)drive_fL.getPosition();
+
+  if ( l_begpos != (int)dist && r_begpos != (int)dist ) {
+
+    kP = 0.0;
+    kI = 0.0;
+    kD = 0.0;
+
+    prev_errorL = 0.0;
+    prev_errorR = 0.0;
+    desired_val = (int)dist;
+
+    drive_tarePos();
+    r_begpos = (int)drive_fR.getPosition();
+    l_begpos = (int)drive_fL.getPosition();
+
+    lpos = 0;
+    rpos = 0;
+
+    while ( desired_val != lpos && desired_val != rpos ) {
+
+      rpos = (int)drive_fR.getPosition() + -1 * r_begpos;
+      lpos = (int)drive_fL.getPosition() + -1 * l_begpos;
+
+      errorL = desired_val - lpos;
+      errorR = desired_val - rpos;
+      total_errorL += errorL;
+      total_errorR += errorR;
+
+      if ( errorL == 0 || lpos < desired_val ) {
+        total_errorL = 0;
+      }
+
+      if ( errorR == 0 || rpos < desired_val ) {
+        total_errorR = 0;
+      }
+
+      derivativeL = errorL - prev_errorL;
+      derivativeR = errorR - prev_errorR;
+
+      powerL = (errorL * kP + total_errorL * kI + derivativeL * kD);
+      powerR = (errorR * kP + total_errorR * kI + derivativeR * kD);
+
+      if ( powerL > 150 ) {
+
+        powerL = 150;
+
+      } else if ( powerR > 150 ) {
+
+        powerR = 150;
+
+      } else if ( powerL < -150 ) {
+
+        powerL = -150;
+
+      } else if ( powerR < -150 ) {
+
+        powerR = -150;
+
+      }
+
+      liftL.moveVelocity(powerL);
+      liftR.moveVelocity(powerR);
+
+      //printf ("Error: %f, %f", errorL, errorR) ;
+      //printf ("Power: %f, %f", powerL, powerR) ;
+
+      prev_errorL = errorL;
+      prev_errorR = errorR;
+      delay(20);
+
+    }
+
   }
 
+  lift.moveVelocity(0);
   delay(20);
+
+}
+
+void drive_tarePos() {
+
+  drive_fR.tarePosition();
+  drive_bR.tarePosition();
+  drive_fL.tarePosition();
+  drive_bL.tarePosition();
+
 }
