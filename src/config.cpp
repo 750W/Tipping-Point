@@ -32,8 +32,11 @@ okapi::ControllerButton backTakeIn(ControllerDigital::L1);
 okapi::ControllerButton backTakeOut(ControllerDigital::R1);
 okapi::ControllerButton frontTakeIn(ControllerDigital::L2);
 okapi::ControllerButton frontTakeOut(ControllerDigital::R2);
-okapi::ControllerButton liftUp(ControllerDigital::up);
-okapi::ControllerButton liftDown(ControllerDigital::down);
+
+okapi::ControllerButton up(ControllerDigital::up);
+okapi::ControllerButton down(ControllerDigital::down);
+okapi::ControllerButton left(ControllerDigital::left);
+okapi::ControllerButton right(ControllerDigital::right);
 
 okapi::ControllerButton x(ControllerDigital::X);
 okapi::ControllerButton a(ControllerDigital::A);

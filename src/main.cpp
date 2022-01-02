@@ -31,10 +31,15 @@ void autonomous() {
 }
 
 void opcontrol() {
+
   while(true){
+
     chassis->getModel()->arcade(
+
       joystick.getAnalog(ControllerAnalog::leftY),
+
       joystick.getAnalog(ControllerAnalog::rightX)
+      
     );
 
     if ( frontTakeIn.isPressed() ) {
@@ -65,13 +70,27 @@ void opcontrol() {
 
     }
 
-    if ( liftUp.isPressed() ) {
+    if ( up.isPressed() ) {
 
       lift_up ();
 
-    } else if ( liftDown.isPressed() ) {
+    } else if ( down.isPressed() ) {
 
       lift_down ();
+
+    } else {
+
+      lift.moveVelocity(0);
+
+    }
+
+    if ( left.isPressed() ) {
+
+      lift_PID(900);
+
+    } else if ( right.isPressed() ) {
+
+      lift_PID(-900);
 
     } else {
 

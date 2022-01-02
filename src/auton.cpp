@@ -3,24 +3,33 @@
 using namespace okapi;
 
 void mbl_goal () {
+
   chassis -> setMaxVelocity (150);
   int count = 0;
+
   while ( !back_bumperswitch.isPressed() && count < 80 ) {
+
     move_dist (150, 25);
     count += 25;
+
   }
   stop ();
+
   for (int i = 0; i < 40; i++)
   back_clamp ();
   stop ();
+
   chassis -> setMaxVelocity (-150);
+
   if ( 15000 - (2 * count) > 0 ) {
     move_dist ( -150, 15000 - (2 * count) );
     stop ();
   }
   stop ();
+
   chassis -> setMaxVelocity (200);
   stop ();
+  
 }
 
 void right_win_point () {

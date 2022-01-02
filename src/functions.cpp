@@ -42,13 +42,15 @@ void back_unclamp () {
 
 void lift_up () {
 
-  lift_PID(900);
+  lift.moveVelocity(100);
+  delay(20);
 
 }
 
 void lift_down () {
 
-  lift_PID(-900);
+  lift.moveVelocity(-100);
+  delay(20);
 
 }
 
