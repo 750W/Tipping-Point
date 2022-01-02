@@ -43,14 +43,12 @@ void back_unclamp () {
 void lift_up () {
 
   lift.moveVelocity(100);
-  delay(75);
 
 }
 
 void lift_down () {
 
   lift.moveVelocity(-100);
-  delay(75);
 
 }
 
