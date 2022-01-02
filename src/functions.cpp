@@ -26,7 +26,7 @@ void back_unclamp(){
 }
 
 void lift_up(){
-  lift_PID(1852);
+  lift_PID(1000);
 }
 
 void lift_down(){
