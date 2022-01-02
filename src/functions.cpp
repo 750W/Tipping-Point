@@ -81,10 +81,12 @@ void lift_PID(int rev){
 
     if(powerL > 80){
       powerL = 80;
-    }
-
-    if(powerR > 80){
+    } else if(powerR > 80){
       powerR = 80;
+    } else if(powerL < -80){
+      powerL = -80;
+    } else if(powerR < -80){
+      powerR = -80;
     }
 
     liftL.moveVelocity(powerL);
