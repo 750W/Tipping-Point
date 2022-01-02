@@ -39,12 +39,17 @@ void opcontrol() {
     );
 
     if ( frontTakeIn.isPressed() ) {
+
       front_clamp ();
+
     } else if ( frontTakeOut.isPressed() ) {
+
       front_unclamp ();
+
     } else {
+
       front_intake.moveVoltage(0);
-      delay(10);
+
     }
 
     if ( backTakeIn.isPressed() ) {
@@ -56,17 +61,23 @@ void opcontrol() {
       back_unclamp ();
 
     } else {
+
       back_intake.moveVoltage(0);
+
     }
 
-    if(liftUp.isPressed()){
-      lift_up();
-    }
-    else if(liftDown.isPressed()){
-      lift_down();
-    }
-    else{
+    if ( liftUp.isPressed() ) {
+
+      lift_up ();
+
+    } else if ( liftDown.isPressed() ) {
+
+      lift_down ();
+
+    } else {
+
       lift.moveVelocity(0);
+
     }
 
     delay(20);

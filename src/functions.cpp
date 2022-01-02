@@ -83,17 +83,28 @@ void lift_PID(int rev){
       powerR = (errorR * kP + total_errorR * kI + derivativeR * kD);
 
       if(powerL > 80){
+
         powerL = 80;
+
       } else if(powerR > 80){
+
         powerR = 80;
+
       } else if(powerL < -80){
+
         powerL = -80;
+
       } else if(powerR < -80){
+
         powerR = -80;
+
       }
 
       liftL.moveVelocity(powerL);
       liftR.moveVelocity(powerR);
+
+      printf("Error: %f, %f", errorL, errorR);
+      printf("Power: %f, %f", powerL, powerR);
 
       prev_errorL = errorL;
       prev_errorR = errorR;
