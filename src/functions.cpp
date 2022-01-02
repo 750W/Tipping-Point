@@ -48,11 +48,14 @@ void lift_PID(int rev){
   desired_val = rev;
 
   lift.tarePosition();
+  r_begpos = (int)liftR.getPosition();
+  l_begpos = (int)liftL.getPosition();
+  pos = (r_begpos + l_begpos) / 2;
 
   while (desired_val != pos) {
 
-    rpos = liftR.getPosition();
-    lpos = liftL.getPosition();
+    rpos = liftR.getPosition() + -1 * r_begpos;
+    lpos = liftL.getPosition() + -1 * l_begpos;
 
     printf("RPOS: %d\n", rpos);
     printf("LPOS: %d\n", lpos);
