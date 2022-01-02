@@ -35,10 +35,10 @@ void lift_down(){
 
 void lift_PID(int rev){
 
-  double error, kP, power;
-  double total_error, kI;
-  double prev_error, kD, derivative;
-  int l_begpos, r_begpos, pos, lpos, rpos, desired_val;
+  double errorL, errorR, kP, powerL, powerR;
+  double total_errorL, total_errorR, kI;
+  double prev_errorL, prev_errorR, kD, derivativeL, derivativeR;
+  int l_begpos, r_begpos, lpos, rpos, desired_val;
 
   kP = 0.3;
   kI = 0.0;
@@ -50,9 +50,11 @@ void lift_PID(int rev){
   lift.tarePosition();
   r_begpos = (int)liftR.getPosition();
   l_begpos = (int)liftL.getPosition();
-  pos = (r_begpos + l_begpos) / 2;
 
-  while (desired_val != pos) {
+  lpos = 0;
+  rpos = 0;
+
+  while (desired_val != lpos && desired_val != rpos) {
 
     rpos = liftR.getPosition() + -1 * r_begpos;
     lpos = liftL.getPosition() + -1 * l_begpos;
@@ -60,30 +62,36 @@ void lift_PID(int rev){
     printf("RPOS: %d\n", rpos);
     printf("LPOS: %d\n", lpos);
 
-    pos = (rpos + lpos) / 2;
-    error = abs(desired_val - pos);
-    total_error += error;
+    errorL = abs(desired_val - lpos);
+    errorR = abs(desired_val - rpos);
+    total_errorL += errorL;
+    total_errorR += errorR;
 
-    if(error == 0 || pos < desired_val){
-      total_error = 0;
+    if(errorL == 0 || lpos < desired_val){
+      total_errorL = 0;
+    }
+    if(errorR == 0 || rpos < desired_val){
+      total_errorR = 0;
     }
 
-    derivative = error - prev_error;
+    derivativeL = errorL - prev_errorL;
+    derivativeR = errorR - prev_errorR;
 
-    printf("Error: %f\n", error);
-    printf("Total Error: %f\n", total_error);
-    printf("Derivative: %f\n", derivative);
+    powerL = (errorL * kP + total_errorL * kI + derivativeL * kD);
+    powerR = (errorR * kP + total_errorR * kI + derivativeR * kD);
 
-    power = (error * kP + total_error * kI + derivative * kD);
-
-    if(power > 80){
-      power = 80;
+    if(powerL > 80){
+      powerL = 80;
+    }
+    if(powerR > 80){
+      powerR = 80;
     }
 
-    printf("Power: %f\n", power);
-    lift.moveVelocity(power);
+    liftL.moveVelocity(powerL);
+    liftR.moveVelocity(powerR);
 
-    prev_error = error;
+    prev_errorL = errorL;
+    prev_errorR = errorR;
     delay(20);
   }
 
