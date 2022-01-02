@@ -40,61 +40,66 @@ void lift_PID(int rev){
   double prev_errorL, prev_errorR, kD, derivativeL, derivativeR;
   int l_begpos, r_begpos, lpos, rpos, desired_val;
 
-  kP = 0.1;
-  kI = 0.1;
-  kD = 0.1;
-
-  prev_errorL = 0.0;
-  prev_errorR = 0.0;
-  desired_val = rev;
-
-  lift.tarePosition();
   r_begpos = (int)liftR.getPosition();
   l_begpos = (int)liftL.getPosition();
+  if(l_begpos != rev && r_begpos != rev){
+    kP = 0.1;
+    kI = 0.1;
+    kD = 0.1;
 
-  lpos = 0;
-  rpos = 0;
+    prev_errorL = 0.0;
+    prev_errorR = 0.0;
+    desired_val = rev;
 
-  while (desired_val != lpos && desired_val != rpos) {
+    lift.tarePosition();
+    r_begpos = (int)liftR.getPosition();
+    l_begpos = (int)liftL.getPosition();
 
-    rpos = (int)liftR.getPosition() + -1 * r_begpos;
-    lpos = (int)liftL.getPosition() + -1 * l_begpos;
+    lpos = 0;
+    rpos = 0;
 
-    errorL = desired_val - lpos;
-    errorR = desired_val - rpos;
-    total_errorL += errorL;
-    total_errorR += errorR;
+    while (desired_val != lpos && desired_val != rpos) {
 
-    if(errorL == 0 || lpos < desired_val){
-      total_errorL = 0;
+      rpos = (int)liftR.getPosition() + -1 * r_begpos;
+      lpos = (int)liftL.getPosition() + -1 * l_begpos;
+
+      errorL = desired_val - lpos;
+      errorR = desired_val - rpos;
+      total_errorL += errorL;
+      total_errorR += errorR;
+
+      if(errorL == 0 || lpos < desired_val){
+        total_errorL = 0;
+      }
+
+      if(errorR == 0 || rpos < desired_val){
+        total_errorR = 0;
+      }
+
+      derivativeL = errorL - prev_errorL;
+      derivativeR = errorR - prev_errorR;
+
+      powerL = (errorL * kP + total_errorL * kI + derivativeL * kD);
+      powerR = (errorR * kP + total_errorR * kI + derivativeR * kD);
+
+      if(powerL > 80){
+        powerL = 80;
+      } else if(powerR > 80){
+        powerR = 80;
+      } else if(powerL < -80){
+        powerL = -80;
+      } else if(powerR < -80){
+        powerR = -80;
+      }
+
+      liftL.moveVelocity(powerL);
+      liftR.moveVelocity(powerR);
+
+      prev_errorL = errorL;
+      prev_errorR = errorR;
+      delay(20);
     }
 
-    if(errorR == 0 || rpos < desired_val){
-      total_errorR = 0;
-    }
-
-    derivativeL = errorL - prev_errorL;
-    derivativeR = errorR - prev_errorR;
-
-    powerL = (errorL * kP + total_errorL * kI + derivativeL * kD);
-    powerR = (errorR * kP + total_errorR * kI + derivativeR * kD);
-
-    if(powerL > 80){
-      powerL = 80;
-    } else if(powerR > 80){
-      powerR = 80;
-    } else if(powerL < -80){
-      powerL = -80;
-    } else if(powerR < -80){
-      powerR = -80;
-    }
-
-    liftL.moveVelocity(powerL);
-    liftR.moveVelocity(powerR);
-
-    prev_errorL = errorL;
-    prev_errorR = errorR;
-    delay(20);
   }
 
   lift.moveVelocity(0);
