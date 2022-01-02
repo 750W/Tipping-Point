@@ -54,7 +54,7 @@ void lift_down () {
 
 void lift_PID (int rev) {
 
-  double errorL, errorR, kP, powerL, powerR;
+  double errorL, errorR, kP, velocityL, velocityR;
   double total_errorL, total_errorR, kI;
   double prev_errorL, prev_errorR, kD, derivativeL, derivativeR;
   int l_begpos, r_begpos, lpos, rpos, desired_val;
@@ -100,32 +100,32 @@ void lift_PID (int rev) {
       derivativeL = errorL - prev_errorL;
       derivativeR = errorR - prev_errorR;
 
-      powerL = (errorL * kP + total_errorL * kI + derivativeL * kD);
-      powerR = (errorR * kP + total_errorR * kI + derivativeR * kD);
+      velocityL = (errorL * kP + total_errorL * kI + derivativeL * kD);
+      velocityR = (errorR * kP + total_errorR * kI + derivativeR * kD);
 
-      if ( powerL > 80 ) {
+      if ( velocityL > 80 ) {
 
-        powerL = 80;
+        velocityL = 80;
 
-      } else if ( powerR > 80 ) {
+      } else if ( velocityR > 80 ) {
 
-        powerR = 80;
+        velocityR = 80;
 
-      } else if ( powerL < -80 ) {
+      } else if ( velocityL < -80 ) {
 
-        powerL = -80;
+        velocityL = -80;
 
-      } else if ( powerR < -80 ) {
+      } else if ( velocityR < -80 ) {
 
-        powerR = -80;
+        velocityR = -80;
 
       }
 
-      liftL.moveVelocity(powerL);
-      liftR.moveVelocity(powerR);
+      liftL.moveVelocity(velocityL);
+      liftR.moveVelocity(velocityR);
 
       //printf ("Error: %f, %f", errorL, errorR) ;
-      //printf ("Power: %f, %f", powerL, powerR) ;
+      //printf ("velocity: %f, %f", velocityL, velocityR) ;
 
       prev_errorL = errorL;
       prev_errorR = errorR;
@@ -178,7 +178,7 @@ void turn_ccw (float spd, int time) {
 
 void drive_PID (double dist) {
 
-  double errorL, errorR, kP, powerL, powerR;
+  double errorL, errorR, kP, velocityL, velocityR;
   double total_errorL, total_errorR, kI;
   double prev_errorL, prev_errorR, kD, derivativeL, derivativeR;
   int l_begpos, r_begpos, lpos, rpos, desired_val;
@@ -224,32 +224,32 @@ void drive_PID (double dist) {
       derivativeL = errorL - prev_errorL;
       derivativeR = errorR - prev_errorR;
 
-      powerL = (errorL * kP + total_errorL * kI + derivativeL * kD);
-      powerR = (errorR * kP + total_errorR * kI + derivativeR * kD);
+      velocityL = (errorL * kP + total_errorL * kI + derivativeL * kD);
+      velocityR = (errorR * kP + total_errorR * kI + derivativeR * kD);
 
-      if ( powerL > 150 ) {
+      if ( velocityL > 150 ) {
 
-        powerL = 150;
+        velocityL = 150;
 
-      } else if ( powerR > 150 ) {
+      } else if ( velocityR > 150 ) {
 
-        powerR = 150;
+        velocityR = 150;
 
-      } else if ( powerL < -150 ) {
+      } else if ( velocityL < -150 ) {
 
-        powerL = -150;
+        velocityL = -150;
 
-      } else if ( powerR < -150 ) {
+      } else if ( velocityR < -150 ) {
 
-        powerR = -150;
+        velocityR = -150;
 
       }
 
-      liftL.moveVelocity(powerL);
-      liftR.moveVelocity(powerR);
+      liftL.moveVelocity(velocityL);
+      liftR.moveVelocity(velocityR);
 
       //printf ("Error: %f, %f", errorL, errorR) ;
-      //printf ("Power: %f, %f", powerL, powerR) ;
+      //printf ("velocity: %f, %f", velocityL, velocityR) ;
 
       prev_errorL = errorL;
       prev_errorR = errorR;
