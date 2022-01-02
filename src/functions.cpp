@@ -79,7 +79,7 @@ void lift_PID (int rev) {
     lpos = 0;
     rpos = 0;
 
-    while ( desired_val != lpos && desired_val != rpos ) {
+    while ( (desired_val != lpos && desired_val != rpos) || (velocityL < 10 && velocityR < 10) ) {
 
       rpos = (int)liftR.getPosition() + -1 * r_begpos;
       lpos = (int)liftL.getPosition() + -1 * l_begpos;
