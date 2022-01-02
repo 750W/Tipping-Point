@@ -87,6 +87,8 @@ void lift_PID(int rev){
     delay(20);
   }
 
+  lift.moveVelocity(0);
+  delay(20);
 }
 
 void stop(){
