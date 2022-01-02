@@ -125,8 +125,8 @@ void lift_PID (int rev) {
         sign--;
 
       }
-      
-      if ( (sign > 0 && velocityL > 10 && velocityR > 10) || (sign < 0 && velocityL < 10 && velocityR < 10) )
+
+      if ( (sign > 0 && velocityL < 10 && velocityR < 10) || (sign < 0 && velocityL > -10 && velocityR > -10) )
       break;
 
       liftL.moveVelocity(velocityL);
