@@ -44,7 +44,8 @@ void lift_PID(int rev){
   kI = 0.0;
   kD = 0.0;
 
-  prev_error = 0.0;
+  prev_errorL = 0.0;
+  prev_errorR = 0.0;
   desired_val = rev;
 
   lift.tarePosition();
