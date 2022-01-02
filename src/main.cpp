@@ -39,7 +39,7 @@ void opcontrol() {
       joystick.getAnalog(ControllerAnalog::leftY),
 
       joystick.getAnalog(ControllerAnalog::rightX)
-      
+
     );
 
     if ( frontTakeIn.isPressed() ) {
@@ -78,13 +78,7 @@ void opcontrol() {
 
       lift_down ();
 
-    } else {
-
-      lift.moveVelocity(0);
-
-    }
-
-    if ( left.isPressed() ) {
+    } else if ( left.isPressed() ) {
 
       lift_PID(900);
 
