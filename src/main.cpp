@@ -13,7 +13,6 @@ void initialize() {
 }
 
 void autonomous() {
-  printf("%d\n", lift.getPosition());
   /*
   joystick.clear();
   delay(100);
