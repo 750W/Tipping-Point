@@ -8,8 +8,8 @@ okapi::Motor drive_bL(BACK_LEFT_MOTOR, false, AbstractMotor::gearset::green, Abs
 okapi::Motor drive_bR(BACK_RIGHT_MOTOR, true, AbstractMotor::gearset::green, AbstractMotor::encoderUnits::degrees);
 okapi::Motor front_intake(FRONT_INTAKE_MOTOR, true, AbstractMotor::gearset::red, AbstractMotor::encoderUnits::degrees);
 okapi::Motor back_intake(BACK_INTAKE_MOTOR, false, AbstractMotor::gearset::red, AbstractMotor::encoderUnits::degrees);
-okapi::Motor liftL(LEFT_LIFT_MOTOR, false, AbstractMotor::gearset::red, AbstractMotor::encoderUnits::rotations);
-okapi::Motor liftR(RIGHT_LIFT_MOTOR, true, AbstractMotor::gearset::red, AbstractMotor::encoderUnits::rotations);
+okapi::Motor liftL(LEFT_LIFT_MOTOR, false, AbstractMotor::gearset::red, AbstractMotor::encoderUnits::degrees);
+okapi::Motor liftR(RIGHT_LIFT_MOTOR, true, AbstractMotor::gearset::red, AbstractMotor::encoderUnits::degrees);
 
 std::shared_ptr<okapi::ChassisController> chassis = ChassisControllerBuilder()
     .withMotors(
