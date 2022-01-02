@@ -60,8 +60,8 @@ void lift_PID(int rev){
     rpos = (int)liftR.getPosition() + -1 * r_begpos;
     lpos = (int)liftL.getPosition() + -1 * l_begpos;
 
-    errorL = abs(desired_val - lpos);
-    errorR = abs(desired_val - rpos);
+    errorL = desired_val - lpos;
+    errorR = desired_val - rpos;
     total_errorL += errorL;
     total_errorR += errorR;
 
