@@ -188,7 +188,7 @@ void drive_PID (double dist) {
 
   if ( l_begpos != (int)dist && r_begpos != (int)dist ) {
 
-    kP = 0.0;
+    kP = 0.1;
     kI = 0.0;
     kD = 0.0;
 
