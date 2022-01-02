@@ -64,7 +64,7 @@ void lift_PID (int rev) {
 
   if ( l_begpos != rev && r_begpos != rev ) {
 
-    kP = 0.0;
+    kP = 0.1;
     kI = 0.0;
     kD = 0.0;
 
