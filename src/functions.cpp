@@ -42,13 +42,13 @@ void back_unclamp () {
 
 void lift_up () {
 
-  lift_PID(1000);
+  lift_PID(900);
 
 }
 
 void lift_down () {
 
-  lift_PID(-1000);
+  lift_PID(-900);
 
 }
 
