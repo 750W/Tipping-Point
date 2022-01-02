@@ -124,8 +124,8 @@ void lift_PID (int rev) {
       liftL.moveVelocity(velocityL);
       liftR.moveVelocity(velocityR);
 
-      //printf ("Error: %f, %f", errorL, errorR) ;
-      //printf ("velocity: %f, %f", velocityL, velocityR) ;
+      printf ("Error: %f, %f", errorL, errorR) ;
+      printf ("velocity: %f, %f", velocityL, velocityR) ;
 
       prev_errorL = errorL;
       prev_errorR = errorR;
