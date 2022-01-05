@@ -127,36 +127,28 @@ void winPointAutonRight(){
   move_dist(40,50);
   stop();
   //Step 5
-  turn_cw_degrees(10,90-degreesToMobileGoal,1,25);
+  //TODO: turn_cw_PID not yet made
+  turn_cw_PID(degreesToMobileGoal);
   //Step 6
-  int Ishaan5HeadCalc= 500; //random arbitrary num
-  int x = 0;
-  while(x < Ishaan5HeadCalc){
-    //same move_dist parameters as other auton
-    move_dist(40, 25);
-    //change iteration based on what units the distance is in versus the speed at "40"
-    x += 25;
-  }
+  //TODO: Ishaan's Calc implementation
+  int IshaanCalc = 500;
+  move_dist(40,IshaanCalc);
   stop();
-  //again, all arbitrary/random parameters from before
-//turn to face wall
-  turn_ccw_degrees(10,90,1,25);
-  //move up to align with mobile goal
+  //Step 7
+  //TODO: turn_ccw_PID not yet made
+  turn_ccw_PID(90);
+  //Step 8
   move_dist(40,50);
   stop();
-  //turn to face mobile goal
-  turn_ccw_degrees(10,90,1,25);
-  //move to reach mobile goal
+  //Step 9
+  turn_ccw_PID(90);
+  //Optional Step 9.5 if Step 6 overestimates
   move_dist(40,50);
-
-  //clamp closing code copied from above
-  //should score on second mobile goal
-  for(int i = 0; i < 40; i++)
+  //Step 10
   front_clamp();
   stop();
   front_unclamp();
   stop();
-
 }
 
 
