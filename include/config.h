@@ -58,3 +58,4 @@ void stop();
 void drive_PID(float dist);
 void lift_PID(int deg);
 void drive_tarePos();
+void turn_PID(int deg);
