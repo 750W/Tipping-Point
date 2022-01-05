@@ -67,6 +67,7 @@ void both_win_points_right(){
     int distance = 48 + currentPos;//assumes it returns inches
     while (distance>currentPos){
         move_dist (40, 25);
+        currentPos=getCurrentPosition();
     }
     stop();
     //Step 7
