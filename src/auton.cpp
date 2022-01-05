@@ -43,8 +43,37 @@ void both_mobile_goals_left(){
 
 //Gets a win point by scoring on both alliance goals and moving one of them out the win point line --- bot starts on the left side.
 void both_win_points_left(){
-
-
+    //Image for Steps reference:
+    //https://media.discordapp.net/attachments/881310328422559805/928389141706711121/unknown.png
+    //Step 1
+    turn_cw_PID(90); //TODO: turn_cw_PID not yet made
+    //Step 2
+    back_clamp ();
+    stop ();
+    back_unclamp ();
+    stop ();
+    //Step 2.5: Back up before turning to avoid moving mobile goal
+    move_dist(-40,70);
+    //Step 3
+    turn_cw_PID(90);
+    //Step 4
+    move_dist(40,70);
+    //Step 5
+    turn_cw_PID(90);
+    //Step 6
+    int currentPos = getCurrentPosition(); //TODO: getCurrentPosition not yet made
+    int distance = 48 + currentPos;//assumes it returns inches
+    while (distance>currentPos){
+        move_dist (40, 25);
+        currentPos=getCurrentPosition();
+    }
+    //Step 7
+    front_clamp();
+    stop();
+    front_unclamp();
+    stop();
+    //Step 8
+    move_dist(-40,70);
 }
 
 //Gets a win point by scoring on both alliance goals and moving one of them out the win point line --- bot starts on the right side.
