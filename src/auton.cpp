@@ -117,63 +117,21 @@ void new_auton_trial () {
   move_dist (-180, count / 2);
 }
 
-//goal:
-//start with bot straight on right side FACING BACKWARDS
-//first, turn to face closest mobile goal, again, backwards
-//use bumper on back to know when goal is reached
-//clamp to score a ring and "hold it"
-//bring it back behind line
-//then, turn so that the front of the bot is facing the left side of the field
-//drive forward (a distance determined by ishaan calc) past other side of balance thing
-//U-turn to face right side, so bot is in front of the other mobile goal
-//use front clamp to score
-/*
-void winPointAutonRIGHT(){
-  //this should turn to face mobile goal
+void winPointAutonRight(){
   int degreesToMobileGoal = 50;
-  //spd is arbitrary, experiment, 50 degrees estimated
-  // 1 chosed for delay between based on guess from other usages
-  // time chose based on other usages of move_dist
+  //Step 1
   turn_cw_degrees(10,degreesToMobileGoal,1,25);
-
-  //from here to next comment copied from right side auton bc it works
-  //however, it has to be done backwards, so maybe all spds have to be negative
-  //idk, test to see
-  chassis->setMaxVelocity(40);
-  int count = 0;
-  while(!back_bumperswitch.isPressed() && count < 80){
-    move_dist(40, 25);
-    count += 25;
-  }
-  stop();
-  for(int i = 0; i < 40; i++)
-  front_clamp();
-  stop();
-  chassis->setMaxVelocity(-40);
-  if(15000-(2*count) > 0){
-    move_dist(-40, 15000-(2*count));
-    stop();
-  }
-  else{
-    move_dist(-40, 15000-(2*count)*-1);
-    stop();
-  }
-  chassis->setMaxVelocity(200);
-  stop();
-  //hopefully, this scored the first mobile goal and brought it back
-
-  //move forward to clear the balance thing
+  //Steps 2, 3, 4
+  right_win_point();
+  //Step 4.5
   move_dist(40,50);
   stop();
-
-  //turn so the front is horizontal, same parameters as before
+  //Step 5
   turn_cw_degrees(10,90-degreesToMobileGoal,1,25);
-  //according to shreyas, ishaan has a formula to find how much the distance is
-  //between the first and second mobile goals
-  //not sure how it works, but it can be implemented and called as a function here
-  int ISHAANSDISTANCECALCULATION = 500; //random arbitrary num
+  //Step 6
+  int Ishaan5HeadCalc= 500; //random arbitrary num
   int x = 0;
-  while(x < ISHAANSDISTANCECALCULATION){
+  while(x < Ishaan5HeadCalc){
     //same move_dist parameters as other auton
     move_dist(40, 25);
     //change iteration based on what units the distance is in versus the speed at "40"
@@ -201,7 +159,7 @@ void winPointAutonRIGHT(){
 
 }
 
-*/
+
 /*
 go straight;
 grab neutral mogol(yellow one) with front intake (front is now the side with the lift );
