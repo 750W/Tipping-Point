@@ -122,9 +122,8 @@ void winPointAutonRight(){
   //https://media.discordapp.net/attachments/881310328422559805/928015751560970300/unknown.png
   int degreesToMobileGoal = 50;
   //Step 1
-  //TODO: turn_cw_PID not yet made
   //currently assumes only parameter is degrees
-  turn_cw_PID(degreesToMobileGoal);
+  turn_cw_PID(degreesToMobileGoal); //TODO: turn_cw_PID not yet made
   //Steps 2, 3, 4
   right_win_point();
   //Step 4.5
@@ -133,15 +132,15 @@ void winPointAutonRight(){
   //Step 5
   turn_cw_PID(degreesToMobileGoal);
   //Step 6
-  //TODO: Ishaan's Calc implementation
-  //Currently assumes it returns a time
-  int IshaanCalc = 500;
-  move_dist(40,IshaanCalc);
+  int currentPos = getCurrentPosition(); //TODO: getCurrentPosition not yet made
+  int distance = 48 + currentPos;//assumes it returns inches
+  while (distance>currentPos){
+      move_dist (40, 25);
+  }
   stop();
   //Step 7
-  //TODO: turn_ccw_PID not yet made
   //currently assumes only parameter is degrees
-  turn_ccw_PID(90);
+  turn_ccw_PID(90); //TODO: turn_ccw_PID not yet made
   //Step 8
   move_dist(40,50);
   stop();
