@@ -29,9 +29,30 @@ void mbl_goal () {
 
   chassis -> setMaxVelocity (200);
   stop ();
-  
+
+}
+//Gets both middle/neutral mobile goals with the both starting on the right side
+void both_mobile_goals_right(){
+
 }
 
+//Gets both middle/neutral mobile goals with the both starting on the left side
+void both_mobile_goals_left(){
+
+}
+
+//Gets a win point by scoring on both alliance goals and moving one of them out the win point line --- bot starts on the left side.
+void both_win_points_left(){
+
+
+}
+
+//Gets a win point by scoring on both alliance goals and moving one of them out the win point line --- bot starts on the right side.
+void both_win_points_right(){
+
+}
+
+//Scores in one of the alliance mobile goals and depending on where we are, also moves the allaince goal out of the win point line. --- bot starts on the right side.
 void right_win_point () {
   chassis -> setMaxVelocity (40);
   int count = 0;
@@ -55,6 +76,7 @@ void right_win_point () {
   stop ();
 }
 
+//Scores in one of the alliance mobile goals and depending on where we are, also moves the allaince goal out of the win point line. --- bot starts on the left side.
 void left_win_point () {
   chassis -> setMaxVelocity (40);
   float count = 0;
