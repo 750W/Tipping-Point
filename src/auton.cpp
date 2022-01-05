@@ -116,7 +116,7 @@ void both_win_points_right(){
     stop();
 }
 
-//Scores in one of the alliance mobile goals and depending on where we are, also moves the allaince goal out of the win point line. --- bot starts on the right side.
+//Scores in one of the alliance mobile goals and depending on where we are, also moves the alliance goal out of the win point line. --- bot starts on the right side.
 void right_win_point () {
   chassis -> setMaxVelocity (40);
   int count = 0;
@@ -140,7 +140,7 @@ void right_win_point () {
   stop ();
 }
 
-//Scores in one of the alliance mobile goals and depending on where we are, also moves the allaince goal out of the win point line. --- bot starts on the left side.
+//Scores in one of the alliance mobile goals and depending on where we are, also moves the alliance goal out of the win point line. --- bot starts on the left side.
 void left_win_point () {
   chassis -> setMaxVelocity (40);
   float count = 0;
