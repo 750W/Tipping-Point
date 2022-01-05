@@ -12,6 +12,10 @@ void move_dist (float spd, int time) {
 
 }
 
+int getCurrentPosition(){
+    return 10;
+}
+
 void front_clamp () {
 
   front_intake.moveVoltage(8000);
@@ -364,7 +368,7 @@ void turn_PID(double dist){
 
         prev_errorL = errorL;
         prev_errorR = errorR;
-        delay(20);
+        
 
       }
 
