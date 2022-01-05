@@ -123,6 +123,7 @@ void winPointAutonRight(){
   int degreesToMobileGoal = 50;
   //Step 1
   //TODO: turn_cw_PID not yet made
+  //currently assumes only parameter is degrees
   turn_cw_PID(degreesToMobileGoal);
   //Steps 2, 3, 4
   right_win_point();
@@ -133,11 +134,13 @@ void winPointAutonRight(){
   turn_cw_PID(degreesToMobileGoal);
   //Step 6
   //TODO: Ishaan's Calc implementation
+  //Currently assumes it returns a time
   int IshaanCalc = 500;
   move_dist(40,IshaanCalc);
   stop();
   //Step 7
   //TODO: turn_ccw_PID not yet made
+  //currently assumes only parameter is degrees
   turn_ccw_PID(90);
   //Step 8
   move_dist(40,50);
