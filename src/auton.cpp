@@ -123,7 +123,7 @@ void winPointAutonRight(){
   int degreesToMobileGoal = 50;
   //Step 1
   //TODO: turn_cw_PID not yet made
-  turn_cw_PID(10,degreesToMobileGoal,1,25);
+  turn_cw_PID(degreesToMobileGoal);
   //Steps 2, 3, 4
   right_win_point();
   //Step 4.5
