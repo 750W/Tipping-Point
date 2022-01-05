@@ -118,6 +118,8 @@ void new_auton_trial () {
 }
 
 void winPointAutonRight(){
+  //Image for Steps reference:
+  //https://media.discordapp.net/attachments/881310328422559805/928015751560970300/unknown.png
   int degreesToMobileGoal = 50;
   //Step 1
   //TODO: turn_cw_PID not yet made
