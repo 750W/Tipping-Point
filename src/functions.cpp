@@ -368,7 +368,7 @@ void turn_PID(double dist){
 
         prev_errorL = errorL;
         prev_errorR = errorR;
-        
+        delay(20);
 
       }
 
