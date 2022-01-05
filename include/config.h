@@ -54,6 +54,8 @@ void lift_up();
 void lift_down();
 void turn_ccw(float spd, int time);
 void turn_cw(float spd, int time);
+void turn_ccw_PID(int deg);
+void turn_cw_PID(int deg);
 void stop();
 void drive_PID(float dist);
 void lift_PID(int deg);
