@@ -49,7 +49,41 @@ void both_win_points_left(){
 
 //Gets a win point by scoring on both alliance goals and moving one of them out the win point line --- bot starts on the right side.
 void both_win_points_right(){
-
+    //Image for Steps reference:
+    //https://media.discordapp.net/attachments/881310328422559805/928015751560970300/unknown.png
+    int degreesToMobileGoal = 50;
+    //Step 1
+    //currently assumes only parameter is degrees
+    turn_cw_PID(degreesToMobileGoal); //TODO: turn_cw_PID not yet made
+    //Steps 2, 3, 4
+    right_win_point();
+    //Step 4.5
+    move_dist(40,50);
+    stop();
+    //Step 5
+    turn_cw_PID(degreesToMobileGoal);
+    //Step 6
+    int currentPos = getCurrentPosition(); //TODO: getCurrentPosition not yet made
+    int distance = 48 + currentPos;//assumes it returns inches
+    while (distance>currentPos){
+        move_dist (40, 25);
+    }
+    stop();
+    //Step 7
+    //currently assumes only parameter is degrees
+    turn_ccw_PID(90); //TODO: turn_ccw_PID not yet made
+    //Step 8
+    move_dist(40,50);
+    stop();
+    //Step 9
+    turn_ccw_PID(90);
+    //Optional Step 9.5 if Step 6 overestimates
+    move_dist(40,50);
+    //Step 10
+    front_clamp();
+    stop();
+    front_unclamp();
+    stop();
 }
 
 //Scores in one of the alliance mobile goals and depending on where we are, also moves the allaince goal out of the win point line. --- bot starts on the right side.
@@ -117,43 +151,6 @@ void new_auton_trial () {
   move_dist (-180, count / 2);
 }
 
-void winPointAutonRight(){
-  //Image for Steps reference:
-  //https://media.discordapp.net/attachments/881310328422559805/928015751560970300/unknown.png
-  int degreesToMobileGoal = 50;
-  //Step 1
-  //currently assumes only parameter is degrees
-  turn_cw_PID(degreesToMobileGoal); //TODO: turn_cw_PID not yet made
-  //Steps 2, 3, 4
-  right_win_point();
-  //Step 4.5
-  move_dist(40,50);
-  stop();
-  //Step 5
-  turn_cw_PID(degreesToMobileGoal);
-  //Step 6
-  int currentPos = getCurrentPosition(); //TODO: getCurrentPosition not yet made
-  int distance = 48 + currentPos;//assumes it returns inches
-  while (distance>currentPos){
-      move_dist (40, 25);
-  }
-  stop();
-  //Step 7
-  //currently assumes only parameter is degrees
-  turn_ccw_PID(90); //TODO: turn_ccw_PID not yet made
-  //Step 8
-  move_dist(40,50);
-  stop();
-  //Step 9
-  turn_ccw_PID(90);
-  //Optional Step 9.5 if Step 6 overestimates
-  move_dist(40,50);
-  //Step 10
-  front_clamp();
-  stop();
-  front_unclamp();
-  stop();
-}
 
 
 /*
