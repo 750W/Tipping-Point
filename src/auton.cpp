@@ -85,7 +85,7 @@ void both_win_points_right(){
     //currently assumes only parameter is degrees
     turn_cw_PID(degreesToMobileGoal); //TODO: turn_cw_PID not yet made
     //Steps 2, 3, 4
-    right_win_point();
+    mbl_goal();
     //Step 4.5
     move_dist(40,50);
     stop();
