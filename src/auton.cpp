@@ -120,14 +120,14 @@ void new_auton_trial () {
 void winPointAutonRight(){
   int degreesToMobileGoal = 50;
   //Step 1
-  turn_cw_degrees(10,degreesToMobileGoal,1,25);
+  //TODO: turn_cw_PID not yet made
+  turn_cw_PID(10,degreesToMobileGoal,1,25);
   //Steps 2, 3, 4
   right_win_point();
   //Step 4.5
   move_dist(40,50);
   stop();
   //Step 5
-  //TODO: turn_cw_PID not yet made
   turn_cw_PID(degreesToMobileGoal);
   //Step 6
   //TODO: Ishaan's Calc implementation
