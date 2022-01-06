@@ -1,7 +1,7 @@
 #include "main.h"
 #include "config.h"
 #include "math.h"
-
+#include <vector>
 void move_dist (float spd, int time) {
 
   drive_fL.moveVelocity(spd);
@@ -11,9 +11,20 @@ void move_dist (float spd, int time) {
   delay(time);
 
 }
-
-int getCurrentPosition(){
-    return 10;
+double getCurrentPosition(){
+    double position = 0;
+    position = position + acceleration.at(0);
+    for(std::vector<double>::size_type i = 1; i != acceleration.size()-1; i++)  {
+        if(i%2==1){
+            position = position+(2*acceleration.at(i));
+        }
+        else {
+            position = position+(4*acceleration.at(i));
+        }
+    }
+    position = position + acceleration.at(acceleration.size());
+    position = position * totalTime/(3*5);
+    return position;
 }
 
 void front_clamp () {

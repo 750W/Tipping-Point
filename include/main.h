@@ -36,6 +36,7 @@
 
 #include "api.h"
 
+
 /**
  * You should add more #includes here
  */
@@ -67,6 +68,7 @@ void initialize(void);
 void disabled(void);
 void competition_initialize(void);
 void opcontrol(void);
+void acceleration_tracker(void);
 #ifdef __cplusplus
 }
 #endif

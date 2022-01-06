@@ -45,5 +45,12 @@ okapi::ControllerButton y(ControllerDigital::Y);
 okapi::ControllerButton b(ControllerDigital::B);
 
 okapi::ADIButton back_bumperswitch('H');
-pros::Imu imu(4); //change
+
+okapi::IMU imu_z(4,IMUAxes::z);//TODO:change port
+okapi::IMU imu_x(4,IMUAxes::x);
+
 int i = 0;
+bool auton_state = false;
+std::vector<double> acceleration;
+int ind = 1;
+int totalTime;

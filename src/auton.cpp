@@ -61,12 +61,14 @@ void both_win_points_left(){
     //Step 5
     turn_cw_PID(90);
     //Step 6
-    int currentPos = getCurrentPosition(); //TODO: getCurrentPosition not yet made
-    int distance = 48 + currentPos;//assumes it returns inches
+    auton_state = true;
+    double currentPos = getCurrentPosition();
+    double distance = 48 + currentPos;//assumes it returns inches
     while (distance>currentPos){
         move_dist (40, 25);
         currentPos=getCurrentPosition();
     }
+    auton_state = false;
     //Step 7
     front_clamp();
     stop();
@@ -92,12 +94,14 @@ void both_win_points_right(){
     //Step 5
     turn_cw_PID(degreesToMobileGoal);
     //Step 6
-    int currentPos = getCurrentPosition(); //TODO: getCurrentPosition not yet made
-    int distance = 48 + currentPos;//assumes it returns inches
+    auton_state = true;
+    double currentPos = getCurrentPosition();
+    double distance = 48 + currentPos;//assumes it returns inches
     while (distance>currentPos){
         move_dist (40, 25);
         currentPos=getCurrentPosition();
     }
+    auton_state = false;
     stop();
     //Step 7
     //currently assumes only parameter is degrees

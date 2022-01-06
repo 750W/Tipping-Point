@@ -21,6 +21,11 @@ extern okapi::Motor liftR;
 extern std::shared_ptr<okapi::ChassisController> chassis;
 extern int i;
 
+extern std::vector<double> acceleration;
+extern bool auton_state;
+extern int ind;
+extern int totalTime;
+
 extern okapi::Controller joystick;
 extern okapi::ControllerButton backTakeIn;
 extern okapi::ControllerButton backTakeOut;
@@ -36,10 +41,12 @@ extern okapi::ControllerButton y;
 extern okapi::ControllerButton b;
 
 extern okapi::ADIButton back_bumperswitch;
-extern pros::Imu imu;
+extern okapi::IMU imu_x;
+extern okapi::IMU imu_z;
 
 extern okapi::MotorGroup lift;
 
+double getCurrentPosition();
 void auton_selector();
 void mbl_goal();
 void left_win_point();
@@ -56,7 +63,6 @@ void turn_ccw(float spd, int time);
 void turn_cw(float spd, int time);
 void turn_ccw_PID(int deg);
 void turn_cw_PID(int deg);
-int getCurrentPosition();
 void stop();
 void drive_PID(float dist);
 void lift_PID(int deg);
