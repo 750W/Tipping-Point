@@ -35,6 +35,8 @@ extern okapi::ControllerButton a;
 extern okapi::ControllerButton y;
 extern okapi::ControllerButton b;
 
+extern okapi::MotorGroup lift;
+
 extern okapi::ADIButton back_bumperswitch;
 
 extern std::vector<double> acceleration;
@@ -44,7 +46,7 @@ extern int totalTime;
 extern okapi::IMU imu_x;
 extern okapi::IMU imu_z;
 
-extern okapi::MotorGroup lift;
+extern pros::Task acceleration_tracker(void*);
 
 double getCurrentPosition();
 void auton_selector();

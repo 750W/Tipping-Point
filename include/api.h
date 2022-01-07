@@ -38,6 +38,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #endif /* __cplusplus */
+#include "math.h"
+#include <vector>
 
 #define PROS_VERSION_MAJOR 3
 #define PROS_VERSION_MINOR 5
