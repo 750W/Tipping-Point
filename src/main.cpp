@@ -13,7 +13,7 @@ void initialize() {
   imu_x.reset();
   imu_z.reset();
   //fix this !!!!!!
-  //pros::Task acceleration_tracker(acceleration_tracker, (void*), "Acceleration Tracker");
+  pros::Task acceleration_tracker_task(acceleration_tracker, NULL, TASK_PRIORITY_DEFAULT, TASK_STACK_DEPTH_DEFAULT, "Acceleration Tracker");
   //auton_selector();
 }
 

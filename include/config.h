@@ -46,7 +46,7 @@ extern int totalTime;
 extern okapi::IMU imu_x;
 extern okapi::IMU imu_z;
 
-extern pros::Task acceleration_tracker(void*);
+extern pros::Task acceleration_tracker_task;
 
 double getCurrentPosition();
 void auton_selector();
@@ -70,3 +70,4 @@ void drive_PID(float dist);
 void lift_PID(int deg);
 void drive_tarePos();
 void turn_PID(int deg);
+void acceleration_tracker(void*);

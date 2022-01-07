@@ -27,11 +27,11 @@ double getCurrentPosition(){
     return position;
 }
 
-pros::Task acceleration_tracker(void*){
+void acceleration_tracker(void*) {
     int time = 5;
     acceleration.push_back(0.0);
-    while(auton_state == false){
-        while(auton_state == true){
+    while (auton_state == false) {
+        while(auton_state == true) {
             double prev_vel = acceleration.at(ind - 1);
             double z_accel = imu_z.getAcceleration();
             double x_accel = imu_x.getAcceleration();
