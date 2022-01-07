@@ -12,7 +12,7 @@ void initialize() {
   liftL.tarePosition();
   imu_x.reset();
   imu_z.reset();
-  pros::Task acceleration_tracker(acceleration_tracker, (void*), "Acceleration Tracker");
+  //pros::Task acceleration_tracker(acceleration_tracker, (void*), "Acceleration Tracker");
   //auton_selector();
 }
 
