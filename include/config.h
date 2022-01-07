@@ -21,11 +21,6 @@ extern okapi::Motor liftR;
 extern std::shared_ptr<okapi::ChassisController> chassis;
 extern int i;
 
-extern std::vector<double> acceleration;
-extern bool auton_state;
-extern int ind;
-extern int totalTime;
-
 extern okapi::Controller joystick;
 extern okapi::ControllerButton backTakeIn;
 extern okapi::ControllerButton backTakeOut;
@@ -41,6 +36,11 @@ extern okapi::ControllerButton y;
 extern okapi::ControllerButton b;
 
 extern okapi::ADIButton back_bumperswitch;
+
+extern std::vector<double> acceleration;
+extern bool auton_state;
+extern int ind;
+extern int totalTime;
 extern okapi::IMU imu_x;
 extern okapi::IMU imu_z;
 
