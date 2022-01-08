@@ -28,10 +28,10 @@ double getCurrentPosition(){
 }
 
 void acceleration_tracker(void*) {
-    int time = 5;
+    int time = 50;
     acceleration.push_back(0.0);
-    while (auton_state == false) {
-        while(auton_state == true) {
+    while (true) {
+        if (auton_state == true) {
             double prev_vel = acceleration.at(ind - 1);
             double z_accel = imu_z.getAcceleration();
             double x_accel = imu_x.getAcceleration();
@@ -39,7 +39,6 @@ void acceleration_tracker(void*) {
             acceleration.push_back( prev_vel + (accel * time) );
             totalTime = totalTime + time;
             ind = ind + 1;
-            delay(time);
         }
         delay(time);
     }
