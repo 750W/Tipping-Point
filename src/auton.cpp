@@ -1,4 +1,3 @@
-#include "main.h"
 #include "config.h"
 using namespace okapi;
 

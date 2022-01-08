@@ -1,11 +1,10 @@
-#include "main.h"
 #include "config.h"
-#include "math.h"
 using namespace okapi;
+
 void initialize() {
-  front_intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
-  back_intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
-  lift.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+  front_intake.setBrakeMode(AbstractMotor::brakeMode::hold);
+  back_intake.setBrakeMode(AbstractMotor::brakeMode::hold);
+  lift.setBrakeMode(AbstractMotor::brakeMode::hold);
   front_intake.tarePosition();
   back_intake.tarePosition();
   liftR.tarePosition();
@@ -13,7 +12,7 @@ void initialize() {
   imu_x.reset();
   imu_z.reset();
   //fix this !!!!!!
-  pros::Task acceleration_tracker_task(acceleration_tracker, NULL, "Acceleration Tracker");
+    Task tracker_task(acceleration_tracker,(void*)"not needed",TASK_PRIORITY_DEFAULT,TASK_STACK_DEPTH_DEFAULT,"tracker task");
   //auton_selector();
 }
 

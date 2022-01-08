@@ -46,7 +46,7 @@ extern int totalTime;
 extern okapi::IMU imu_x;
 extern okapi::IMU imu_z;
 
-extern pros::Task acceleration_tracker_task;
+//extern pros::Task acceleration_tracker_task;
 
 double getCurrentPosition();
 void auton_selector();

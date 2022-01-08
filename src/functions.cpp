@@ -1,4 +1,3 @@
-#include "main.h"
 #include "config.h"
 
 void move_dist (float spd, int time) {
