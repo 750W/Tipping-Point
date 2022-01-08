@@ -22,7 +22,7 @@ double getCurrentPosition(){
         }
     }
     position = position + acceleration.at(acceleration.size());
-    position = position * totalTime / ( 3 * 5 );
+    position = position * totalTime / ( 3 * 50 );
     return position;
 }
 
