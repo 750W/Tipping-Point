@@ -11,8 +11,7 @@ void initialize() {
   liftL.tarePosition();
   imu_x.reset();
   imu_z.reset();
-  //fix this !!!!!!
-    Task tracker_task(acceleration_tracker,(void*)"not needed",TASK_PRIORITY_DEFAULT,TASK_STACK_DEPTH_DEFAULT,"tracker task");
+  Task tracker_task(acceleration_tracker,(void*)"not needed",TASK_PRIORITY_DEFAULT,TASK_STACK_DEPTH_DEFAULT,"tracker task");
   //auton_selector();
 }
 
@@ -85,10 +84,12 @@ void opcontrol() {
     } else if ( left.isPressed() ) {
 
       lift_PID(900);
+      printf("done - up 900");
 
     } else if ( right.isPressed() ) {
 
       lift_PID(-900);
+      printf("done - down 900");
 
     } else {
 
