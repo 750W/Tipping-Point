@@ -75,6 +75,8 @@ void both_win_points_left(){
     stop();
     //Step 8
     move_dist(-40,70);
+    //Step 9 - To return it to original position in step 1
+    turn_cw_PID(-90);
 }
 
 //Gets a win point by scoring on both alliance goals and moving one of them out the win point line --- bot starts on the right side.
