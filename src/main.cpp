@@ -16,6 +16,12 @@ void initialize() {
 }
 
 void autonomous() {
+  printf("%lf", ultra_back.get());
+  /*
+  while(ultra.controllerGet() <
+  move_dist(180, 25);
+  */
+
   /*
   joystick.clear();
   delay(100);

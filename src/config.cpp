@@ -22,8 +22,7 @@ std::shared_ptr<okapi::ChassisController> chassis = ChassisControllerBuilder()
             static_cast<int32_t>(imev5GreenTPR)
         }
     ).withMaxVelocity(150
-    ).withOdometry(
-    ).buildOdometry();
+    ).build();
 
 okapi::MotorGroup lift({liftL, liftR});
 
@@ -44,6 +43,9 @@ okapi::ControllerButton y(ControllerDigital::Y);
 okapi::ControllerButton b(ControllerDigital::B);
 
 okapi::ADIButton back_bumperswitch('H');
+
+okapi::ADIUltrasonic ultra_back('C', 'D');
+okapi::ADIUltrasonic ultra_front('E','F');
 
 okapi::IMU imu_z(4,IMUAxes::z);//TODO:change port
 okapi::IMU imu_x(4,IMUAxes::x);
