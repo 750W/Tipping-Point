@@ -1,6 +1,6 @@
 #include "config.h"
 
-void move_dist (double spdL, double spdR) {
+void move_dist_drive (double spdL, double spdR) {
 
   drive_fL.moveVelocity(spdL);
   drive_fR.moveVelocity(spdR);
@@ -8,6 +8,14 @@ void move_dist (double spdL, double spdR) {
   drive_bR.moveVelocity(spdR);
   delay(40);
 
+}
+
+void move_dist (double spd, int time) {
+  drive_fL.moveVelocity(spd);
+  drive_fR.moveVelocity(spd);
+  drive_bL.moveVelocity(spd);
+  drive_bR.moveVelocity(spd);
+  delay(time);
 }
 
 double getCurrentPosition(){

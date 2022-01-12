@@ -1,7 +1,6 @@
 #include "config.h"
 using namespace okapi;
-// Raghav test
-//srheyas test
+
 void mbl_goal () {
 
   chassis -> setMaxVelocity (150);
@@ -170,21 +169,42 @@ void left_win_point () {
   stop ();
 }
 
-void new_auton_trial () {
-  float count = 0;
-  chassis -> setMaxVelocity (180);
-  while ( !back_bumperswitch.isPressed() ) {
-    move_dist (180, 25);
+void right_win_point_mbl_goal(){
+  //assuming that the bot is facing w the lift at the back
+  chassis -> setMaxVelocity (150);
+  int count = 0;
+  while ( !back_bumperswitch.isPressed()) {
+    move_dist(150, 25);
     count += 25;
+    if(count >= 15000)
+    break;
   }
-  move_dist (-180, count / 2);
-  turn_cw (180, 25);
-  count = 0;
-  while ( !back_bumperswitch.isPressed() ) {
-    move_dist (180, 25);
-    count += 25;
+  stop();
+
+  if(count < 15000){
+    for (int i = 0; i < 40; i++)
+    back_clamp();
+    stop();
+
+    chassis -> setMaxVelocity (-150);
+
+    move_dist(-150, count/2);
+    count += count/2;
+    turn_ccw(60, 50); //change this value accordingly
+    count += 50;
+    move_dist(-150, 10); //change this value accordingly
+    count += 10;
+
+    if(count < 15000){
+      for (int i = 0; i < 10; i++)
+      front_clamp();
+      stop();
+      move_dist(-150, 75);
+    }
+
+    stop ();
   }
-  move_dist (-180, count / 2);
+
 }
 
 
