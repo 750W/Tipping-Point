@@ -32,7 +32,40 @@ void mbl_goal () {
 }
 //Gets both middle/neutral mobile goals with the both starting on the right side
 void both_mobile_goals_right(){
+  //assuming that the bot is facing w the lift at the back
+  chassis -> setMaxVelocity (150);
+  int count = 0;
+  while ( !back_bumperswitch.isPressed()) {
+    move_dist(150, 25);
+    count += 25;
+    if(count >= 15000)
+    break;
+  }
+  stop();
 
+  if(count < 15000){
+    for (int i = 0; i < 40; i++)
+    back_clamp();
+    stop();
+
+    chassis -> setMaxVelocity (-150);
+
+    move_dist(-150, count/2);
+    count += count/2;
+    turn_ccw(100, 10); //change this value accordingly
+    count += 10;
+    move_dist(-150, 10); //change this value accordingly
+    count += 10;
+
+    if(count < 15000){
+      for (int i = 0; i < 10; i++)
+      front_clamp();
+      stop();
+      move_dist(-150, 75); //change this value accordingly
+    }
+
+    stop ();
+  }
 }
 
 //Gets both middle/neutral mobile goals with the both starting on the left side
