@@ -25,6 +25,7 @@ std::shared_ptr<okapi::ChassisController> chassis = ChassisControllerBuilder()
     ).build();
 
 okapi::MotorGroup lift({liftL, liftR});
+okapi::MotorGroup front_drive({drive_fL, drive_fR});
 
 okapi::Controller joystick;
 okapi::ControllerButton backTakeIn(ControllerDigital::L1);

@@ -1,12 +1,12 @@
 #include "config.h"
 
-void move_dist (float spd, int time) {
+void move_dist (double spdL, double spdR) {
 
-  drive_fL.moveVelocity(spd);
-  drive_fR.moveVelocity(spd);
-  drive_bL.moveVelocity(spd);
-  drive_bR.moveVelocity(spd);
-  delay(time);
+  drive_fL.moveVelocity(spdL);
+  drive_fR.moveVelocity(spdR);
+  drive_bL.moveVelocity(spdL);
+  drive_bR.moveVelocity(spdR);
+  delay(40);
 
 }
 
@@ -221,21 +221,24 @@ void drive_PID (double dist) {
   double total_errorL, total_errorR, kI;
   double prev_errorL, prev_errorR, kD, derivativeL, derivativeR;
   int l_begpos, r_begpos, lpos, rpos, desired_val;
+  double half;
 
   r_begpos = (int)drive_fR.getPosition();
   l_begpos = (int)drive_fL.getPosition();
 
-  if ( l_begpos != (int)dist && r_begpos != (int)dist ) {
+  desired_val = dist*100/(2*3.14*2.0)*360.0;
 
-    kP = 0.1;
-    kI = 0.0;
-    kD = 0.0;
+  if ( l_begpos != desired_val && r_begpos != desired_val ) {
+
+    kP = 0.3;
+    kD = 0;
 
     prev_errorL = 0.0;
     prev_errorR = 0.0;
-    desired_val = (int)dist;
+    desired_val = dist*100/(2*3.14*2.0)*360.0;
 
-    drive_tarePos();
+    front_drive.tarePosition();
+
     r_begpos = (int)drive_fR.getPosition();
     l_begpos = (int)drive_fL.getPosition();
 
@@ -247,50 +250,49 @@ void drive_PID (double dist) {
       rpos = (int)drive_fR.getPosition() + -1 * r_begpos;
       lpos = (int)drive_fL.getPosition() + -1 * l_begpos;
 
+      printf("%f %f", rpos, lpos);
+
       errorL = desired_val - lpos;
       errorR = desired_val - rpos;
-      total_errorL += errorL;
-      total_errorR += errorR;
-
-      if ( errorL == 0 || lpos < desired_val ) {
-        total_errorL = 0;
-      }
-
-      if ( errorR == 0 || rpos < desired_val ) {
-        total_errorR = 0;
-      }
 
       derivativeL = errorL - prev_errorL;
       derivativeR = errorR - prev_errorR;
 
-      velocityL = (errorL * kP + total_errorL * kI + derivativeL * kD);
-      velocityR = (errorR * kP + total_errorR * kI + derivativeR * kD);
+      velocityL = (errorL * kP + derivativeL * kD);
+      velocityR = (errorR * kP + derivativeR * kD);
 
+      int sign = 0;
       if ( velocityL > 150 ) {
 
         velocityL = 150;
-
-      } else if ( velocityR > 150 ) {
-
-        velocityR = 150;
+        sign++;
 
       } else if ( velocityL < -150 ) {
 
         velocityL = -150;
+        sign--;
+
+      }
+
+      if ( velocityR > 150 ) {
+
+        velocityR = 150;
+        sign++;
 
       } else if ( velocityR < -150 ) {
 
         velocityR = -150;
+        sign--;
 
       }
 
-      drive_fL.moveVelocity(velocityL);
-      drive_fR.moveVelocity(velocityR);
-      drive_bL.moveVelocity(velocityL);
-      drive_bR.moveVelocity(velocityR);
+      if ( (sign > 0 && velocityL < 10 && velocityR < 10) || (sign < 0 && velocityL > -10 && velocityR > -10) )
+      break;
 
-      //printf ("Error: %f, %f", errorL, errorR) ;
-      //printf ("velocity: %f, %f", velocityL, velocityR) ;
+      move_dist(velocityL, velocityR);
+
+      printf ("Error: %f, %f", errorL, errorR);
+      printf ("velocity: %f, %f", velocityL, velocityR);
 
       prev_errorL = errorL;
       prev_errorR = errorR;
@@ -299,12 +301,6 @@ void drive_PID (double dist) {
     }
 
   }
-
-  drive_fL.moveVelocity(0);
-  drive_fR.moveVelocity(0);
-  drive_bL.moveVelocity(0);
-  drive_bR.moveVelocity(0);
-  delay(20);
 
 }
 

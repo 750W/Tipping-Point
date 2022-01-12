@@ -11,12 +11,16 @@ void initialize() {
   liftL.tarePosition();
   imu_x.reset();
   imu_z.reset();
-  Task tracker_task(acceleration_tracker,(void*)"not needed",TASK_PRIORITY_DEFAULT,TASK_STACK_DEPTH_DEFAULT,"tracker task");
+  //Task tracker_task(acceleration_tracker,(void*)"not needed",TASK_PRIORITY_DEFAULT,TASK_STACK_DEPTH_DEFAULT,"tracker task");
   //auton_selector();
 }
 
 void autonomous() {
-  printf("%lf", ultra_back.get());
+  /*
+  drive_fL.moveVelocity(200);
+  delay(20);
+  */
+  drive_PID(0.80);
   /*
   while(ultra.controllerGet() <
   move_dist(180, 25);

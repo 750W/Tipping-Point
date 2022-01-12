@@ -36,6 +36,7 @@ extern okapi::ControllerButton y;
 extern okapi::ControllerButton b;
 
 extern okapi::MotorGroup lift;
+extern okapi::MotorGroup front_drive;
 
 extern okapi::ADIButton back_bumperswitch;
 
@@ -57,7 +58,7 @@ void mbl_goal();
 void left_win_point();
 void right_win_point();
 void new_auton_trial();
-void move_dist(float spd, int time);
+void move_dist(double spdL, double  spdR);
 void front_clamp();
 void back_clamp();
 void front_unclamp();
@@ -69,7 +70,7 @@ void turn_cw(float spd, int time);
 void turn_ccw_PID(int deg);
 void turn_cw_PID(int deg);
 void stop();
-void drive_PID(float dist);
+void drive_PID(double dist);
 void lift_PID(int deg);
 void drive_tarePos();
 void turn_PID(int deg);
