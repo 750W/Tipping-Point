@@ -240,17 +240,6 @@ void right_win_point_mbl_goal(){
 
 }
 
-
-
-/*
-go straight;
-grab neutral mogol(yellow one) with front intake (front is now the side with the lift );
-back up x amount idk just put some random num lol;
-turn 90 degrees counterclockwise (so that the back of our bot faces the alliance mogol);
-drive backward a lil;
-put back clamp down;
-move forward a lil to clear alliance mogol from win point line
-*/
 void auton_selector () {
   joystick.clear ();
   delay (100);
