@@ -52,7 +52,7 @@ okapi::IMU imu_z(4,IMUAxes::z);//TODO:change port
 okapi::IMU imu_x(4,IMUAxes::x);
 
 int i = 0;
-bool auton_state = false;
+bool auton_state = true;
 std::vector<double> acceleration;
 int ind = 1;
 int totalTime;

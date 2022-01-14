@@ -17,6 +17,7 @@ void initialize() {
 }
 
 void autonomous() {
+
   /*
   drive_fL.moveVelocity(200);
   delay(20);
@@ -45,7 +46,7 @@ void autonomous() {
 }
 
 void opcontrol() {
-
+  auton_state = false;
   while(true){
 
     if ( frontTakeIn.isPressed() ) {
