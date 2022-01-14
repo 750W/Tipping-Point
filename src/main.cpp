@@ -17,27 +17,43 @@ void initialize() {
 }
 
 void autonomous() {
-  //chassis->turnToAngle(45_deg);
   chassis -> setMaxVelocity (150);
   int count = 0;
 
   while ( !back_bumperswitch.isPressed()) {
-
     move_dist (150, 25);
     count += 25;
-
   }
-  stop ();
+  stop();
 
   for (int i = 0; i < 40; i++)
   back_clamp ();
   stop ();
 
-  //for (int i = 0; i < 40; i++)
-  //back_clamp ();
-  //stop ();
+  chassis->turnToAngle(90_deg);
+  for (int i = 0; i < 40; i++)
+  back_unclamp();
+  stop();
 
+  move_dist(180, 20);
+  chassis->turnToAngle(-45_deg);
+  move_dist(180, 40);
+  stop();
 
+  chassis->turnToAngle(-90_deg);
+  while ( !back_bumperswitch.isPressed()) {
+    move_dist (150, 25);
+    count += 25;
+  }
+  stop();
+
+  for (int i = 0; i < 40; i++)
+  back_clamp ();
+  stop ();
+
+  for (int i = 0; i < 40; i++)
+  back_unclamp ();
+  stop ();
 
   //drive_PID(0.80);
   /*
@@ -68,11 +84,11 @@ void opcontrol() {
 
     if ( frontTakeIn.isPressed() ) {
 
-      front_clamp ();
+      front_clamp();
 
     } else if ( frontTakeOut.isPressed() ) {
 
-      front_unclamp ();
+      front_unclamp();
 
     } else {
 
@@ -82,11 +98,11 @@ void opcontrol() {
 
     if ( backTakeIn.isPressed() ) {
 
-      back_clamp ();
+      back_clamp();
 
     } else if (backTakeOut.isPressed()) {
 
-      back_unclamp ();
+      back_unclamp();
 
     } else {
 
@@ -96,11 +112,11 @@ void opcontrol() {
 
     if ( up.isPressed() ) {
 
-      lift_up ();
+      lift_up();
 
     } else if ( down.isPressed() ) {
 
-      lift_down ();
+      lift_down());
 
     } else if ( left.isPressed() ) {
 
