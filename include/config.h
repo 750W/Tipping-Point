@@ -51,6 +51,7 @@ extern okapi::ADIUltrasonic ultra_back;
 extern okapi::ADIUltrasonic ultra_front;
 
 extern pros::Task acceleration_tracker_task;
+extern pros::Task drive;
 
 double getCurrentPosition();
 void auton_selector();
@@ -77,3 +78,4 @@ void turn_PID(int deg);
 void acceleration_tracker(void*);
 void move_dist_drive(double spdL, double spdR);
 void right_win_point_mbl_goal();
+void drive_funct(void*);
