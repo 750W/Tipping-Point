@@ -78,7 +78,7 @@ void both_win_points_left(){
     //Image for Steps reference:
     //https://media.discordapp.net/attachments/881310328422559805/928389141706711121/unknown.png
     //Step 1
-    turn_cw_PID(90); //TODO: turn_cw_PID not yet made
+    turn_cw(90, 40); //TODO: turn_cw_PID not yet made
     //Step 2
     back_clamp ();
     stop ();
@@ -87,18 +87,18 @@ void both_win_points_left(){
     //Step 2.5: Back up before turning to avoid moving mobile goal
     move_dist(-40,70);
     //Step 3
-    turn_cw_PID(90);
+    turn_cw(90, 40);
     //Step 4
     move_dist(40,70);
     //Step 5
-    turn_cw_PID(90);
+    turn_cw(90, 40);
     //Step 6
     auton_state = true;
     double currentPos = getCurrentPosition();
     double distance = 48 + currentPos;//assumes it returns inches
-    while (distance>currentPos){
+    while (distance > currentPos) {
         move_dist (40, 25);
-        currentPos=getCurrentPosition();
+        currentPos = getCurrentPosition();
     }
     auton_state = false;
     //Step 7
@@ -107,9 +107,9 @@ void both_win_points_left(){
     front_unclamp();
     stop();
     //Step 8
-    move_dist(-40,70);
+    move_dist(-40, 70);
     //Step 9 - To return it to original position in step 1
-    turn_cw_PID(-90);
+    turn_cw(-90, 40);
 }
 
 //Gets a win point by scoring on both alliance goals and moving one of them out the win point line --- bot starts on the right side.
@@ -119,7 +119,7 @@ void both_win_points_right(){
     int degreesToMobileGoal = 50;
     //Step 1
     //currently assumes only parameter is degrees
-    turn_cw_PID(degreesToMobileGoal); //TODO: turn_cw_PID not yet made
+    turn_cw(degreesToMobileGoal, 40); //TODO: turn_cw_PID not yet made
     //Steps 2, 3, 4
     mbl_goal();
     //Step 4.5

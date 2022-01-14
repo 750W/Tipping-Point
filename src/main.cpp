@@ -17,12 +17,29 @@ void initialize() {
 }
 
 void autonomous() {
+  //chassis->turnToAngle(45_deg);
+  chassis -> setMaxVelocity (150);
+  int count = 0;
 
-  /*
-  drive_fL.moveVelocity(200);
-  delay(20);
-  */
-  drive_PID(0.80);
+  while ( !back_bumperswitch.isPressed() && count < 80 ) {
+
+    move_dist (150, 25);
+    count += 25;
+
+  }
+  stop ();
+
+  for (int i = 0; i < 40; i++)
+  back_clamp ();
+  stop ();
+
+  //for (int i = 0; i < 40; i++)
+  //back_clamp ();
+  //stop ();
+
+
+
+  //drive_PID(0.80);
   /*
   while(ultra.controllerGet() <
   move_dist(180, 25);

@@ -11,7 +11,7 @@ okapi::Motor back_intake(BACK_INTAKE_MOTOR, false, AbstractMotor::gearset::red, 
 okapi::Motor liftL(LEFT_LIFT_MOTOR, false, AbstractMotor::gearset::red, AbstractMotor::encoderUnits::degrees);
 okapi::Motor liftR(RIGHT_LIFT_MOTOR, true, AbstractMotor::gearset::red, AbstractMotor::encoderUnits::degrees);
 
-std::shared_ptr<okapi::ChassisController> chassis = ChassisControllerBuilder()
+std::shared_ptr<okapi::OdomChassisController> chassis = ChassisControllerBuilder()
     .withMotors(
         {drive_fL, drive_bL},
         {drive_fR, drive_bR}
@@ -22,7 +22,8 @@ std::shared_ptr<okapi::ChassisController> chassis = ChassisControllerBuilder()
             static_cast<int32_t>(imev5GreenTPR)
         }
     ).withMaxVelocity(150
-    ).build();
+    ).withOdometry(
+    ).buildOdometry();
 
 okapi::MotorGroup lift({liftL, liftR});
 okapi::MotorGroup front_drive({drive_fL, drive_fR});

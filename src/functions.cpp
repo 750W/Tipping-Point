@@ -1,7 +1,7 @@
 #include "config.h"
 
 void drive_funct(void*){
-  while(true && !auton_state){
+  while(!auton_state){
     chassis->getModel()->arcade(
       joystick.getAnalog(okapi::ControllerAnalog::leftY),
       joystick.getAnalog(okapi::ControllerAnalog::rightX)
@@ -216,7 +216,6 @@ void turn_cw (float spd, int time) {
   drive_bR.moveVelocity(spd);
 
   delay(time);
-  stop();
 
 }
 
@@ -228,7 +227,6 @@ void turn_ccw (float spd, int time) {
   drive_bR.moveVelocity(spd);
 
   delay(time);
-  stop();
 
 }
 

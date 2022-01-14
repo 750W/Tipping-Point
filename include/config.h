@@ -18,7 +18,7 @@ extern okapi::Motor front_intake;
 extern okapi::Motor back_intake;
 extern okapi::Motor liftL;
 extern okapi::Motor liftR;
-extern std::shared_ptr<okapi::ChassisController> chassis;
+extern std::shared_ptr<okapi::OdomChassisController> chassis;
 extern int i;
 
 extern okapi::Controller joystick;
