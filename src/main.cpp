@@ -21,7 +21,7 @@ void autonomous() {
   chassis -> setMaxVelocity (150);
   int count = 0;
 
-  while ( !back_bumperswitch.isPressed() && count < 80 ) {
+  while ( !back_bumperswitch.isPressed()) {
 
     move_dist (150, 25);
     count += 25;
