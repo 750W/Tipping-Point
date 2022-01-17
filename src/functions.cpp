@@ -63,28 +63,28 @@ void acceleration_tracker(void*) {
 void front_clamp () {
 
   front_intake.moveVoltage(8000);
-  delay (75) ;
+  delay (200) ;
 
 }
 
 void front_unclamp () {
 
   front_intake.moveVoltage(-8000);
-  delay(50);
+  delay(200);
 
 }
 
 void back_clamp () {
 
   back_intake.moveVoltage(8000);
-  delay(75);
+  delay(200);
 
 }
 
 void back_unclamp () {
 
   back_intake.moveVoltage(-8000);
-  delay(50);
+  delay(200);
 
 }
 
@@ -205,6 +205,7 @@ void stop () {
   lift.moveVelocity(0);
   front_intake.moveVoltage(0);
   back_intake.moveVoltage(0);
+  delay(300);
 
 }
 

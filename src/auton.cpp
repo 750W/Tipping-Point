@@ -2,33 +2,20 @@
 using namespace okapi;
 
 void mbl_goal () {
-
   chassis -> setMaxVelocity (150);
   int count = 0;
-
-  while ( !back_bumperswitch.isPressed() && count < 80 ) {
-
-    move_dist (150, 25);
+  while ( !back_bumperswitch.isPressed()) {
+    move_dist (-100, 25);
     count += 25;
-
   }
   stop ();
-
-  for (int i = 0; i < 40; i++)
   back_clamp ();
+  stop();
+  chassis -> setMaxVelocity (150);
+    move_dist (100, count);
   stop ();
-
-  chassis -> setMaxVelocity (-150);
-
-  if ( 15000 - (2 * count) > 0 ) {
-    move_dist ( -150, 15000 - (2 * count) );
-    stop ();
-  }
-  stop ();
-
   chassis -> setMaxVelocity (200);
   stop ();
-
 }
 //Gets both middle/neutral mobile goals with the both starting on the right side
 void both_mobile_goals_right(){
@@ -158,22 +145,19 @@ void both_win_points_right(){
 void right_win_point () {
   chassis -> setMaxVelocity (40);
   int count = 0;
-  while ( !back_bumperswitch.isPressed() && count < 80 ){
+  while ( !back_bumperswitch.isPressed()){
     move_dist (40, 25);
     count += 25;
   }
   stop ();
+
   for (int i = 0; i < 40; i++)
-  front_clamp ();
+  back_clamp ();
   stop ();
+
   chassis -> setMaxVelocity (-40);
-  if (15000 - (2 * count) > 0) {
-    move_dist (-40, 15000 - (2 * count) );
-    stop ();
-  } else {
-    move_dist (-40, 15000 - (2 * count) * -1);
-    stop ();
-  }
+  move_dist (-40, count);
+  stop ();
   chassis -> setMaxVelocity (200);
   stop ();
 }
@@ -192,12 +176,9 @@ void left_win_point () {
   stop ();
   back_unclamp ();
   stop ();
-  chassis -> setMaxVelocity (-60);
-  float time = 60.0 / (40.0 * count);
-  if (15000 - (count + time) > 0) {
-    move_dist (-60, 15000 - (count + time));
-    stop ();
-  }
+  chassis -> setMaxVelocity (-40);
+  move_dist (-60, count);
+  stop ();
   chassis -> setMaxVelocity (200);
   stop ();
 }
@@ -250,7 +231,6 @@ void auton_selector () {
   joystick.setText (2, 0, "Y - RWP");
   joystick.setText (3, 0, "B - None");
   delay (100);
-  while ( !back_bumperswitch.isPressed() );
   i = -99;
   while (i == -99) {
     if (x.isPressed() ) {

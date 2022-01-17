@@ -8,7 +8,7 @@ const int BACK_RIGHT_MOTOR = 20;
 const int FRONT_INTAKE_MOTOR = 5;
 const int LEFT_LIFT_MOTOR = 10;
 const int RIGHT_LIFT_MOTOR = 6;
-const int BACK_INTAKE_MOTOR = 15;
+const int BACK_INTAKE_MOTOR = 18;
 
 extern okapi::Motor drive_fL;
 extern okapi::Motor drive_fR;

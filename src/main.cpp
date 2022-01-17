@@ -17,23 +17,52 @@ void initialize() {
 }
 
 void autonomous() {
+  mbl_goal();
+  stop();
+
+  /*
+
   chassis -> setMaxVelocity (150);
   int count = 0;
 
   while ( !back_bumperswitch.isPressed()) {
-    move_dist (150, 25);
+    move_dist (90, 25);
     count += 25;
   }
   stop();
 
-  for (int i = 0; i < 40; i++)
-  back_clamp ();
-  stop ();
+  back_intake.moveVelocity(400);
+  delay(300);
 
+  move_dist(-150, 450);
+  stop();
+
+  chassis->turnToAngle(45_deg);
+  back_unclamp();
+  chassis->turnToAngle(120_deg);
+
+  move_dist(-150, 450);
+  stop();
+
+  chassis->turnToAngle(60_deg);
+  move_dist(-150, 1400);
+  stop();
+
+  chassis->turnToAngle(-20_deg);
+  move_dist(-150, 500);
+  stop();
+
+  front_intake.moveVoltage(8000);
+  delay(200);
+
+  stop();
+  */
+
+  /*
   chassis->turnToAngle(90_deg);
-  for (int i = 0; i < 40; i++)
   back_unclamp();
   stop();
+  delay(20);
 
   move_dist(180, 20);
   chassis->turnToAngle(-45_deg);
@@ -47,24 +76,19 @@ void autonomous() {
   }
   stop();
 
-  for (int i = 0; i < 40; i++)
-  back_clamp ();
+  front_clamp ();
   stop ();
 
-  for (int i = 0; i < 40; i++)
-  back_unclamp ();
+  front_unclamp ();
   stop ();
-
+*/
   //drive_PID(0.80);
   /*
   while(ultra.controllerGet() <
   move_dist(180, 25);
   */
-
   /*
   joystick.clear();
-  delay(100);
-  joystick.setText(0, 0, i + "");
   delay(100);
   switch(i){
     case 0: mbl_goal();
@@ -76,6 +100,7 @@ void autonomous() {
   }
   stop();
   */
+
 }
 
 void opcontrol() {
@@ -96,7 +121,7 @@ void opcontrol() {
 
     }
 
-    if ( backTakeIn.isPressed() ) {
+    if (backTakeIn.isPressed() ) {
 
       back_clamp();
 
@@ -116,9 +141,15 @@ void opcontrol() {
 
     } else if ( down.isPressed() ) {
 
-      lift_down());
+      lift_down();
 
-    } else if ( left.isPressed() ) {
+    } else {
+
+      lift.moveVelocity(0);
+
+    }
+
+    /*else if ( left.isPressed() ) {
 
       lift_PID(900);
       printf("done - up 900");
@@ -128,11 +159,8 @@ void opcontrol() {
       lift_PID(-900);
       printf("done - down 900");
 
-    } else {
-
-      lift.moveVelocity(0);
-
     }
+    */
 
     delay(20);
   }
