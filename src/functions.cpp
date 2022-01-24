@@ -81,10 +81,26 @@ void back_clamp () {
 
 }
 
+void back_auto_clamp () {
+
+  back_intake.moveVoltage(-8000);
+
+}
+
 void back_unclamp () {
 
   back_intake.moveVoltage(8000);
   delay(200);
+
+}
+
+void back_auto_unclamp () {
+
+  back_intake.moveVoltage(0);
+  delay(10);
+  
+  back_intake.moveVoltage(8000);
+  delay(400);
 
 }
 
