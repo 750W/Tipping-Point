@@ -127,6 +127,14 @@ void opcontrol() {
 
       back_unclamp();
 
+    } else if (back_bumperswitch.isPressed()) {
+
+      back_auto_clamp();
+
+    } else if (b.isPressed()) {
+
+      back_auto_unclamp();
+
     } else {
 
       back_intake.moveVoltage(0);
