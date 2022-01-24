@@ -12,7 +12,7 @@ void initialize() {
   imu_x.reset();
   imu_z.reset();
   //Task tracker_task(acceleration_tracker,(void*)"not needed",TASK_PRIORITY_DEFAULT,TASK_STACK_DEPTH_DEFAULT,"tracker task");
-  //auton_selector();
+  auton_selector();
   Task drive(drive_funct, (void*)"not needed", "driver control task");
 }
 
