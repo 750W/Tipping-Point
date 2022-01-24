@@ -17,7 +17,14 @@ void initialize() {
 }
 
 void autonomous() {
-  mbl_goal();
+  switch(i){
+    case 0: mbl_goal();
+    break;
+    case 1: left_win_point();
+    break;
+    case 2: right_win_point();
+    break;
+  }
   /*
   chassis -> setMaxVelocity (150);
   int count = 0;
@@ -82,27 +89,12 @@ void autonomous() {
   front_unclamp ();
   stop ();
 */
-  //drive_PID(0.80);
-  /*
-  while(ultra.controllerGet() <
-  move_dist(180, 25);
-  */
-
-  //mbl_goal();
-  /*
-  switch(i){
-    case 0: mbl_goal();
-    break;
-    case 1: left_win_point();
-    break;
-    case 2: right_win_point();
-    break;
-  }
-  */
 }
 
 void opcontrol() {
+
   auton_state = false;
+
   while(true){
 
     if ( frontTakeIn.isPressed() ) {
@@ -169,5 +161,7 @@ void opcontrol() {
     */
 
     delay(20);
+
   }
+
 }
