@@ -1,8 +1,8 @@
 #define CONFIG_H
 #include "main.h"
 
-const int FRONT_LEFT_MOTOR = 4;
-const int FRONT_RIGHT_MOTOR = 7;
+const int FRONT_LEFT_MOTOR = 7;
+const int FRONT_RIGHT_MOTOR = 14;
 const int BACK_LEFT_MOTOR = 13;
 const int BACK_RIGHT_MOTOR = 20;
 const int FRONT_INTAKE_MOTOR = 5;
@@ -60,16 +60,22 @@ void left_win_point();
 void right_win_point();
 void new_auton_trial();
 void move_dist(double spd, int time);
+
 void front_clamp();
 void back_clamp();
+void back_auto_clamp();
 void front_unclamp();
 void back_unclamp();
+void back_auto_unclamp();
+
 void lift_up();
 void lift_down();
+
 void turn_ccw(float spd, int time);
 void turn_cw(float spd, int time);
 void turn_ccw_PID(int deg);
 void turn_cw_PID(int deg);
+
 void stop();
 void drive_PID(double dist);
 void lift_PID(int deg);

@@ -18,28 +18,28 @@ void initialize() {
 
 void autonomous() {
   mbl_goal();
-  stop();
-
   /*
-
   chassis -> setMaxVelocity (150);
   int count = 0;
 
   while ( !back_bumperswitch.isPressed()) {
-    move_dist (90, 25);
+    move_dist (-90, 25);
     count += 25;
   }
   stop();
 
-  back_intake.moveVelocity(400);
+  back_intake.moveVelocity(-400);
   delay(300);
 
-  move_dist(-150, 450);
+  move_dist(150, 450);
   stop();
 
-  chassis->turnToAngle(45_deg);
-  back_unclamp();
   chassis->turnToAngle(120_deg);
+  back_unclamp();
+  */
+
+  /*
+  chassis->turnToAngle(-120_deg);
 
   move_dist(-150, 450);
   stop();
@@ -56,8 +56,8 @@ void autonomous() {
   delay(200);
 
   stop();
-  */
 
+*/
   /*
   chassis->turnToAngle(90_deg);
   back_unclamp();
@@ -87,9 +87,9 @@ void autonomous() {
   while(ultra.controllerGet() <
   move_dist(180, 25);
   */
+
+  //mbl_goal();
   /*
-  joystick.clear();
-  delay(100);
   switch(i){
     case 0: mbl_goal();
     break;
@@ -98,9 +98,7 @@ void autonomous() {
     case 2: right_win_point();
     break;
   }
-  stop();
   */
-
 }
 
 void opcontrol() {
@@ -117,7 +115,7 @@ void opcontrol() {
 
     } else {
 
-      front_intake.moveVoltage(0);
+      front_intake.moveVelocity(0);
 
     }
 

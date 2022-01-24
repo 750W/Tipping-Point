@@ -1,18 +1,60 @@
 #include "config.h"
 using namespace okapi;
-
-void mbl_goal () {
-  chassis -> setMaxVelocity (150);
+void right_win_point () {
+  chassis -> setMaxVelocity (200);
   int count = 0;
   while ( !back_bumperswitch.isPressed()) {
-    move_dist (-100, 25);
+    move_dist(-100, 25);
     count += 25;
   }
+  back_intake.moveVoltage(-16000);
+  delay(400);
+  back_intake.moveVoltage(-8000);
+  move_dist(200, count);
   stop ();
-  back_clamp ();
+  chassis -> setMaxVelocity (200);
+  stop ();
+}
+
+//Scores in one of the alliance mobile goals and depending on where we are, also moves the alliance goal out of the win point line. --- bot starts on the left side.
+void left_win_point () {
+  chassis -> setMaxVelocity (200);
+  int count = 0;
+  while ( !back_bumperswitch.isPressed()) {
+    move_dist(-100, 25);
+    count += 25;
+  }
   stop();
-  chassis -> setMaxVelocity (150);
-    move_dist (100, count);
+  move_dist(100, 75);
+  stop();
+  back_intake.moveVoltage(-8000);
+  delay(400);
+  stop();
+  back_intake.moveVoltage(8000);
+  delay(400);
+  stop();
+  move_dist(200, count);
+  stop ();
+  chassis -> setMaxVelocity (200);
+  stop ();
+}
+
+void mbl_goal () {
+  chassis -> setMaxVelocity (200);
+  int count = 0;
+  while ( !back_bumperswitch.isPressed()) {
+    if(count > 980) {
+      move_dist (-180*0.5, 25);
+      count += 25;
+    } else {
+      move_dist (-200, 25);
+      count += 25;
+    }
+  }
+  back_intake.moveVoltage(-16000);
+  delay(400);
+  back_intake.moveVoltage(-8000);
+  move_dist(200, 15000-count);
   stop ();
   chassis -> setMaxVelocity (200);
   stop ();
@@ -142,47 +184,6 @@ void both_win_points_right(){
 }
 
 //Scores in one of the alliance mobile goals and depending on where we are, also moves the alliance goal out of the win point line. --- bot starts on the right side.
-void right_win_point () {
-  chassis -> setMaxVelocity (40);
-  int count = 0;
-  while ( !back_bumperswitch.isPressed()){
-    move_dist (40, 25);
-    count += 25;
-  }
-  stop ();
-
-  for (int i = 0; i < 40; i++)
-  back_clamp ();
-  stop ();
-
-  chassis -> setMaxVelocity (-40);
-  move_dist (-40, count);
-  stop ();
-  chassis -> setMaxVelocity (200);
-  stop ();
-}
-
-//Scores in one of the alliance mobile goals and depending on where we are, also moves the alliance goal out of the win point line. --- bot starts on the left side.
-void left_win_point () {
-  chassis -> setMaxVelocity (40);
-  float count = 0;
-  while ( !back_bumperswitch.isPressed() ) {
-    move_dist (40, 25);
-    count += 25;
-  }
-  stop ();
-  for (int i = 0; i < 40; i++)
-  back_clamp ();
-  stop ();
-  back_unclamp ();
-  stop ();
-  chassis -> setMaxVelocity (-40);
-  move_dist (-60, count);
-  stop ();
-  chassis -> setMaxVelocity (200);
-  stop ();
-}
-
 void right_win_point_mbl_goal(){
   //assuming that the bot is facing w the lift at the back
   chassis -> setMaxVelocity (150);

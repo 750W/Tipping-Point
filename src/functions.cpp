@@ -62,28 +62,28 @@ void acceleration_tracker(void*) {
 
 void front_clamp () {
 
-  front_intake.moveVoltage(8000);
+  front_intake.moveVelocity(100);
   delay (200) ;
 
 }
 
 void front_unclamp () {
 
-  front_intake.moveVoltage(-8000);
+  front_intake.moveVelocity(-100);
   delay(200);
 
 }
 
 void back_clamp () {
 
-  back_intake.moveVoltage(8000);
+  back_intake.moveVoltage(-8000);
   delay(200);
 
 }
 
 void back_unclamp () {
 
-  back_intake.moveVoltage(-8000);
+  back_intake.moveVoltage(8000);
   delay(200);
 
 }
@@ -205,7 +205,7 @@ void stop () {
   lift.moveVelocity(0);
   front_intake.moveVoltage(0);
   back_intake.moveVoltage(0);
-  delay(300);
+  delay(600);
 
 }
 
@@ -238,9 +238,12 @@ void drive_PID (double dist) {
   double prev_errorL, prev_errorR, kD, derivativeL, derivativeR;
   int l_begpos, r_begpos, lpos, rpos, desired_val;
   double half;
+  int diff;
 
   r_begpos = (int)drive_fR.getPosition();
   l_begpos = (int)drive_fL.getPosition();
+
+  diff =  r_begpos - l_begpos;
 
   desired_val = dist*100/(2*3.14*2.0)*360.0;
 
@@ -257,6 +260,8 @@ void drive_PID (double dist) {
 
     r_begpos = (int)drive_fR.getPosition();
     l_begpos = (int)drive_fL.getPosition();
+
+    diff =  r_begpos - l_begpos;
 
     lpos = 0;
     rpos = 0;
@@ -305,7 +310,7 @@ void drive_PID (double dist) {
       if ( (sign > 0 && velocityL < 10 && velocityR < 10) || (sign < 0 && velocityL > -10 && velocityR > -10) )
       break;
 
-      move_dist(velocityL, velocityR);
+      move_dist(velocityL - diff, velocityR + diff);
 
       printf ("Error: %f, %f", errorL, errorR);
       printf ("velocity: %f, %f", velocityL, velocityR);
