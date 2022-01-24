@@ -59,6 +59,7 @@ void mbl_goal();
 void left_win_point();
 void right_win_point();
 void new_auton_trial();
+void right_win_point_mbl_goal();
 void move_dist(double spd, int time);
 
 void front_clamp();
@@ -81,7 +82,7 @@ void drive_PID(double dist);
 void lift_PID(int deg);
 void drive_tarePos();
 void turn_PID(int deg);
-void acceleration_tracker(void*);
 void move_dist_drive(double spdL, double spdR);
-void right_win_point_mbl_goal();
+
 void drive_funct(void*);
+void acceleration_tracker(void*);
