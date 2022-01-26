@@ -1,7 +1,7 @@
 #include "config.h"
 
 void drive_funct(void*){
-  while(!auton_state){
+  while(true && !auton_state){
     chassis->getModel()->arcade(
       joystick.getAnalog(okapi::ControllerAnalog::leftY),
       joystick.getAnalog(okapi::ControllerAnalog::rightX)
