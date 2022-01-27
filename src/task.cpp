@@ -2,7 +2,7 @@
 using namespace okapi;
 
 void drive_funct(void*){
-  while(true && !auton_state){
+  while(true){
     chassis->getModel()->arcade(
       joystick.getAnalog(okapi::ControllerAnalog::leftY),
       joystick.getAnalog(okapi::ControllerAnalog::rightX)
