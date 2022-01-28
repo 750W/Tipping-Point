@@ -12,14 +12,11 @@ void initialize() {
   imu_x.reset();
   imu_z.reset();
   //Task tracker_task(acceleration_tracker,(void*)"not needed",TASK_PRIORITY_DEFAULT,TASK_STACK_DEPTH_DEFAULT,"tracker task");
-  //auton_selector();
+  auton_selector();
 }
 
 void autonomous() {
   auton_state = true;
-  mbl_goal();
-  auton_state = false;
-  /*
   switch(i){
     case 0: mbl_goal();
     break;
@@ -28,7 +25,8 @@ void autonomous() {
     case 2: right_win_point();
     break;
   }
-  */
+  auton_state = false;
+
   /*
   chassis -> setMaxVelocity (150);
   int count = 0;
