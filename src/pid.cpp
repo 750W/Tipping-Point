@@ -15,7 +15,7 @@ void drive_PID (double dist) {
 
   diff =  r_begpos - l_begpos;
 
-  desired_val = dist*100/(2*3.14*2.0)*360.0;
+  desired_val = dist * 100 / (2 * 3.14 * 2.0) * 360.0;
 
   if ( l_begpos != desired_val && r_begpos != desired_val ) {
 
