@@ -16,7 +16,6 @@ void right_win_point () {
   stop ();
 }
 
-//Scores in one of the alliance mobile goals and depending on where we are, also moves the alliance goal out of the win point line. --- bot starts on the left side.
 void left_win_point () {
   chassis -> setMaxVelocity (200);
   int count = 0;
@@ -59,9 +58,9 @@ void mbl_goal () {
   chassis -> setMaxVelocity (200);
   stop ();
 }
-//Gets both middle/neutral mobile goals with the both starting on the right side
+
 void both_mobile_goals_right(){
-  //assuming that the bot is facing w the lift at the back
+
   chassis -> setMaxVelocity (150);
   int count = 0;
   while ( !back_bumperswitch.isPressed()) {
@@ -97,15 +96,11 @@ void both_mobile_goals_right(){
   }
 }
 
-//Gets both middle/neutral mobile goals with the both starting on the left side
 void both_mobile_goals_left(){
 
 }
 
-//Gets a win point by scoring on both alliance goals and moving one of them out the win point line --- bot starts on the left side.
 void both_win_points_left(){
-    //Image for Steps reference:
-    //https://media.discordapp.net/attachments/881310328422559805/928389141706711121/unknown.png
     //Step 1
     turn_cw(90, 40); //TODO: turn_cw_PID not yet made
     //Step 2
@@ -143,8 +138,6 @@ void both_win_points_left(){
 
 //Gets a win point by scoring on both alliance goals and moving one of them out the win point line --- bot starts on the right side.
 void both_win_points_right(){
-    //Image for Steps reference:
-    //https://media.discordapp.net/attachments/881310328422559805/928015751560970300/unknown.png
     int degreesToMobileGoal = 50;
     //Step 1
     //currently assumes only parameter is degrees
@@ -168,7 +161,7 @@ void both_win_points_right(){
     stop();
     //Step 7
     //currently assumes only parameter is degrees
-    turn_ccw_PID(90); //TODO: turn_ccw_PID not yet made
+    turn_ccw_PID(90);
     //Step 8
     move_dist(40,50);
     stop();
@@ -183,7 +176,6 @@ void both_win_points_right(){
     stop();
 }
 
-//Scores in one of the alliance mobile goals and depending on where we are, also moves the alliance goal out of the win point line. --- bot starts on the right side.
 void right_win_point_mbl_goal(){
   //assuming that the bot is facing w the lift at the back
   chassis -> setMaxVelocity (150);

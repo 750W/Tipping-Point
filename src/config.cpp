@@ -45,9 +45,6 @@ okapi::ControllerButton b(ControllerDigital::B);
 
 okapi::ADIButton back_bumperswitch('H');
 
-okapi::ADIUltrasonic ultra_back('C', 'D');
-okapi::ADIUltrasonic ultra_front('E','F');
-
 okapi::IMU imu_z(4,IMUAxes::z);//TODO:change port
 okapi::IMU imu_x(4,IMUAxes::x);
 
