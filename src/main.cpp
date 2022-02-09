@@ -12,11 +12,12 @@ void initialize() {
   imu_x.reset();
   imu_z.reset();
   //Task tracker_task(acceleration_tracker,(void*)"not needed",TASK_PRIORITY_DEFAULT,TASK_STACK_DEPTH_DEFAULT,"tracker task");
-  auton_selector();
+  //auton_selector();
 }
 
 void autonomous() {
   auton_state = true;
+  /*
   switch(i){
     case 0: mbl_goal();
     break;
@@ -25,6 +26,8 @@ void autonomous() {
     case 2: right_win_point();
     break;
   }
+  */
+  mbl_goal();
   auton_state = false;
 
   /*
@@ -124,11 +127,12 @@ void opcontrol() {
 
       if (b.isPressed()) {
 
-        back_auto_unclamp();
+        back_auto_clamp();
+        
 
       } else {
 
-        back_auto_clamp();
+        back_auto_unclamp();
 
       }
 
@@ -145,6 +149,12 @@ void opcontrol() {
     } else if ( down.isPressed() ) {
 
       lift_down();
+
+    } else if ( x.isPressed() ) {
+
+      lift.moveVelocity(100);
+      delay(25);
+      lift.moveVelocity(0);
 
     } else {
 

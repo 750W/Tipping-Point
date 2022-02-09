@@ -43,19 +43,19 @@ void mbl_goal () {
   int count = 0;
   while ( !back_bumperswitch.isPressed()) {
     if(count > 980) {
-      move_dist (-180*0.5, 25);
+      move_dist (-140*0.5, 25);
       count += 25;
     } else {
-      move_dist (-200, 25);
+      move_dist (-140, 25);
       count += 25;
     }
   }
-  back_intake.moveVoltage(-16000);
+  back_intake.moveVoltage(16000);
   delay(400);
-  back_intake.moveVoltage(-8000);
-  move_dist(200, 15000-count);
+  back_intake.moveVoltage(8000);
+  move_dist(180, count);
   stop ();
-  chassis -> setMaxVelocity (200);
+  chassis -> setMaxVelocity (140);
   stop ();
 }
 
