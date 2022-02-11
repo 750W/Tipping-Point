@@ -10,6 +10,7 @@ void stop () {
   lift.moveVelocity(0);
   front_intake.moveVoltage(0);
   back_intake.moveVoltage(0);
+
   delay(600);
 
 }
@@ -29,6 +30,7 @@ void move_dist_drive (double spdL, double spdR) {
   drive_fR.moveVelocity(spdR);
   drive_bL.moveVelocity(spdL);
   drive_bR.moveVelocity(spdR);
+
   delay(40);
 
 }
@@ -39,6 +41,7 @@ void move_dist (double spd, int time) {
   drive_fR.moveVelocity(spd);
   drive_bL.moveVelocity(spd);
   drive_bR.moveVelocity(spd);
+
   delay(time);
 
 }
@@ -68,6 +71,7 @@ void back_auto_clamp () {
 
   back_intake.moveVoltage(-16000);
   delay(400);
+  
   back_intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
 
 }

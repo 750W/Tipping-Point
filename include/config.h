@@ -5,43 +5,53 @@ const int FRONT_LEFT_MOTOR = 7;
 const int FRONT_RIGHT_MOTOR = 14;
 const int BACK_LEFT_MOTOR = 13;
 const int BACK_RIGHT_MOTOR = 20;
+
 const int FRONT_INTAKE_MOTOR = 5;
+const int BACK_INTAKE_MOTOR = 18;
+
 const int LEFT_LIFT_MOTOR = 10;
 const int RIGHT_LIFT_MOTOR = 6;
-const int BACK_INTAKE_MOTOR = 18;
 
 extern okapi::Motor drive_fL;
 extern okapi::Motor drive_fR;
 extern okapi::Motor drive_bL;
 extern okapi::Motor drive_bR;
+
 extern okapi::Motor front_intake;
 extern okapi::Motor back_intake;
+
 extern okapi::Motor liftL;
 extern okapi::Motor liftR;
+
 extern std::shared_ptr<okapi::OdomChassisController> chassis;
 extern int i;
 
 extern okapi::Controller joystick;
-extern okapi::ControllerButton backTakeIn;
-extern okapi::ControllerButton backTakeOut;
+
 extern okapi::ControllerButton frontTakeIn;
 extern okapi::ControllerButton frontTakeOut;
+
+extern okapi::ControllerButton backTakeIn;
+extern okapi::ControllerButton backTakeOut;
+
 extern okapi::ControllerButton up;
 extern okapi::ControllerButton down;
 extern okapi::ControllerButton left;
 extern okapi::ControllerButton right;
+
 extern okapi::ControllerButton x;
 extern okapi::ControllerButton a;
 extern okapi::ControllerButton y;
 extern okapi::ControllerButton b;
 
-extern okapi::MotorGroup lift;
 extern okapi::MotorGroup front_drive;
+extern okapi::MotorGroup lift;
 
 extern okapi::ADIButton back_bumperswitch;
 
-extern std::vector<double> acceleration;
 extern bool auton_state;
+
+extern std::vector<double> acceleration;
 extern int ind;
 extern int totalTime;
 extern okapi::IMU imu_x;
@@ -52,25 +62,32 @@ extern pros::Task drive;
 
 void stop();
 void drive_tarePos();
-void drive_PID(double dist);
+
 void move_dist(double spd, int time);
 void move_dist_drive(double spdL, double spdR);
 
+void drive_PID(double dist);
+
 void front_clamp();
 void front_unclamp();
+
 void back_clamp();
 void back_unclamp();
+
 void back_auto_clamp();
 void back_auto_unclamp();
 
 void lift_up();
 void lift_down();
+
 void lift_PID(int deg);
 
 void turn_cw(float spd, int time);
 void turn_ccw(float spd, int time);
+
 void turn_cw_PID(int deg);
 void turn_ccw_PID(int deg);
+
 void turn_PID(int deg);
 
 void mbl_goal();

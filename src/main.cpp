@@ -2,13 +2,17 @@
 using namespace okapi;
 
 void initialize() {
+
   front_intake.setBrakeMode(AbstractMotor::brakeMode::hold);
   back_intake.setBrakeMode(AbstractMotor::brakeMode::hold);
   lift.setBrakeMode(AbstractMotor::brakeMode::hold);
+
   front_intake.tarePosition();
   back_intake.tarePosition();
+
   liftR.tarePosition();
   liftL.tarePosition();
+
   imu_x.reset();
   imu_z.reset();
   //Task tracker_task(acceleration_tracker,(void*)"not needed",TASK_PRIORITY_DEFAULT,TASK_STACK_DEPTH_DEFAULT,"tracker task");
@@ -17,17 +21,20 @@ void initialize() {
 
 void autonomous() {
   auton_state = true;
-  /*
-  switch(i){
+
+  switch (i) {
+
     case 0: mbl_goal();
     break;
+
     case 1: left_win_point();
     break;
+
     case 2: right_win_point();
     break;
+
   }
-  */
-  mbl_goal();
+
   auton_state = false;
 
   /*
@@ -97,9 +104,10 @@ void autonomous() {
 }
 
 void opcontrol() {
+
   Task drive(drive_funct, (void*)"not needed", "driver control task");
 
-  while(true){
+  while (true) {
 
     if ( frontTakeIn.isPressed() ) {
 
@@ -115,20 +123,19 @@ void opcontrol() {
 
     }
 
-    if (backTakeIn.isPressed() ) {
+    if ( backTakeIn.isPressed() ) {
 
       back_clamp();
 
-    } else if (backTakeOut.isPressed()) {
+    } else if ( backTakeOut.isPressed() ) {
 
       back_unclamp();
 
-    } else if (back_bumperswitch.isPressed()) {
+    } else if ( back_bumperswitch.isPressed() ) {
 
-      if (b.isPressed()) {
+      if ( b.isPressed() ) {
 
         back_auto_clamp();
-        
 
       } else {
 
@@ -154,6 +161,7 @@ void opcontrol() {
 
       lift.moveVelocity(100);
       delay(25);
+      
       lift.moveVelocity(0);
 
     } else {

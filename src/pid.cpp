@@ -4,10 +4,15 @@ using namespace okapi;
 void drive_PID (double dist) {
 
   double errorL, errorR, kP, velocityL, velocityR;
+
   double total_errorL, total_errorR, kI;
+
   double prev_errorL, prev_errorR, kD, derivativeL, derivativeR;
+
   int l_begpos, r_begpos, lpos, rpos, desired_val;
+
   double half;
+
   int diff;
 
   r_begpos = (int)drive_fR.getPosition();
@@ -24,12 +29,12 @@ void drive_PID (double dist) {
 
     prev_errorL = 0.0;
     prev_errorR = 0.0;
-    desired_val = dist*100/(2*3.14*2.0)*360.0;
+    desired_val = dist * 100 / ( 2 * 3.14 * 2.0 ) * 360.0;
 
     front_drive.tarePosition();
 
-    r_begpos = (int)drive_fR.getPosition();
-    l_begpos = (int)drive_fL.getPosition();
+    r_begpos = (int) drive_fR.getPosition();
+    l_begpos = (int) drive_fL.getPosition();
 
     diff =  r_begpos - l_begpos;
 
@@ -38,10 +43,8 @@ void drive_PID (double dist) {
 
     while ( desired_val != lpos && desired_val != rpos ) {
 
-      rpos = (int)drive_fR.getPosition() + -1 * r_begpos;
-      lpos = (int)drive_fL.getPosition() + -1 * l_begpos;
-
-      printf("%f %f", rpos, lpos);
+      rpos = (int) drive_fR.getPosition() + -1 * r_begpos;
+      lpos = (int) drive_fL.getPosition() + -1 * l_begpos;
 
       errorL = desired_val - lpos;
       errorR = desired_val - rpos;
@@ -53,6 +56,7 @@ void drive_PID (double dist) {
       velocityR = (errorR * kP + derivativeR * kD);
 
       int sign = 0;
+
       if ( velocityL > 150 ) {
 
         velocityL = 150;
@@ -82,11 +86,9 @@ void drive_PID (double dist) {
 
       move_dist(velocityL - diff, velocityR + diff);
 
-      printf ("Error: %f, %f", errorL, errorR);
-      printf ("velocity: %f, %f", velocityL, velocityR);
-
       prev_errorL = errorL;
       prev_errorR = errorR;
+
       delay(20);
 
     }
@@ -98,14 +100,17 @@ void drive_PID (double dist) {
 void turn_PID(double dist){
 
     double errorL, errorR, kP, velocityL, velocityR;
+
     double total_errorL, total_errorR, kI;
+
     double prev_errorL, prev_errorR, kD, derivativeL, derivativeR;
+
     int l_begpos, r_begpos, lpos, rpos, desired_val;
 
     r_begpos = (int)drive_fR.getPosition();
     l_begpos = (int)drive_fL.getPosition();
 
-    if ( l_begpos != (int)dist && r_begpos != (int)dist ) {
+    if ( l_begpos != (int) dist && r_begpos != (int) dist ) {
 
       kP = 0.1;
       kI = 0.0;
@@ -113,30 +118,36 @@ void turn_PID(double dist){
 
       prev_errorL = 0.0;
       prev_errorR = 0.0;
-      desired_val = (int)dist;
+      desired_val = (int) dist;
 
       drive_tarePos();
-      r_begpos = (int)drive_fR.getPosition();
-      l_begpos = (int)drive_fL.getPosition();
+      r_begpos = (int) drive_fR.getPosition();
+      l_begpos = (int) drive_fL.getPosition();
 
       lpos = 0;
       rpos = 0;
 
       while ( desired_val != lpos && desired_val != rpos ) {
 
-        rpos = (int)drive_fR.getPosition() + -1 * r_begpos;
-        lpos = (int)drive_fL.getPosition() + -1 * l_begpos;
+        rpos = (int) drive_fR.getPosition() + -1 * r_begpos;
+        lpos = (int) drive_fL.getPosition() + -1 * l_begpos;
+
         errorL = desired_val - lpos;
         errorR = desired_val - rpos;
+
         total_errorL += errorL;
         total_errorR += errorR;
 
         if ( errorL == 0 || lpos < desired_val ) {
+
           total_errorL = 0;
+
         }
 
         if ( errorR == 0 || rpos < desired_val ) {
+
           total_errorR = 0;
+
         }
 
         derivativeL = errorL - prev_errorL;
@@ -168,11 +179,9 @@ void turn_PID(double dist){
         drive_bL.moveVelocity(velocityL);
         drive_bR.moveVelocity(velocityR);
 
-        //printf ("Error: %f, %f", errorL, errorR) ;
-        //printf ("velocity: %f, %f", velocityL, velocityR) ;
-
         prev_errorL = errorL;
         prev_errorR = errorR;
+
         delay(20);
 
       }
@@ -183,6 +192,7 @@ void turn_PID(double dist){
     drive_fR.moveVelocity(0);
     drive_bL.moveVelocity(0);
     drive_bR.moveVelocity(0);
+
     delay(20);
 
 }
@@ -190,8 +200,11 @@ void turn_PID(double dist){
 void lift_PID (int rev) {
 
   double errorL, errorR, kP, velocityL, velocityR;
+
   double total_errorL, total_errorR, kI;
+
   double prev_errorL, prev_errorR, kD, derivativeL, derivativeR;
+
   int l_begpos, r_begpos, lpos, rpos, desired_val;
 
   r_begpos = (int)liftR.getPosition();
@@ -208,6 +221,7 @@ void lift_PID (int rev) {
     desired_val = rev;
 
     lift.tarePosition();
+
     r_begpos = (int)liftR.getPosition();
     l_begpos = (int)liftL.getPosition();
 
@@ -217,20 +231,25 @@ void lift_PID (int rev) {
 
     while (desired_val != lpos && desired_val != rpos) {
 
-      rpos = (int)liftR.getPosition() + -1 * r_begpos;
-      lpos = (int)liftL.getPosition() + -1 * l_begpos;
+      rpos = (int) liftR.getPosition() + -1 * r_begpos;
+      lpos = (int) liftL.getPosition() + -1 * l_begpos;
 
       errorL = desired_val - lpos;
       errorR = desired_val - rpos;
+
       total_errorL += errorL;
       total_errorR += errorR;
 
       if ( errorL == 0 || lpos < desired_val ) {
+
         total_errorL = 0;
+
       }
 
       if ( errorR == 0 || rpos < desired_val ) {
+
         total_errorR = 0;
+
       }
 
       derivativeL = errorL - prev_errorL;
@@ -269,6 +288,7 @@ void lift_PID (int rev) {
 
       prev_errorL = errorL;
       prev_errorR = errorR;
+      
       delay(20);
 
     }
