@@ -20,7 +20,7 @@ std::shared_ptr<okapi::OdomChassisController> chassis = ChassisControllerBuilder
             {4.0_in, 12.0_in},
             static_cast<int32_t>(imev5BlueTPR)
         }
-    ).withMaxVelocity(550
+    ).withMaxVelocity(480
     ).withOdometry(
     ).buildOdometry();
 
