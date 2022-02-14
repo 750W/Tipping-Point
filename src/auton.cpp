@@ -3,22 +3,22 @@ using namespace okapi;
 
 void right_win_point () {
 
-  chassis -> setMaxVelocity (200);
+  chassis -> setMaxVelocity (400);
   int count = 0;
 
   while ( !back_bumperswitch.isPressed()) {
-    move_dist(-100, 25);
+    move_dist(-180, 25);
     count += 25;
   }
 
-  back_intake.moveVoltage(-16000);
+  back_intake.moveVoltage(16000);
   delay(400);
 
-  back_intake.moveVoltage(-8000);
+  back_intake.moveVoltage(8000);
   move_dist(200, count);
   stop ();
 
-  chassis -> setMaxVelocity (200);
+  chassis -> setMaxVelocity (180);
   stop ();
 
 }
@@ -37,12 +37,12 @@ void left_win_point () {
   move_dist(100, 75);
   stop();
 
-  back_intake.moveVoltage(-8000);
-  delay(400);
+  back_intake.moveVoltage(8000);
+  delay(800);
   stop();
 
-  back_intake.moveVoltage(8000);
-  delay(400);
+  back_intake.moveVoltage(-8000);
+  delay(800);
   stop();
 
   move_dist(200, count);
@@ -311,7 +311,7 @@ void auton_selector () {
 
       i = -1;
       joystick.setText (0, 0, "no auton selected");
-      
+
     }
 
   }

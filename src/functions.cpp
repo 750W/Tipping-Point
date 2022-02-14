@@ -48,30 +48,30 @@ void move_dist (double spd, int time) {
 
 void front_clamp () {
 
-  front_intake.moveVelocity(100);
-  delay (200) ;
+  front_intake.moveVelocity(60);
+  delay (100) ;
+  front_intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
 
 }
 
 void front_unclamp () {
 
-  front_intake.moveVelocity(-100);
-  delay(200);
+  front_intake.moveVelocity(-60);
+  delay(100);
 
 }
 
 void back_clamp () {
 
-  back_intake.moveVoltage(-16000);
+  back_intake.moveVoltage(-8000);
   delay(200);
 
 }
 
 void back_auto_clamp () {
 
-  back_intake.moveVoltage(-16000);
+  back_intake.moveVoltage(-8000);
   delay(400);
-  
   back_intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
 
 }
@@ -85,8 +85,9 @@ void back_unclamp () {
 
 void back_auto_unclamp () {
 
-  back_intake.moveVoltage(16000);
+  back_intake.moveVoltage(8000);
   delay(400);
+  back_intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
 
 }
 

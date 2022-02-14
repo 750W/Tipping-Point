@@ -9,9 +9,7 @@ void initialize() {
 
   front_intake.tarePosition();
   back_intake.tarePosition();
-
-  liftR.tarePosition();
-  liftL.tarePosition();
+  lift.tarePosition();
 
   imu_x.reset();
   imu_z.reset();
@@ -20,8 +18,9 @@ void initialize() {
 }
 
 void autonomous() {
-  auton_state = true;
 
+  auton_state = true;
+  /*
   switch (i) {
 
     case 0: mbl_goal();
@@ -34,6 +33,8 @@ void autonomous() {
     break;
 
   }
+  */
+  //right_win_point();
 
   auton_state = false;
 
@@ -125,13 +126,19 @@ void opcontrol() {
 
     if ( backTakeIn.isPressed() ) {
 
-      back_clamp();
+      back_auto_clamp();
 
     } else if ( backTakeOut.isPressed() ) {
 
-      back_unclamp();
+      back_auto_unclamp();
 
-    } else if ( back_bumperswitch.isPressed() ) {
+    } else {
+
+      back_intake.moveVoltage(0);
+
+    }
+
+    /*else if ( back_bumperswitch.isPressed() ) {
 
       if ( b.isPressed() ) {
 
@@ -142,12 +149,7 @@ void opcontrol() {
         back_auto_unclamp();
 
       }
-
-    }  else {
-
-      back_intake.moveVoltage(0);
-
-    }
+      */
 
     if ( up.isPressed() ) {
 
@@ -157,14 +159,7 @@ void opcontrol() {
 
       lift_down();
 
-    } else if ( x.isPressed() ) {
-
-      lift.moveVelocity(100);
-      delay(25);
-      
-      lift.moveVelocity(0);
-
-    } else {
+    }  else {
 
       lift.moveVelocity(0);
 

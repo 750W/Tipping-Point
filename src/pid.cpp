@@ -1,6 +1,7 @@
 #include "config.h"
 using namespace okapi;
 
+
 void drive_PID (double dist) {
 
   double errorL, errorR, kP, velocityL, velocityR;
@@ -199,101 +200,76 @@ void turn_PID(double dist){
 
 void lift_PID (int rev) {
 
-  double errorL, errorR, kP, velocityL, velocityR;
+  double error, kP, velocity ;
 
-  double total_errorL, total_errorR, kI;
+  double total_error, kI;
 
-  double prev_errorL, prev_errorR, kD, derivativeL, derivativeR;
+  double prev_error, kD, derivative;
 
-  int l_begpos, r_begpos, lpos, rpos, desired_val;
+  int begpos, pos, desired_val;
 
-  r_begpos = (int)liftR.getPosition();
-  l_begpos = (int)liftL.getPosition();
+  begpos = (int)lift.getPosition();
 
-  if ( l_begpos != rev && r_begpos != rev ) {
+  if ( begpos != rev ) {
 
     kP = 0.3;
     kI = 0.2;
     kD = 0.3;
 
-    prev_errorL = 0.0;
-    prev_errorR = 0.0;
+    prev_error = 0.0;
     desired_val = rev;
 
     lift.tarePosition();
 
-    r_begpos = (int)liftR.getPosition();
-    l_begpos = (int)liftL.getPosition();
+    begpos = (int)lift.getPosition();
 
-    lpos = 0;
-    rpos = 0;
+    pos = 0;
+
     int sign = 0;
 
-    while (desired_val != lpos && desired_val != rpos) {
+    while (desired_val != pos) {
 
-      rpos = (int) liftR.getPosition() + -1 * r_begpos;
-      lpos = (int) liftL.getPosition() + -1 * l_begpos;
+      pos = (int) lift.getPosition() + -1 * begpos;
 
-      errorL = desired_val - lpos;
-      errorR = desired_val - rpos;
+      error = desired_val - pos;
 
-      total_errorL += errorL;
-      total_errorR += errorR;
+      total_error += error;
 
-      if ( errorL == 0 || lpos < desired_val ) {
+      if ( error == 0 || pos < desired_val ) {
 
-        total_errorL = 0;
+        total_error = 0;
 
       }
 
-      if ( errorR == 0 || rpos < desired_val ) {
+      derivative = error - prev_error;
 
-        total_errorR = 0;
+      velocity = (error * kP + total_error * kI + derivative * kD);
 
-      }
+      if ( velocity > 80 ) {
 
-      derivativeL = errorL - prev_errorL;
-      derivativeR = errorR - prev_errorR;
-
-      velocityL = (errorL * kP + total_errorL * kI + derivativeL * kD);
-      velocityR = (errorR * kP + total_errorR * kI + derivativeR * kD);
-
-      if ( velocityL > 80 ) {
-
-        velocityL = 80;
+        velocity = 80;
         sign++;
 
-      } else if ( velocityR > 80 ) {
+      } else if ( velocity < -80 ) {
 
-        velocityR = 80;
-        sign++;
-
-      } else if ( velocityL < -80 ) {
-
-        velocityL = -80;
-        sign--;
-
-      } else if ( velocityR < -80 ) {
-
-        velocityR = -80;
+        velocity = -80;
         sign--;
 
       }
 
-      if ( (sign > 0 && velocityL < 10 && velocityR < 10) || (sign < 0 && velocityL > -10 && velocityR > -10) )
+      if ( (sign > 0 && velocity < 10) || (sign < 0 && velocity > -10) )
       break;
 
-      liftL.moveVelocity(velocityL);
-      liftR.moveVelocity(velocityR);
+      lift.moveVelocity(velocity);
 
-      prev_errorL = errorL;
-      prev_errorR = errorR;
-      
+      prev_error = error;
+
       delay(20);
 
     }
 
   }
+
 
   lift.moveVelocity(0);
   delay(20);

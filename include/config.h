@@ -4,13 +4,12 @@
 const int FRONT_LEFT_MOTOR = 7;
 const int FRONT_RIGHT_MOTOR = 14;
 const int BACK_LEFT_MOTOR = 13;
-const int BACK_RIGHT_MOTOR = 20;
+const int BACK_RIGHT_MOTOR = 2;
 
 const int FRONT_INTAKE_MOTOR = 5;
 const int BACK_INTAKE_MOTOR = 18;
 
-const int LEFT_LIFT_MOTOR = 10;
-const int RIGHT_LIFT_MOTOR = 6;
+const int LIFT_MOTOR = 9;
 
 extern okapi::Motor drive_fL;
 extern okapi::Motor drive_fR;
@@ -20,8 +19,7 @@ extern okapi::Motor drive_bR;
 extern okapi::Motor front_intake;
 extern okapi::Motor back_intake;
 
-extern okapi::Motor liftL;
-extern okapi::Motor liftR;
+extern okapi::Motor lift;
 
 extern std::shared_ptr<okapi::OdomChassisController> chassis;
 extern int i;
@@ -45,7 +43,6 @@ extern okapi::ControllerButton y;
 extern okapi::ControllerButton b;
 
 extern okapi::MotorGroup front_drive;
-extern okapi::MotorGroup lift;
 
 extern okapi::ADIButton back_bumperswitch;
 
