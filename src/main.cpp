@@ -117,12 +117,12 @@ void opcontrol() {
     if ( frontTakeIn.isPressed() ) {
 
       //front_clamp();
-      extend_piston(100);
+      extend_piston(1000);
 
     } else if ( frontTakeOut.isPressed() ) {
 
       //front_unclamp();
-      contract_piston(0);
+      contract_piston(1000);
 
     } else {
 
