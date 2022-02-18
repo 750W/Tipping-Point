@@ -57,7 +57,7 @@ extern okapi::IMU imu_z;
 extern pros::Task acceleration_tracker_task;
 extern pros::Task drive;
 
-extern pros::ADIDigitalOut piston;
+extern ADIDigitalOut piston;
 
 void stop();
 void drive_tarePos();

@@ -112,7 +112,7 @@ void autonomous() {
 void opcontrol() {
 
   Task drive(drive_funct, (void*)"not needed", "driver control task");
-
+  while(true) {
 
     if ( frontTakeIn.isPressed() ) {
 

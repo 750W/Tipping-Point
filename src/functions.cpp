@@ -128,7 +128,6 @@ void turn_ccw (float spd, int time) {
 void extend_piston (int time) {
     piston.set_value(true);
     delay(time);
-    contract_piston(100);
 }
 
 void contract_piston(int time){
