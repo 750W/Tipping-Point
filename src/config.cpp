@@ -57,6 +57,8 @@ okapi::ADIButton back_bumperswitch('H');
 okapi::IMU imu_z(4,IMUAxes::z);//TODO:change port
 okapi::IMU imu_x(4,IMUAxes::x);
 
+pros::ADIDigitalOut piston('D');
+
 int i = 0;
 bool auton_state = true;
 std::vector<double> acceleration;

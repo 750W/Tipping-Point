@@ -57,6 +57,8 @@ extern okapi::IMU imu_z;
 extern pros::Task acceleration_tracker_task;
 extern pros::Task drive;
 
+extern pros::ADIDigitalOut piston;
+
 void stop();
 void drive_tarePos();
 
@@ -98,3 +100,6 @@ void auton_selector();
 void drive_funct(void*);
 void acceleration_tracker(void*);
 double getCurrentPosition();
+
+void extend_piston(int time);
+void contract_piston(int time);

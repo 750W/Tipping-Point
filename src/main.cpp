@@ -3,6 +3,8 @@ using namespace okapi;
 
 void initialize() {
 
+    piston.set_value(false);
+
   front_intake.setBrakeMode(AbstractMotor::brakeMode::hold);
   back_intake.setBrakeMode(AbstractMotor::brakeMode::hold);
   lift.setBrakeMode(AbstractMotor::brakeMode::hold);
@@ -13,6 +15,7 @@ void initialize() {
 
   imu_x.reset();
   imu_z.reset();
+  //contract_piston(0)
   //Task tracker_task(acceleration_tracker,(void*)"not needed",TASK_PRIORITY_DEFAULT,TASK_STACK_DEPTH_DEFAULT,"tracker task");
   //auton_selector();
 }
@@ -104,19 +107,28 @@ void autonomous() {
 */
 }
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "EndlessLoop"
 void opcontrol() {
 
   Task drive(drive_funct, (void*)"not needed", "driver control task");
 
-  while (true) {
+    while (true) {
+      static bool toggle { false };    //This static variable will keep state between loops or function calls
+      if(frontTakeIn.isPressed()) {
+          piston.set_value(!toggle);
+          toggle = !toggle;    //Flip the toggle to match piston state
+      }
 
     if ( frontTakeIn.isPressed() ) {
 
-      front_clamp();
+      //front_clamp();
+      //extend_piston(100);
 
     } else if ( frontTakeOut.isPressed() ) {
 
-      front_unclamp();
+      //front_unclamp();
+      //contract_piston(0);
 
     } else {
 
@@ -183,3 +195,4 @@ void opcontrol() {
   }
 
 }
+#pragma clang diagnostic pop
