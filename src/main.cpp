@@ -113,22 +113,16 @@ void opcontrol() {
 
   Task drive(drive_funct, (void*)"not needed", "driver control task");
 
-    while (true) {
-      static bool toggle { false };    //This static variable will keep state between loops or function calls
-      if(frontTakeIn.isPressed()) {
-          piston.set_value(!toggle);
-          toggle = !toggle;    //Flip the toggle to match piston state
-      }
 
     if ( frontTakeIn.isPressed() ) {
 
       //front_clamp();
-      //extend_piston(100);
+      extend_piston(100);
 
     } else if ( frontTakeOut.isPressed() ) {
 
       //front_unclamp();
-      //contract_piston(0);
+      contract_piston(0);
 
     } else {
 
