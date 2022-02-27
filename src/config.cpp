@@ -1,10 +1,10 @@
 #include "config.h"
 using namespace okapi;
 
-okapi::Motor drive_fL(FRONT_LEFT_MOTOR, false, AbstractMotor::gearset::blue, AbstractMotor::encoderUnits::degrees);
-okapi::Motor drive_fR(FRONT_RIGHT_MOTOR, true, AbstractMotor::gearset::blue, AbstractMotor::encoderUnits::degrees);
-okapi::Motor drive_bL(BACK_LEFT_MOTOR, false, AbstractMotor::gearset::blue, AbstractMotor::encoderUnits::degrees);
-okapi::Motor drive_bR(BACK_RIGHT_MOTOR, true, AbstractMotor::gearset::blue, AbstractMotor::encoderUnits::degrees);
+okapi::Motor drive_fL(FRONT_LEFT_MOTOR, false, AbstractMotor::gearset::green, AbstractMotor::encoderUnits::degrees);
+okapi::Motor drive_fR(FRONT_RIGHT_MOTOR, true, AbstractMotor::gearset::green, AbstractMotor::encoderUnits::degrees);
+okapi::Motor drive_bL(BACK_LEFT_MOTOR, false, AbstractMotor::gearset::green, AbstractMotor::encoderUnits::degrees);
+okapi::Motor drive_bR(BACK_RIGHT_MOTOR, true, AbstractMotor::gearset::green, AbstractMotor::encoderUnits::degrees);
 
 okapi::Motor front_intake(FRONT_INTAKE_MOTOR, true, AbstractMotor::gearset::red, AbstractMotor::encoderUnits::degrees);
 okapi::Motor back_intake(BACK_INTAKE_MOTOR, false, AbstractMotor::gearset::red, AbstractMotor::encoderUnits::degrees);
@@ -20,13 +20,13 @@ std::shared_ptr<okapi::OdomChassisController> chassis = ChassisControllerBuilder
 
     ).withDimensions(
 
-        AbstractMotor::gearset::blue,
+        AbstractMotor::gearset::green,
         {
             {4.0_in, 12.0_in},
-            static_cast<int32_t>(imev5BlueTPR)
+            static_cast<int32_t>(imev5GreenTPR)
         }
 
-    ).withMaxVelocity(480
+    ).withMaxVelocity(200
 
     ).withOdometry(
 
@@ -36,11 +36,11 @@ okapi::MotorGroup front_drive({drive_fL, drive_fR});
 
 okapi::Controller joystick;
 
-okapi::ControllerButton backTakeIn(ControllerDigital::L1);
-okapi::ControllerButton backTakeOut(ControllerDigital::R1);
+okapi::ControllerButton backTakeIn(ControllerDigital::L2);
+okapi::ControllerButton backTakeOut(ControllerDigital::R2);
 
-okapi::ControllerButton frontTakeIn(ControllerDigital::L2);
-okapi::ControllerButton frontTakeOut(ControllerDigital::R2);
+okapi::ControllerButton frontTakeIn(ControllerDigital::L1);
+okapi::ControllerButton frontTakeOut(ControllerDigital::R1);
 
 okapi::ControllerButton up(ControllerDigital::up);
 okapi::ControllerButton down(ControllerDigital::down);

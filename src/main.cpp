@@ -3,7 +3,7 @@ using namespace okapi;
 
 void initialize() {
 
-    piston.set_value(false);
+  piston.set_value(false);
 
   front_intake.setBrakeMode(AbstractMotor::brakeMode::hold);
   back_intake.setBrakeMode(AbstractMotor::brakeMode::hold);
@@ -23,6 +23,7 @@ void initialize() {
 void autonomous() {
 
   auton_state = true;
+
   /*
   switch (i) {
 
@@ -37,7 +38,8 @@ void autonomous() {
 
   }
   */
-  //right_win_point();
+
+  drive_PID({drive_fL, drive_bL}, {drive_fR, drive_bR}, 1000.0);
 
   auton_state = false;
 
@@ -107,8 +109,6 @@ void autonomous() {
 */
 }
 
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "EndlessLoop"
 void opcontrol() {
 
   Task drive(drive_funct, (void*)"not needed", "driver control task");
@@ -116,13 +116,11 @@ void opcontrol() {
 
     if ( frontTakeIn.isPressed() ) {
 
-      //front_clamp();
-      extend_piston(1000);
+      front_clamp();
 
     } else if ( frontTakeOut.isPressed() ) {
 
-      //front_unclamp();
-      contract_piston(1000);
+      front_unclamp();
 
     } else {
 
@@ -132,11 +130,11 @@ void opcontrol() {
 
     if ( backTakeIn.isPressed() ) {
 
-      back_auto_clamp();
+      back_clamp();
 
     } else if ( backTakeOut.isPressed() ) {
 
-      back_auto_unclamp();
+      back_unclamp();
 
     } else {
 

@@ -65,7 +65,7 @@ void drive_tarePos();
 void move_dist(double spd, int time);
 void move_dist_drive(double spdL, double spdR);
 
-void drive_PID(double dist);
+void drive_PID(okapi::MotorGroup left, okapi::MotorGroup right, double dist);
 
 void front_clamp();
 void front_unclamp();
@@ -94,6 +94,7 @@ void left_win_point();
 void right_win_point();
 void new_auton_trial();
 void right_win_point_mbl_goal();
+void prog_skills();
 
 void auton_selector();
 

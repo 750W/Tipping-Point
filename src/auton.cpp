@@ -29,7 +29,7 @@ void left_win_point () {
   int count = 0;
 
   while ( !back_bumperswitch.isPressed()) {
-    move_dist(-100, 25);
+    move_dist(-40, 25);
     count += 25;
   }
   stop();
@@ -37,11 +37,11 @@ void left_win_point () {
   move_dist(100, 75);
   stop();
 
-  back_intake.moveVoltage(8000);
+  back_clamp();
   delay(800);
   stop();
 
-  back_intake.moveVoltage(-8000);
+  back_unclamp();
   delay(800);
   stop();
 
@@ -55,33 +55,23 @@ void left_win_point () {
 
 void mbl_goal () {
 
-  chassis -> setMaxVelocity (200);
+  chassis -> setMaxVelocity (600);
   int count = 0;
 
   while ( !back_bumperswitch.isPressed()) {
-
-    if(count > 980) {
-
-      move_dist (-140*0.5, 25);
+      move_dist (-200, 25);
       count += 25;
-
-    } else {
-
-      move_dist (-140, 25);
-      count += 25;
-
-    }
-
+      if(count >= 1000)
+        move_dist (-50, 25);
   }
 
-  back_intake.moveVoltage(16000);
-  delay(400);
+  back_clamp();
+  delay(25);
 
-  back_intake.moveVoltage(8000);
-  move_dist(180, count);
+  move_dist(200, count);
   stop ();
 
-  chassis -> setMaxVelocity (140);
+  chassis -> setMaxVelocity (600);
   stop ();
 
 }
@@ -315,6 +305,13 @@ void auton_selector () {
     }
 
   }
+
+}
+
+void prog_skills() {
+
+  chassis->setState({0_in, 0_in, 0_deg});
+  
 
 }
 
