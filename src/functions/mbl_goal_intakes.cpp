@@ -17,7 +17,9 @@ void front_unclamp () {
 
 void back_clamp () {
 
-  extend_piston(100);
+  back_intake.moveVoltage(-8000);
+  delay(100);
+  //extend_piston(100);
 
 }
 
@@ -31,7 +33,9 @@ void back_auto_clamp () {
 
 void back_unclamp () {
 
-  contract_piston(100);
+  //contract_piston(100);
+  back_intake.moveVoltage(8000);
+  delay(100);
 
 }
 

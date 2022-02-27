@@ -18,7 +18,7 @@ void initialize() {
   imu_x.reset();
   imu_z.reset();
 
-  contract_piston(0);
+  //contract_piston(0);
   //Task tracker_task(acceleration_tracker,(void*)"not needed",TASK_PRIORITY_DEFAULT,TASK_STACK_DEPTH_DEFAULT,"tracker task");
   //auton_selector();
 }
