@@ -7,15 +7,18 @@ void initialize() {
 
   front_intake.setBrakeMode(AbstractMotor::brakeMode::hold);
   back_intake.setBrakeMode(AbstractMotor::brakeMode::hold);
+  ring_intake.setBrakeMode(AbstractMotor::brakeMode::hold);
   lift.setBrakeMode(AbstractMotor::brakeMode::hold);
 
   front_intake.tarePosition();
   back_intake.tarePosition();
   lift.tarePosition();
+  ring_intake.tarePosition();
 
   imu_x.reset();
   imu_z.reset();
-  //contract_piston(0)
+
+  contract_piston(0);
   //Task tracker_task(acceleration_tracker,(void*)"not needed",TASK_PRIORITY_DEFAULT,TASK_STACK_DEPTH_DEFAULT,"tracker task");
   //auton_selector();
 }
@@ -39,7 +42,8 @@ void autonomous() {
   }
   */
 
-  drive_PID({drive_fL, drive_bL}, {drive_fR, drive_bR}, 1000.0);
+  mbl_goal();
+  //drive_PID({drive_fL, drive_bL}, {drive_fR, drive_bR}, 1000.0);
 
   auton_state = false;
 
@@ -61,9 +65,7 @@ void autonomous() {
 
   chassis->turnToAngle(120_deg);
   back_unclamp();
-  */
 
-  /*
   chassis->turnToAngle(-120_deg);
 
   move_dist(-150, 450);
@@ -82,8 +84,6 @@ void autonomous() {
 
   stop();
 
-*/
-  /*
   chassis->turnToAngle(90_deg);
   back_unclamp();
   stop();
@@ -205,4 +205,3 @@ void opcontrol() {
   }
 
 }
-#pragma clang diagnostic pop

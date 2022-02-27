@@ -59,16 +59,16 @@ void mbl_goal () {
   int count = 0;
 
   while ( !back_bumperswitch.isPressed()) {
-      move_dist (-200, 25);
+      move_dist (200, 25);
       count += 25;
       if(count >= 1000)
-        move_dist (-50, 25);
+        move_dist (50, 25);
   }
 
-  back_clamp();
+  front_clamp();
   delay(25);
 
-  move_dist(200, count);
+  move_dist(-200, count);
   stop ();
 
   chassis -> setMaxVelocity (600);
