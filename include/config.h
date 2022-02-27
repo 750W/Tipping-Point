@@ -10,6 +10,7 @@ const int FRONT_INTAKE_MOTOR = 5;
 const int BACK_INTAKE_MOTOR = 18;
 
 const int LIFT_MOTOR = 9;
+const int RING_INTAKE_MOTOR = 10;
 
 extern okapi::Motor drive_fL;
 extern okapi::Motor drive_fR;
@@ -20,17 +21,18 @@ extern okapi::Motor front_intake;
 extern okapi::Motor back_intake;
 
 extern okapi::Motor lift;
+extern okapi::Motor ring_intake;
 
 extern std::shared_ptr<okapi::OdomChassisController> chassis;
 extern int i;
 
 extern okapi::Controller joystick;
 
-extern okapi::ControllerButton frontTakeIn;
-extern okapi::ControllerButton frontTakeOut;
+extern okapi::ControllerButton l1;
+extern okapi::ControllerButton r1;
 
-extern okapi::ControllerButton backTakeIn;
-extern okapi::ControllerButton backTakeOut;
+extern okapi::ControllerButton l2;
+extern okapi::ControllerButton r2;
 
 extern okapi::ControllerButton up;
 extern okapi::ControllerButton down;
@@ -75,6 +77,10 @@ void back_unclamp();
 
 void back_auto_clamp();
 void back_auto_unclamp();
+
+void ring_reverse();
+void ring_forward();
+void ring_stop();
 
 void lift_up();
 void lift_down();

@@ -311,76 +311,21 @@ void auton_selector () {
 void prog_skills() {
 
   chassis->setState({0_in, 0_in, 0_deg});
-  
+
 
 }
 
-/*
-void auton(){
-  while((int)ultraLeft.controllerGet() != (int)ultraRight.controllerGet()){
-    if((int)ultraLeft.controllerGet() > (int)ultraRight.controllerGet()){
-      fR.moveVelocity(5);
-      bR.moveVelocity(5);
-      delay(25);
-    }
-    else if((int)ultraLeft.controllerGet() < (int)ultraRight.controllerGet()){
-      fL.moveVelocity(5);
-      bL.moveVelocity(5);
-      delay(25);
-    }
-  }
+void stop () {
 
-  while((int)ultraLeft.controllerGet() != (int)ultraRight.controllerGet()){
-    if((int)ultraLeft.controllerGet() > (int)ultraRight.controllerGet()){
-      fR.moveVelocity(5);
-      bR.moveVelocity(5);
-      delay(25);
-    }
-    else if((int)ultraLeft.controllerGet() < (int)ultraRight.controllerGet()){
-      fL.moveVelocity(5);
-      bL.moveVelocity(5);
-      delay(25);
-    }
-  }
+  drive_fL.moveVelocity(0);
+  drive_fR.moveVelocity(0);
+  drive_bL.moveVelocity(0);
+  drive_bR.moveVelocity(0);
 
-    chassis->setMaxVelocity(60);
-    float count = 0;
-    while(!intakeLimitSwitch.isPressed()){
-      moveDistance(60, 25);
-      count += 25;
-    }
-    stop();
-    for(int i = 0; i < 10; i++)
-    frontIntakeClampDown();
-    stop();
-    chassis->setMaxVelocity(-60);
-    moveDistance(-60, count*(float)3/4);
-    stop();
-    frontIntakeUp();
-    stop();
-    chassis->setMaxVelocity(60);
-    turn_ccw(75);
-    moveDistance(60, count*(float)1/2);
-    turn_cw(count*(float)1/4);
-    count = 0;
-    while(!intakeLimitSwitch.isPressed()){
-      moveDistance(60, 25);
-      count += 25;
-    }
-    chassis->setMaxVelocity(-60);
-    moveDistance(-60, count*(float)3/4);
-    stop();
-    frontIntakeUp();
-    stop();
-    moveDistance(-60, count*(float)1/4);
-    stop();
+  lift.moveVelocity(0);
+  front_intake.moveVoltage(0);
+  back_intake.moveVoltage(0);
 
-    chassis->setMaxVelocity(150);
-}
-<<<<<<< HEAD
-
-void(){
+  delay(600);
 
 }
-=======
-*/

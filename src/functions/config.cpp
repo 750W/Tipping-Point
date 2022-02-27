@@ -10,6 +10,7 @@ okapi::Motor front_intake(FRONT_INTAKE_MOTOR, true, AbstractMotor::gearset::red,
 okapi::Motor back_intake(BACK_INTAKE_MOTOR, false, AbstractMotor::gearset::red, AbstractMotor::encoderUnits::degrees);
 
 okapi::Motor lift(LIFT_MOTOR, false, AbstractMotor::gearset::red, AbstractMotor::encoderUnits::degrees);
+okapi::Motor ring_intake(RING_INTAKE_MOTOR, true, AbstractMotor::gearset::blue, AbstractMotor::encoderUnits::degrees);
 
 std::shared_ptr<okapi::OdomChassisController> chassis = ChassisControllerBuilder()
 
@@ -36,11 +37,11 @@ okapi::MotorGroup front_drive({drive_fL, drive_fR});
 
 okapi::Controller joystick;
 
-okapi::ControllerButton backTakeIn(ControllerDigital::L2);
-okapi::ControllerButton backTakeOut(ControllerDigital::R2);
+okapi::ControllerButton l1(ControllerDigital::L1);
+okapi::ControllerButton r1(ControllerDigital::R1);
 
-okapi::ControllerButton frontTakeIn(ControllerDigital::L1);
-okapi::ControllerButton frontTakeOut(ControllerDigital::R1);
+okapi::ControllerButton l2(ControllerDigital::L2);
+okapi::ControllerButton r2(ControllerDigital::R2);
 
 okapi::ControllerButton up(ControllerDigital::up);
 okapi::ControllerButton down(ControllerDigital::down);

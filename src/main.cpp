@@ -114,11 +114,11 @@ void opcontrol() {
   Task drive(drive_funct, (void*)"not needed", "driver control task");
   while(true) {
 
-    if ( frontTakeIn.isPressed() ) {
+    if ( l1.isPressed() ) {
 
       front_clamp();
 
-    } else if ( frontTakeOut.isPressed() ) {
+    } else if ( l2.isPressed() ) {
 
       front_unclamp();
 
@@ -128,13 +128,31 @@ void opcontrol() {
 
     }
 
-    if ( backTakeIn.isPressed() ) {
+    if ( r1.isPressed() ) {
 
       back_clamp();
 
-    } else if ( backTakeOut.isPressed() ) {
+    } else if ( r2.isPressed() ) {
 
       back_unclamp();
+
+    } else {
+
+      back_intake.moveVoltage(0);
+
+    }
+
+    if ( x.isPressed() ) {
+
+      ring_forward();
+
+    } else if ( b.isPressed() ) {
+
+      ring_reverse();
+
+    } else if ( a.isPressed() ) {
+
+      ring_stop();
 
     } else {
 
