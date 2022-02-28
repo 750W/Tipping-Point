@@ -10,7 +10,7 @@ okapi::Motor front_intake(FRONT_INTAKE_MOTOR, true, AbstractMotor::gearset::red,
 okapi::Motor back_intake(BACK_INTAKE_MOTOR, false, AbstractMotor::gearset::red, AbstractMotor::encoderUnits::degrees);
 
 okapi::Motor lift(LIFT_MOTOR, false, AbstractMotor::gearset::red, AbstractMotor::encoderUnits::degrees);
-okapi::Motor ring_intake(RING_INTAKE_MOTOR, true, AbstractMotor::gearset::blue, AbstractMotor::encoderUnits::degrees);
+okapi::Motor ring_intake(RING_INTAKE_MOTOR, true, AbstractMotor::gearset::green, AbstractMotor::encoderUnits::degrees);
 
 std::shared_ptr<okapi::OdomChassisController> chassis = ChassisControllerBuilder()
 

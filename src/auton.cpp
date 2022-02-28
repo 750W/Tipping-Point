@@ -7,7 +7,7 @@ void right_win_point () {
   int count = 0;
 
   while ( !back_bumperswitch.isPressed()) {
-    move_dist(-180, 25);
+    move_dist(-150, 25);
     count += 25;
   }
 
@@ -59,13 +59,13 @@ void mbl_goal () {
   int count = 0;
 
   while ( !back_bumperswitch.isPressed()) {
-      move_dist (200, 25);
+      move_dist (150, 25);
       count += 25;
       if(count >= 1000)
         move_dist (50, 25);
   }
 
-  front_clamp();
+  front_unclamp();
   delay(25);
 
   move_dist(-200, count);

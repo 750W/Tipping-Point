@@ -2,16 +2,13 @@
 
 void front_clamp () {
 
-  front_intake.moveVelocity(60);
-  delay (100) ;
-  front_intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+  contract_piston(100);
 
 }
 
 void front_unclamp () {
 
-  front_intake.moveVelocity(-60);
-  delay(100);
+  extend_piston(-100);
 
 }
 
@@ -19,7 +16,7 @@ void back_clamp () {
 
   back_intake.moveVoltage(-8000);
   delay(100);
-  //extend_piston(100);
+
 
 }
 
@@ -33,7 +30,6 @@ void back_auto_clamp () {
 
 void back_unclamp () {
 
-  //contract_piston(100);
   back_intake.moveVoltage(8000);
   delay(100);
 
