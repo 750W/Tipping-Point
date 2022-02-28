@@ -8,7 +8,7 @@ void front_clamp () {
 
 void front_unclamp () {
 
-  extend_piston(-100);
+  extend_piston(100);
 
 }
 

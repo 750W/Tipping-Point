@@ -118,7 +118,7 @@ void opcontrol() {
 
       front_clamp();
 
-    } else if ( l2.isPressed() ) {
+    } else if ( r1.isPressed() ) {
 
       front_unclamp();
 
@@ -128,7 +128,7 @@ void opcontrol() {
 
     }
 
-    if ( r1.isPressed() ) {
+    if ( l2.isPressed() ) {
 
       back_clamp();
 
