@@ -1,4 +1,3 @@
-#define CONFIG_H
 #include "main.h"
 
 const int FRONT_LEFT_MOTOR = 7;
@@ -60,6 +59,7 @@ extern pros::Task acceleration_tracker_task;
 extern pros::Task drive;
 
 extern pros::ADIDigitalOut piston;
+extern okapi::ADIEncoder shaft_encoder;
 
 void stop();
 void drive_tarePos();
@@ -67,7 +67,7 @@ void drive_tarePos();
 void move_dist(double spd, int time);
 void move_dist_drive(double spdL, double spdR);
 
-void drive_PID(okapi::MotorGroup left, okapi::MotorGroup right, double dist);
+void drive_PID(double dist);
 
 void front_clamp();
 void front_unclamp();
@@ -106,6 +106,8 @@ void auton_selector();
 
 void drive_funct(void*);
 void acceleration_tracker(void*);
+
+void turn_enc(double angle);
 double getCurrentPosition();
 
 void extend_piston(int time);

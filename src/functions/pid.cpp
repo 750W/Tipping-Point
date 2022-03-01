@@ -2,7 +2,10 @@
 using namespace okapi;
 
 
-void drive_PID (okapi::MotorGroup left, okapi::MotorGroup right, double dist) {
+void drive_PID (double dist) {
+
+  okapi::MotorGroup left({drive_fL, drive_bL});
+  okapi::MotorGroup right({drive_fR, drive_bR});
 
   left.tarePosition();
   double diff = -1*right.getPosition() - left.getPosition();
