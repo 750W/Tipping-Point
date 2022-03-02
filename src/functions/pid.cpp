@@ -20,13 +20,9 @@ void drive_PID (double dist) {
     velocity = error * kP + derivative * kD;
 
     if(velocity > 200) {
-
       velocity = 200;
-
     } else if(velocity < 15) {
-
       break;
-
     }
 
     move_dist(velocity, 25);
