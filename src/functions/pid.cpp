@@ -3,8 +3,7 @@ using namespace okapi;
 
 void drive_PID (double dist) {
 
-  double desired_val = (30.0 / M_PI) * (1.0 / 4.0) * dist;
-
+  double desired_val = dist;
   double error = desired_val - getCurrentPosition();
   double kP = 0.155;
   double kD = 0.0;
@@ -20,9 +19,13 @@ void drive_PID (double dist) {
     velocity = error * kP + derivative * kD;
 
     if(velocity > 200) {
+
       velocity = 200;
+
     } else if(velocity < 15) {
+
       break;
+      
     }
 
     move_dist(velocity, 25);
