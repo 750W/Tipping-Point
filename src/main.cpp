@@ -21,12 +21,13 @@ void initialize() {
   contract_piston(0);
 
   Task tracker_task(acceleration_tracker,(void*)"not needed","tracker task");
-  auton_selector();
+  //auton_selector();
 }
 
 void autonomous() {
 
   auton_state = true;
+  /*
 
   switch (i) {
 
@@ -42,8 +43,9 @@ void autonomous() {
   }
 
   mbl_goal();
+  */
   drive_PID(1000.0);
-
+  //prog_skills();
   auton_state = false;
 
 }

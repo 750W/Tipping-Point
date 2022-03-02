@@ -40,6 +40,7 @@
 #endif /* __cplusplus */
 #include "math.h"
 #include <vector>
+#include <tgmath.h>
 
 #define PROS_VERSION_MAJOR 3
 #define PROS_VERSION_MINOR 5

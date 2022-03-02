@@ -101,6 +101,7 @@ void right_win_point();
 void new_auton_trial();
 void right_win_point_mbl_goal();
 void prog_skills();
+void both_win_points_right();
 
 void auton_selector();
 

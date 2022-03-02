@@ -1,6 +1,22 @@
 #include "config.h"
 using namespace okapi;
 
+/*
+void both_win_points_right() {
+
+  drive_PID(-10.0);
+  back_clamp();
+  drive_PID(10.0);
+  turn_cw(90.0, 10);
+  drive_PID(500.0);
+  turn_cw(90.0, 10);
+  drive_PID(2000.0);
+  front_clamp();
+  turn_cw(90.0, 10);
+
+}
+*/
+
 void right_win_point () {
 
   chassis -> setMaxVelocity (400);
@@ -311,7 +327,7 @@ void auton_selector () {
 void prog_skills() {
 
   chassis->setState({0_in, 0_in, 0_deg});
-
+  drive_PID(1000.0);
 
 }
 
