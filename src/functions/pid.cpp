@@ -1,10 +1,11 @@
 #include "config.h"
 using namespace okapi;
 
-void drive_PID (double dist) {
+void drive_PID (double degrees) {
 
-  double desired_val = dist;
-  double error = desired_val - getCurrentPosition();
+  double desired_val = degrees/360.0;
+  double error = desired_val - getCurrentPosition()/360.0;
+
   double kP = 0.155;
   double kD = 0.0;
 
@@ -14,7 +15,7 @@ void drive_PID (double dist) {
 
   while((int)error > 0) {
 
-    error = desired_val - getCurrentPosition();
+    error = desired_val - getCurrentPosition()/360.0;
     derivative = error - prev_error;
     velocity = error * kP + derivative * kD;
 
@@ -25,7 +26,7 @@ void drive_PID (double dist) {
     } else if(velocity < 15) {
 
       break;
-      
+
     }
 
     move_dist(velocity, 25);

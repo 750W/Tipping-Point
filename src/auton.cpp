@@ -325,9 +325,45 @@ void auton_selector () {
 }
 
 void prog_skills() {
-
+  //start red side
   chassis->setState({0_in, 0_in, 0_deg});
-  drive_PID(1000.0);
+  move_dist(-100, 500);
+  back_clamp();
+  //clamp onto the alliance goal
+
+  ring_forward();
+  //turn on ring intake
+
+  move_dist(100, 500);
+  chassis->turnToAngle(120_deg);
+  drive_PID(800.0);
+  front_clamp();
+  lift_up();
+  //clamp on neutral goals
+
+  chassis->turnToAngle(135_deg);
+  drive_PID(800.0);
+  front_unclamp();
+  //stack goal
+
+  move_dist(-200, 100);
+  lift_down();
+  chassis->turnToAngle(0_deg);
+  drive_PID(900.0);
+  chassis->turnToAngle(-135_deg);
+  move_dist(200, 200);
+  back_clamp();
+  //clamp red goal
+
+  chassis->turnToAngle(-90_deg);
+  drive_PID(900.0);
+  front_clamp();
+  lift_up();
+  //clamp neutral goal
+
+  drive_PID(100.0);
+  
+
 
 }
 

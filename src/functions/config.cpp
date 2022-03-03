@@ -56,7 +56,7 @@ okapi::ControllerButton b(ControllerDigital::B);
 okapi::ADIButton back_bumperswitch('H');
 okapi::ADIEncoder shaft_encoder('E', 'F');
 
-okapi::IMU imu_z(4,IMUAxes::z);//TODO:change port
+okapi::IMU imu_y(4,IMUAxes::y);
 okapi::IMU imu_x(4,IMUAxes::x);
 
 pros::ADIDigitalOut piston ('C');

@@ -45,21 +45,20 @@ extern okapi::ControllerButton b;
 
 extern okapi::MotorGroup front_drive;
 
-extern okapi::ADIButton back_bumperswitch;
-
 extern bool auton_state;
 
 extern std::vector<double> acceleration;
 extern int ind;
 extern int totalTime;
 extern okapi::IMU imu_x;
-extern okapi::IMU imu_z;
+extern okapi::IMU imu_y;
 
 extern pros::Task acceleration_tracker_task;
 extern pros::Task drive;
 
 extern pros::ADIDigitalOut piston;
 extern okapi::ADIEncoder shaft_encoder;
+extern okapi::ADIButton back_bumperswitch;
 
 void stop();
 void drive_tarePos();
@@ -108,7 +107,7 @@ void auton_selector();
 void drive_funct(void*);
 void acceleration_tracker(void*);
 
-void turn_enc(double angle);
+void turn_encoder(double angle);
 double getCurrentPosition();
 
 void extend_piston(int time);

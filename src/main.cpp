@@ -16,7 +16,7 @@ void initialize() {
   ring_intake.tarePosition();
 
   imu_x.reset();
-  imu_z.reset();
+  imu_y.reset();
 
   contract_piston(0);
 
@@ -42,10 +42,8 @@ void autonomous() {
 
   }
 
-  mbl_goal();
   */
   drive_PID(1000.0);
-  //prog_skills();
   auton_state = false;
 
 }

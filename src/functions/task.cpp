@@ -30,10 +30,10 @@ void acceleration_tracker (void*) {
 
         double prev_vel = acceleration.at(ind - 1);
 
-        double z_accel = imu_z.getAcceleration();
+        double y_accel = imu_y.getAcceleration();
         double x_accel = imu_x.getAcceleration();
 
-        double accel = sqrt ( (z_accel * z_accel) + (x_accel * x_accel) );
+        double accel = sqrt ((x_accel * x_accel) + (y_accel * y_accel));
 
         acceleration.push_back( prev_vel + (accel * time) );
         totalTime += time;
