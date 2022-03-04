@@ -5,22 +5,19 @@ void initialize() {
 
   piston.set_value(false);
 
-  front_intake.setBrakeMode(AbstractMotor::brakeMode::hold);
   back_intake.setBrakeMode(AbstractMotor::brakeMode::hold);
   ring_intake.setBrakeMode(AbstractMotor::brakeMode::hold);
   lift.setBrakeMode(AbstractMotor::brakeMode::hold);
 
-  front_intake.tarePosition();
   back_intake.tarePosition();
-  lift.tarePosition();
+  liftL.tarePosition();
+  liftR.tarePosition();
   ring_intake.tarePosition();
 
-  imu_x.reset();
-  imu_y.reset();
+  imu.reset();
 
   contract_piston(0);
 
-  Task tracker_task(acceleration_tracker,(void*)"not needed","tracker task");
   //auton_selector();
 }
 
@@ -43,8 +40,13 @@ void autonomous() {
   }
 
   */
+
+  //Task imu_task(inertial_tracker,(void*)"not needed","tracker task");
+  //printf("%f", imu.get_rotation());
   drive_PID(1000.0);
   auton_state = false;
+
+
 
 }
 
@@ -60,10 +62,6 @@ void opcontrol() {
     } else if ( r1.isPressed() ) {
 
       front_unclamp();
-
-    } else {
-
-      front_intake.moveVelocity(0);
 
     }
 

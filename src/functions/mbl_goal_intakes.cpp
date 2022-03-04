@@ -14,32 +14,15 @@ void front_unclamp () {
 
 void back_clamp () {
 
-  back_intake.moveVoltage(-8000);
-  delay(100);
-
-
-}
-
-void back_auto_clamp () {
-
-  back_intake.moveVoltage(-8000);
-  delay(100);
-  back_intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+  back_intake.moveVoltage(-4000);
+  delay(200);
 
 }
 
 void back_unclamp () {
 
-  back_intake.moveVoltage(8000);
-  delay(100);
-
-}
-
-void back_auto_unclamp () {
-
-  back_intake.moveVoltage(8000);
-  delay(400);
-  back_intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+  back_intake.moveVoltage(4000);
+  delay(200);
 
 }
 

@@ -2,13 +2,13 @@
 
 void ring_forward(){
 
-  ring_intake.moveVelocity(100);
+  ring_intake.moveVelocity(80);
 
 }
 
 void ring_reverse(){
 
-  ring_intake.moveVelocity(-100);
+  ring_intake.moveVelocity(-80);
 
 }
 

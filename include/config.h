@@ -5,11 +5,14 @@ const int FRONT_RIGHT_MOTOR = 14;
 const int BACK_LEFT_MOTOR = 13;
 const int BACK_RIGHT_MOTOR = 2;
 
-const int FRONT_INTAKE_MOTOR = 5;
 const int BACK_INTAKE_MOTOR = 18;
 
-const int LIFT_MOTOR = 9;
+const int LEFT_LIFT_MOTOR = 6;
+const int RIGHT_LIFT_MOTOR = 9;
+
 const int RING_INTAKE_MOTOR = 10;
+const std::uint8_t IMU_PORT = 4;
+
 
 extern okapi::Motor drive_fL;
 extern okapi::Motor drive_fR;
@@ -19,7 +22,9 @@ extern okapi::Motor drive_bR;
 extern okapi::Motor front_intake;
 extern okapi::Motor back_intake;
 
-extern okapi::Motor lift;
+extern okapi::Motor liftL;
+extern okapi::Motor liftR;
+extern okapi::MotorGroup lift;
 extern okapi::Motor ring_intake;
 
 extern std::shared_ptr<okapi::OdomChassisController> chassis;
@@ -47,13 +52,12 @@ extern okapi::MotorGroup front_drive;
 
 extern bool auton_state;
 
-extern std::vector<double> acceleration;
+extern std::vector<double> rotation_values;
 extern int ind;
 extern int totalTime;
-extern okapi::IMU imu_x;
-extern okapi::IMU imu_y;
+extern pros::Imu imu;
 
-extern pros::Task acceleration_tracker_task;
+extern pros::Task imu_task;
 extern pros::Task drive;
 
 extern pros::ADIDigitalOut piston;
@@ -105,10 +109,9 @@ void both_win_points_right();
 void auton_selector();
 
 void drive_funct(void*);
-void acceleration_tracker(void*);
+void inertial_tracker(void*);
 
 void turn_encoder(double angle);
-double getCurrentPosition();
 
 void extend_piston(int time);
 void contract_piston(int time);
