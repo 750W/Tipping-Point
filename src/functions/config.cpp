@@ -54,7 +54,7 @@ okapi::ControllerButton y(ControllerDigital::Y);
 okapi::ControllerButton b(ControllerDigital::B);
 
 okapi::ADIButton back_bumperswitch('H');
-okapi::ADIEncoder shaft_encoder('E', 'F');
+okapi::ADIEncoder shaft_encoder('E', 'F', false);
 
 pros::Imu imu(IMU_PORT);
 

@@ -15,6 +15,7 @@ void initialize() {
   ring_intake.tarePosition();
 
   imu.reset();
+  shaft_encoder.reset();
 
   contract_piston(0);
 
@@ -43,7 +44,7 @@ void autonomous() {
 
   //Task imu_task(inertial_tracker,(void*)"not needed","tracker task");
   //printf("%f", imu.get_rotation());
-  drive_PID(1000.0);
+  drive_PID(1.0);
   auton_state = false;
 
 

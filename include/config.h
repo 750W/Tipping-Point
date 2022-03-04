@@ -13,7 +13,6 @@ const int RIGHT_LIFT_MOTOR = 9;
 const int RING_INTAKE_MOTOR = 10;
 const std::uint8_t IMU_PORT = 4;
 
-
 extern okapi::Motor drive_fL;
 extern okapi::Motor drive_fR;
 extern okapi::Motor drive_bL;
