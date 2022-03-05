@@ -1,21 +1,46 @@
 #include "config.h"
 using namespace okapi;
 
-/*
-void both_win_points_right() {
 
-  drive_PID(-10.0);
+void both_win_points_left() {
+
+  chassis->setState({0_in, 0_in, 0_deg});
+
+  for(int i = 0; i < 3; i++)
   back_clamp();
-  drive_PID(10.0);
-  turn_cw(90.0, 10);
-  drive_PID(500.0);
-  turn_cw(90.0, 10);
-  drive_PID(2000.0);
-  front_clamp();
-  turn_cw(90.0, 10);
+  delay(25);
+
+  for(int i = 0; i < 3; i++)
+  back_unclamp();
+  delay(25);
+
+  chassis->turnToAngle(-45_deg);
+  delay(25);
+  move_dist(-100, 1000);
+  delay(40);
+
+  chassis->turnToAngle(45_deg);
+  move_dist(-150, 2000);
+  move_dist(0, 25);
+  back_clamp();
+  move_dist(150, 200);
+  move_dist(0, 25);
 
 }
-*/
+
+void both_neutral_goals_right() {
+
+  chassis->setState({0_in, 0_in, 0_deg});
+  drive_PID(100.0);
+  front_clamp();
+  chassis->turnToAngle(-90_deg);
+  move_dist(200, 300);
+
+  back_clamp();
+  chassis->turnToAngle(0_deg);
+  move_dist(-200, 500);
+
+}
 
 void auton_selector () {
 

@@ -69,7 +69,7 @@ void drive_tarePos();
 void move_dist(double spd, int time);
 void move_dist_drive(double spdL, double spdR);
 
-void drive_PID(double dist);
+void drive_PID(int ticks);
 
 void front_clamp();
 void front_unclamp();
@@ -103,7 +103,8 @@ void right_win_point();
 void new_auton_trial();
 void right_win_point_mbl_goal();
 void prog_skills();
-void both_win_points_right();
+void both_win_points_left();
+void both_neutral_goals_right();
 
 void auton_selector();
 

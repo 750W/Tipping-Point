@@ -14,14 +14,14 @@ void front_unclamp () {
 
 void back_clamp () {
 
-  back_intake.moveVoltage(-6000);
+  back_intake.moveVelocity(-100);
   delay(200);
 
 }
 
 void back_unclamp () {
 
-  back_intake.moveVoltage(6000);
+  back_intake.moveVelocity(100);
   delay(200);
 
 }

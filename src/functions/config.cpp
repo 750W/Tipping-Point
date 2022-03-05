@@ -6,7 +6,7 @@ okapi::Motor drive_fR(FRONT_RIGHT_MOTOR, true, AbstractMotor::gearset::green, Ab
 okapi::Motor drive_bL(BACK_LEFT_MOTOR, false, AbstractMotor::gearset::green, AbstractMotor::encoderUnits::degrees);
 okapi::Motor drive_bR(BACK_RIGHT_MOTOR, true, AbstractMotor::gearset::green, AbstractMotor::encoderUnits::degrees);
 
-okapi::Motor back_intake(BACK_INTAKE_MOTOR, false, AbstractMotor::gearset::red, AbstractMotor::encoderUnits::degrees);
+okapi::Motor back_intake(BACK_INTAKE_MOTOR, true, AbstractMotor::gearset::red, AbstractMotor::encoderUnits::degrees);
 okapi::Motor liftL(LEFT_LIFT_MOTOR, true, AbstractMotor::gearset::red, AbstractMotor::encoderUnits::degrees);
 okapi::Motor liftR(RIGHT_LIFT_MOTOR, false, AbstractMotor::gearset::red, AbstractMotor::encoderUnits::degrees);
 
@@ -54,7 +54,7 @@ okapi::ControllerButton y(ControllerDigital::Y);
 okapi::ControllerButton b(ControllerDigital::B);
 
 okapi::ADIButton back_bumperswitch('H');
-okapi::ADIEncoder shaft_encoder('E', 'F', false);
+okapi::ADIEncoder shaft_encoder('E', 'F', true);
 
 pros::Imu imu(IMU_PORT);
 

@@ -43,8 +43,7 @@ void autonomous() {
   */
 
   //Task imu_task(inertial_tracker,(void*)"not needed","tracker task");
-  //printf("%f", imu.get_rotation());
-  drive_PID(1.0);
+  both_win_points_left();
   auton_state = false;
 
 
