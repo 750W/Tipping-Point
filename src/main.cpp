@@ -41,8 +41,6 @@ void autonomous() {
 
   */
 
-  //oth_win_points_left();
-
 }
 
 void opcontrol() {
