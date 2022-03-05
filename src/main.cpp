@@ -24,7 +24,6 @@ void initialize() {
 
 void autonomous() {
 
-  auton_state = true;
   /*
 
   switch (i) {
@@ -42,11 +41,7 @@ void autonomous() {
 
   */
 
-  //Task imu_task(inertial_tracker,(void*)"not needed","tracker task");
-  both_win_points_left();
-  auton_state = false;
-
-
+  //oth_win_points_left();
 
 }
 
@@ -67,11 +62,11 @@ void opcontrol() {
 
     if ( l2.isPressed() ) {
 
-      back_clamp();
+      back_up();
 
     } else if ( r2.isPressed() ) {
 
-      back_unclamp();
+      back_down();
 
     } else {
 

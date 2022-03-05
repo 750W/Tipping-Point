@@ -12,17 +12,19 @@ void front_unclamp () {
 
 }
 
-void back_clamp () {
+void back_down () {
 
   back_intake.moveVelocity(-100);
   delay(200);
+  back_intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
 
 }
 
-void back_unclamp () {
+void back_up () {
 
   back_intake.moveVelocity(100);
-  delay(200);
+  delay(800);
+  back_intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
 
 }
 

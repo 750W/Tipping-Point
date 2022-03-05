@@ -4,7 +4,7 @@ using namespace okapi;
 void drive_PID (int ticks) {
 
   double kP = 0.6;
-  double kD = 0.0;
+  double kD = 1.2;
 
   double desired_value = ticks;
   double sensor_value = shaft_encoder.get();

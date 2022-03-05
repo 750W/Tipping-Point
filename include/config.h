@@ -74,8 +74,8 @@ void drive_PID(int ticks);
 void front_clamp();
 void front_unclamp();
 
-void back_clamp();
-void back_unclamp();
+void back_up();
+void back_down();
 
 void back_auto_clamp();
 void back_auto_unclamp();
@@ -100,8 +100,7 @@ void turn_PID(int deg);
 void mbl_goal();
 void left_win_point();
 void right_win_point();
-void new_auton_trial();
-void right_win_point_mbl_goal();
+
 void prog_skills();
 void both_win_points_left();
 void both_neutral_goals_right();
@@ -109,9 +108,6 @@ void both_neutral_goals_right();
 void auton_selector();
 
 void drive_funct(void*);
-void inertial_tracker(void*);
-
-void turn_encoder(double angle);
 
 void extend_piston(int time);
 void contract_piston(int time);

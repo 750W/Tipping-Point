@@ -1,17 +1,58 @@
 #include "config.h"
 using namespace okapi;
 
+void left_win_point() {
+
+  for(int i = 0; i < 3; i++)
+  back_down();
+  delay(25);
+
+  for(int i = 0; i < 3; i++)
+  back_up();
+  delay(25);
+
+}
+
+void right_win_point() {
+
+  chassis->setMaxVelocity(200);
+  int count = 0;
+
+  while(back_bumperswitch.isPressed()){
+    move_dist(100, 25);
+    count += 25;
+  }
+
+  front_clamp();
+  move_dist(-100, count);
+
+}
+
+void mbl_goal() {
+
+  chassis->setMaxVelocity(200);
+  int count = 0;
+
+  while(back_bumperswitch.isPressed()){
+    move_dist(180, 25);
+    count += 25;
+  }
+
+  front_clamp();
+  move_dist(-200, count);
+
+}
 
 void both_win_points_left() {
 
   chassis->setState({0_in, 0_in, 0_deg});
 
   for(int i = 0; i < 3; i++)
-  back_clamp();
+  back_down();
   delay(25);
 
   for(int i = 0; i < 3; i++)
-  back_unclamp();
+  back_up();
   delay(25);
 
   chassis->turnToAngle(-45_deg);
@@ -22,7 +63,7 @@ void both_win_points_left() {
   chassis->turnToAngle(45_deg);
   move_dist(-150, 2000);
   move_dist(0, 25);
-  back_clamp();
+  back_down();
   move_dist(150, 200);
   move_dist(0, 25);
 
@@ -36,7 +77,7 @@ void both_neutral_goals_right() {
   chassis->turnToAngle(-90_deg);
   move_dist(200, 300);
 
-  back_clamp();
+  back_up();
   chassis->turnToAngle(0_deg);
   move_dist(-200, 500);
 
@@ -87,22 +128,50 @@ void auton_selector () {
 }
 
 void prog_skills() {
+  int x = 500;
+  int y = 250;
   //start red side
   chassis->setState({0_in, 0_in, 0_deg});
   move_dist(-100, 500);
-  back_clamp();
+  back_up();
   //clamp onto the alliance goal
 
   ring_forward();
   //turn on ring intake
 
   move_dist(100, 500);
-  chassis->turnToAngle(120_deg);
-  drive_PID(800.0);
-  front_clamp();
-  lift_up();
-  //clamp on neutral goals
+  chassis->turnToAngle(90_deg);
 
+
+  move_dist(100,x);
+  front_clamp();
+  move_dist(100,x);
+  front_unclamp();
+  back_down();
+
+  chassis->turnToAngle(180_deg);
+  move_dist(100,y);
+  chassis->turnToAngle(-90_deg);
+
+  move_dist(100,x);
+  front_clamp();
+  move_dist(100,x);
+  front_unclamp();
+
+  chassis->turnToAngle(180_deg);
+  move_dist(100,y);
+  chassis->turnToAngle(90_deg);
+
+  move_dist(100,x);
+  front_clamp();
+  move_dist(100,x);
+  front_unclamp();
+
+
+
+
+
+  /*
   chassis->turnToAngle(135_deg);
   drive_PID(800.0);
   front_unclamp();
@@ -124,7 +193,7 @@ void prog_skills() {
   //clamp neutral goal
 
   drive_PID(100.0);
-
+  */
 
 
 }
